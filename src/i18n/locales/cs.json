@@ -1,0 +1,156 @@
+{
+  "brand": "SunSet Tours Egypt",
+  "tagline": "Výběr zájezdů do Egypta u Červeného moře",
+  "nav": {
+    "home": "Domů",
+    "destinations": "Destinace",
+    "trips": "Zájezdy",
+    "about": "O nás",
+    "contact": "Kontakt",
+    "admin": "Správa"
+  },
+  "footer": {
+    "rights": "Všechna práva vyhrazena.",
+    "explore": "Objevujte",
+    "legal": "Vytvořeno pro klidné tyrkysové vody a zlaté duny."
+  },
+  "home": {
+    "heroTitle": "Červené moře v Egyptě — stylově",
+    "heroSubtitle": "Vybrané pobyty v Sharm el Sheiku, Hurghadě a Marsa Alam — snadná rezervace a podpora jako u concierge.",
+    "ctaPrimary": "Prohlédnout zájezdy",
+    "ctaSecondary": "Destinace",
+    "featured": "Doporučené zájezdy",
+    "featuredSub": "To nejlepší z naší nabídky",
+    "why": "Proč cestovat s námi",
+    "whyItems": {
+      "one": "Transparentní ceny a flexibilní délka pobytu",
+      "two": "Obsah v mnoha jazycích",
+      "three": "Podpora přes WhatsApp pro rychlé potvrzení"
+    }
+  },
+  "destinations": {
+    "title": "Destinace",
+    "subtitle": "Tři přímořské perly — každá s vlastní atmosférou",
+    "sharm": {
+      "name": "Sharm el Sheikh",
+      "blurb": "Živé útesy, večery v Naama Bay a potápění světové úrovně."
+    },
+    "hurghada": {
+      "name": "Hurghada",
+      "blurb": "Výlety na ostrovy, safáře v poušti a rodinné resorty."
+    },
+    "marsa": {
+      "name": "Marsa Alam",
+      "blurb": "Klidné laguny, delfíni a pláže mimo davy."
+    },
+    "cta": "Zobrazit zájezdy"
+  },
+  "trips": {
+    "title": "Všechny zájezdy",
+    "subtitle": "Filtrovat podle pobřeží, upravit rozpočet, rezervovat přes WhatsApp",
+    "empty": "Žádný zájezd neodpovídá filtrům.",
+    "loading": "Načítání zájezdů…",
+    "filterDestination": "Destinace",
+    "filterDestinationAll": "Všechny destinace",
+    "sortPrice": "Řadit podle ceny",
+    "sortDefault": "Nejnovější první",
+    "sortPriceAsc": "Cena: od nejnižší",
+    "sortPriceDesc": "Cena: od nejvyšší",
+    "maxPrice": "Max. cena",
+    "cardCta": "Podrobnosti",
+    "featuredBadge": "Doporučeno",
+    "from": "Od"
+  },
+  "tripDetail": {
+    "loading": "Načítání zájezdu…",
+    "notFound": "Tento zájezd se nepodařilo najít.",
+    "gallery": "Galerie",
+    "book": "Rezervovat přes WhatsApp",
+    "duration": "Délka",
+    "destination": "Destinace"
+  },
+  "about": {
+    "title": "O společnosti SunSet Tours Egypt",
+    "p1": "Připravujeme pobřežní zájezdy u Červeného moře s důrazem na přehlednost: férové ceny, obsah v několika jazycích a rychlá podpora.",
+    "p2": "Kombinujeme místní znalosti s klidným, moderním designem — plánování zůstává stresu prosté.",
+    "p3": "Ať dáte přednost energii Sharmu, pestrosti Hurghady nebo klidu Marsa Alam, najdeme vhodný balíček."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Napište termíny — odpovíme na WhatsAppu s možnostmi.",
+    "whatsappCta": "Napište nám na WhatsApp",
+    "emailLabel": "E-mail",
+    "hoursLabel": "Otevírací doba",
+    "hoursValue": "Ne–Čt, 10:00–18:00 (káhirský čas)",
+    "mapLabel": "Místo na mapě",
+    "mapCta": "Otevřít v Mapách Google"
+  },
+  "whatsapp": {
+    "defaultMessage": "Dobrý den! Rád bych si rezervoval zájezd do Egypta."
+  },
+  "admin": {
+    "loginTitle": "Přístup pro správce",
+    "loginHint": "Pouze tato stránka je chráněna. Zbytek webu je veřejný.",
+    "passwordNotConfigured": "Nastavte VITE_ADMIN_PASSWORD v souboru .env v kořenovém adresáři projektu a znovu spusťte dev server.",
+    "invalidPassword": "Nesprávné heslo.",
+    "email": "E-mail",
+    "password": "Heslo",
+    "signIn": "Přihlásit se",
+    "signOut": "Odhlásit se",
+    "dashboard": "Přehled",
+    "trips": "Zájezdy",
+    "addTrip": "Přidat zájezd",
+    "editTrip": "Upravit zájezd",
+    "stats": {
+      "total": "Celkem zájezdů",
+      "active": "Aktivní",
+      "featured": "Doporučené",
+      "inactive": "Neaktivní"
+    },
+    "table": {
+      "title": "Správa zájezdů",
+      "empty": "Zatím žádné zájezdy. Vytvořte první balíček.",
+      "loading": "Načítání…",
+      "actions": "Akce",
+      "edit": "Upravit",
+      "delete": "Smazat",
+      "confirmDelete": "Smazat tento zájezd?"
+    },
+    "form": {
+      "titleAr": "Název (arabsky)",
+      "titleEn": "Název (anglicky)",
+      "shortAr": "Krátký popis (arabsky)",
+      "shortEn": "Krátký popis (anglicky)",
+      "fullAr": "Plný text (arabsky)",
+      "fullEn": "Plný text (anglicky)",
+      "destination": "Destinace",
+      "duration": "Délka",
+      "price": "Cena",
+      "currency": "Měna",
+      "cover": "Úvodní obrázek",
+      "gallery": "Fotogalerie",
+      "featured": "Doporučeno",
+      "active": "Aktivní",
+      "save": "Uložit zájezd",
+      "saving": "Ukládání…",
+      "uploading": "Nahrávání…",
+      "chooseFile": "Vybrat soubor",
+      "remove": "Odebrat",
+      "addGallery": "Přidat obrázky"
+    },
+    "status": {
+      "active": "Aktivní",
+      "inactive": "Neaktivní"
+    },
+    "destinations": {
+      "title": "Destinace",
+      "hint": "Destinace se nastavují u každého zájezdu. Konzistentní názvy v obou jazycích podporují SEO."
+    }
+  },
+  "common": {
+    "loading": "Načítání…",
+    "error": "Něco se pokazilo",
+    "retry": "Zkusit znovu",
+    "configureSupabase": "Přidejte do prostředí VITE_SUPABASE_URL a VITE_SUPABASE_ANON_KEY pro načtení dat."
+  }
+}

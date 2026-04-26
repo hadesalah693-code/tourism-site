@@ -1,0 +1,156 @@
+{
+  "brand": "SunSet Tours Egypt",
+  "tagline": "Séjours en Égypte savamment choisis le long de la mer Rouge",
+  "nav": {
+    "home": "Accueil",
+    "destinations": "Destinations",
+    "trips": "Séjours",
+    "about": "À propos",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "explore": "Explorer",
+    "legal": "Pensé pour eaux turquoises calmes et dunes dorées."
+  },
+  "home": {
+    "heroTitle": "La mer Rouge d’Égypte, raffinée",
+    "heroSubtitle": "Séjours à Sharm El Sheikh, Hurghada et Marsa Alam — réservation simple et accompagnement type conciergerie.",
+    "ctaPrimary": "Parcourir les séjours",
+    "ctaSecondary": "Destinations",
+    "featured": "Séjours à la une",
+    "featuredSub": "Incontournables de notre collection",
+    "why": "Pourquoi partir avec nous",
+    "whyItems": {
+      "one": "Tarifs transparents et durées flexibles",
+      "two": "Contenu multilingue",
+      "three": "Assistance WhatsApp pour confirmations rapides"
+    }
+  },
+  "destinations": {
+    "title": "Destinations",
+    "subtitle": "Trois icônes côtières — chacune à son rythme",
+    "sharm": {
+      "name": "Sharm El Sheikh",
+      "blurb": "Récifs animés, soirées à Naama Bay et plongée d’exception."
+    },
+    "hurghada": {
+      "name": "Hurghada",
+      "blurb": "Sauts d’île en île, safaris dans le désert et resorts familiaux."
+    },
+    "marsa": {
+      "name": "Marsa Alam",
+      "blurb": "Lagunes paisibles, dauphins et plages préservées loin de la foule."
+    },
+    "cta": "Voir les séjours"
+  },
+  "trips": {
+    "title": "Tous les séjours",
+    "subtitle": "Filtrez par côte, ajustez le budget, puis réservez sur WhatsApp",
+    "empty": "Aucun séjour ne correspond aux filtres.",
+    "loading": "Chargement des séjours…",
+    "filterDestination": "Destination",
+    "filterDestinationAll": "Toutes les destinations",
+    "sortPrice": "Trier par prix",
+    "sortDefault": "Plus récents d’abord",
+    "sortPriceAsc": "Prix : croissant",
+    "sortPriceDesc": "Prix : décroissant",
+    "maxPrice": "Prix max",
+    "cardCta": "Détails",
+    "featuredBadge": "À la une",
+    "from": "À partir de"
+  },
+  "tripDetail": {
+    "loading": "Chargement…",
+    "notFound": "Ce séjour est introuvable.",
+    "gallery": "Galerie",
+    "book": "Réserver sur WhatsApp",
+    "duration": "Durée",
+    "destination": "Destination"
+  },
+  "about": {
+    "title": "À propos de SunSet Tours Egypt",
+    "p1": "Nous concevons des itinéraires côtiers le long de la mer Rouge, avec des tarifs clairs, des textes multilingues et un support réactif.",
+    "p2": "Notre équipe mêle connaissance du terrain et esthétique épurée — pour que l’organisation reste sereine.",
+    "p3": "Vous préférez l’énergie de Sharm, la variété d’Hurghada ou le calme de Marsa Alam ? Nous trouvons le bon forfait."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Indiquez vos dates — nous répondons sur WhatsApp avec des options.",
+    "whatsappCta": "Nous écrire sur WhatsApp",
+    "emailLabel": "E-mail",
+    "hoursLabel": "Horaires",
+    "hoursValue": "Dim–Jeu, 10h00–18h00 (heure du Caire)",
+    "mapLabel": "Emplacement sur la carte",
+    "mapCta": "Ouvrir dans Google Maps"
+  },
+  "whatsapp": {
+    "defaultMessage": "Bonjour ! Je souhaite réserver un séjour en Égypte."
+  },
+  "admin": {
+    "loginTitle": "Accès administration",
+    "loginHint": "Seule cette page est protégée. Le reste du site est public.",
+    "passwordNotConfigured": "Définissez VITE_ADMIN_PASSWORD dans un fichier .env à la racine du projet, puis redémarrez le serveur de dev.",
+    "invalidPassword": "Mot de passe incorrect.",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter",
+    "dashboard": "Tableau de bord",
+    "trips": "Séjours",
+    "addTrip": "Ajouter un séjour",
+    "editTrip": "Modifier le séjour",
+    "stats": {
+      "total": "Total des séjours",
+      "active": "Actifs",
+      "featured": "À la une",
+      "inactive": "Inactifs"
+    },
+    "table": {
+      "title": "Gérer les séjours",
+      "empty": "Aucun séjour. Créez votre premier forfait.",
+      "loading": "Chargement…",
+      "actions": "Actions",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "confirmDelete": "Supprimer ce séjour ?"
+    },
+    "form": {
+      "titleAr": "Titre (arabe)",
+      "titleEn": "Titre (anglais)",
+      "shortAr": "Texte court (arabe)",
+      "shortEn": "Texte court (anglais)",
+      "fullAr": "Texte long (arabe)",
+      "fullEn": "Texte long (anglais)",
+      "destination": "Destination",
+      "duration": "Durée",
+      "price": "Prix",
+      "currency": "Devise",
+      "cover": "Image de couverture",
+      "gallery": "Galerie",
+      "featured": "À la une",
+      "active": "Actif",
+      "save": "Enregistrer",
+      "saving": "Enregistrement…",
+      "uploading": "Téléversement…",
+      "chooseFile": "Choisir un fichier",
+      "remove": "Retirer",
+      "addGallery": "Ajouter des images"
+    },
+    "status": {
+      "active": "Actif",
+      "inactive": "Inactif"
+    },
+    "destinations": {
+      "title": "Destinations",
+      "hint": "Les destinations sont gérées par séjour. Des libellés cohérents dans les deux langues aident le référencement."
+    }
+  },
+  "common": {
+    "loading": "Chargement…",
+    "error": "Une erreur s’est produite",
+    "retry": "Réessayer",
+    "configureSupabase": "Ajoutez VITE_SUPABASE_URL et VITE_SUPABASE_ANON_KEY à votre environnement pour charger les données en direct."
+  }
+}

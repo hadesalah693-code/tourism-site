@@ -1,0 +1,156 @@
+{
+  "brand": "SunSet Tours Egypt",
+  "tagline": "Curated Egypt escapes along the Red Sea",
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "trips": "Trips",
+    "about": "About",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "explore": "Explore",
+    "legal": "Crafted for calm turquoise waters and golden dunes."
+  },
+  "home": {
+    "heroTitle": "Egypt’s Red Sea, refined",
+    "heroSubtitle": "Hand-picked packages in Sharm El Sheikh, Hurghada, and Marsa Alam — seamless booking and concierge-style support.",
+    "ctaPrimary": "Browse trips",
+    "ctaSecondary": "View destinations",
+    "featured": "Featured journeys",
+    "featuredSub": "Limited-time highlights from our collection",
+    "why": "Why travel with us",
+    "whyItems": {
+      "one": "Transparent pricing and flexible durations",
+      "two": "Bilingual content — English & Arabic",
+      "three": "WhatsApp support for quick confirmations"
+    }
+  },
+  "destinations": {
+    "title": "Destinations",
+    "subtitle": "Three coastal icons — each with its own rhythm",
+    "sharm": {
+      "name": "Sharm El Sheikh",
+      "blurb": "Vibrant reefs, Naama Bay evenings, and world-class diving."
+    },
+    "hurghada": {
+      "name": "Hurghada",
+      "blurb": "Island hops, desert safaris, and family-friendly resorts."
+    },
+    "marsa": {
+      "name": "Marsa Alam",
+      "blurb": "Quiet lagoons, dolphins, and pristine beaches away from the crowds."
+    },
+    "cta": "See trips"
+  },
+  "trips": {
+    "title": "All trips",
+    "subtitle": "Filter by coast, tune by budget, then book on WhatsApp",
+    "empty": "No trips match your filters.",
+    "loading": "Loading trips…",
+    "filterDestination": "Destination",
+    "filterDestinationAll": "All destinations",
+    "sortPrice": "Sort by price",
+    "sortDefault": "Newest first",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low",
+    "maxPrice": "Max price",
+    "cardCta": "View details",
+    "featuredBadge": "Featured",
+    "from": "From"
+  },
+  "tripDetail": {
+    "loading": "Loading trip…",
+    "notFound": "This trip could not be found.",
+    "gallery": "Gallery",
+    "book": "Book on WhatsApp",
+    "duration": "Duration",
+    "destination": "Destination"
+  },
+  "about": {
+    "title": "About SunSet Tours Egypt",
+    "p1": "We design coastal itineraries across Egypt’s Red Sea with a focus on clarity: honest pricing, bilingual storytelling, and responsive support.",
+    "p2": "Our team blends local insight with a premium, minimal aesthetic — so planning feels calm, not chaotic.",
+    "p3": "Whether you crave Sharm’s energy, Hurghada’s variety, or Marsa Alam’s serenity, we help you land on the right package."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Tell us your dates — we’ll reply on WhatsApp with options.",
+    "whatsappCta": "Message us on WhatsApp",
+    "emailLabel": "Email",
+    "hoursLabel": "Hours",
+    "hoursValue": "Sun–Thu, 10:00–18:00 (Cairo time)",
+    "mapLabel": "Location on map",
+    "mapCta": "Open in Google Maps"
+  },
+  "whatsapp": {
+    "defaultMessage": "Hi! I’d like to book an Egypt package."
+  },
+  "admin": {
+    "loginTitle": "Admin access",
+    "loginHint": "Only this page is protected. The rest of the site is public — no sign-in required.",
+    "passwordNotConfigured": "Set VITE_ADMIN_PASSWORD in a .env file in the project root, then restart the dev server.",
+    "invalidPassword": "Incorrect password.",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "dashboard": "Dashboard",
+    "trips": "Trips",
+    "addTrip": "Add trip",
+    "editTrip": "Edit trip",
+    "stats": {
+      "total": "Total trips",
+      "active": "Active",
+      "featured": "Featured",
+      "inactive": "Inactive"
+    },
+    "table": {
+      "title": "Manage trips",
+      "empty": "No trips yet. Create your first package.",
+      "loading": "Loading…",
+      "actions": "Actions",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirmDelete": "Delete this trip?"
+    },
+    "form": {
+      "titleAr": "Title (Arabic)",
+      "titleEn": "Title (English)",
+      "shortAr": "Short description (Arabic)",
+      "shortEn": "Short description (English)",
+      "fullAr": "Full description (Arabic)",
+      "fullEn": "Full description (English)",
+      "destination": "Destination",
+      "duration": "Duration",
+      "price": "Price",
+      "currency": "Currency",
+      "cover": "Cover image",
+      "gallery": "Gallery images",
+      "featured": "Featured",
+      "active": "Active",
+      "save": "Save trip",
+      "saving": "Saving…",
+      "uploading": "Uploading…",
+      "chooseFile": "Choose file",
+      "remove": "Remove",
+      "addGallery": "Add images"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "destinations": {
+      "title": "Destinations",
+      "hint": "Destinations are managed per trip. Use consistent naming in both languages for SEO."
+    }
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "configureSupabase": "Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your environment to load live data."
+  }
+}

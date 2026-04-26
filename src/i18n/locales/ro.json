@@ -1,0 +1,156 @@
+{
+  "brand": "SunSet Tours Egypt",
+  "tagline": "Selecții de vacanțe în Egipt, pe Marea Roșie",
+  "nav": {
+    "home": "Acasă",
+    "destinations": "Destinații",
+    "trips": "Tururi",
+    "about": "Despre",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "footer": {
+    "rights": "Toate drepturile rezervate.",
+    "explore": "Explorează",
+    "legal": "Creat pentru ape turcoaz liniștite și dune de nisip aurii."
+  },
+  "home": {
+    "heroTitle": "Marea Roșie a Egiptului, rafinată",
+    "heroSubtitle": "Pachete în Sharm El Sheikh, Hurghada și Marsa Alam — rezervare simplă și suport stil concierge.",
+    "ctaPrimary": "Vezi tururile",
+    "ctaSecondary": "Destinații",
+    "featured": "Tururi în evidență",
+    "featuredSub": "Puncte forte din colecția noastră",
+    "why": "De ce să călătorești cu noi",
+    "whyItems": {
+      "one": "Prețuri transparente și durate flexibile",
+      "two": "Conținut în mai multe limbi",
+      "three": "Suport WhatsApp pentru confirmări rapide"
+    }
+  },
+  "destinations": {
+    "title": "Destinații",
+    "subtitle": "Trei icoane de coastă — fiecare cu propriul ritm",
+    "sharm": {
+      "name": "Sharm El Sheikh",
+      "blurb": "Recifuri vii, seri în Naama Bay și scufundări de top."
+    },
+    "hurghada": {
+      "name": "Hurghada",
+      "blurb": "Excursii pe insule, safari în deșert și resorturi pentru familii."
+    },
+    "marsa": {
+      "name": "Marsa Alam",
+      "blurb": "Lagune liniștite, delfini și plaje curate, departe de aglomerație."
+    },
+    "cta": "Vezi tururile"
+  },
+  "trips": {
+    "title": "Toate tururile",
+    "subtitle": "Filtrează după coastă, ajustează bugetul, apoi rezervă pe WhatsApp",
+    "empty": "Niciun tur nu corespunde filtrelor.",
+    "loading": "Se încarcă tururile…",
+    "filterDestination": "Destinație",
+    "filterDestinationAll": "Toate destinațiile",
+    "sortPrice": "Sortează după preț",
+    "sortDefault": "Cele mai noi",
+    "sortPriceAsc": "Preț: crescător",
+    "sortPriceDesc": "Preț: descrescător",
+    "maxPrice": "Preț max.",
+    "cardCta": "Detalii",
+    "featuredBadge": "Recomandat",
+    "from": "De la"
+  },
+  "tripDetail": {
+    "loading": "Se încarcă turul…",
+    "notFound": "Acest tur nu a putut fi găsit.",
+    "gallery": "Galerie",
+    "book": "Rezervă pe WhatsApp",
+    "duration": "Durată",
+    "destination": "Destinație"
+  },
+  "about": {
+    "title": "Despre SunSet Tours Egypt",
+    "p1": "Proiectăm itinerarii de coastă pe Marea Roșie cu focus pe claritate: prețuri corecte, povestire multilingvă și suport prompt.",
+    "p2": "Echipa noastră îmbină cunoștințe locale cu un stil discret, premium — astfel planificarea e calmă, nu haotică.",
+    "p3": "Indiferent dacă preferi energia Sharm-ului, varietatea din Hurghada sau liniștea din Marsa Alam, te ajutăm cu pachetul potrivit."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Spune-ne datele — răspundem pe WhatsApp cu opțiuni.",
+    "whatsappCta": "Scrie-ne pe WhatsApp",
+    "emailLabel": "E-mail",
+    "hoursLabel": "Program",
+    "hoursValue": "Dum–Joi, 10:00–18:00 (ora Cairo)",
+    "mapLabel": "Locația pe hartă",
+    "mapCta": "Deschide în Google Maps"
+  },
+  "whatsapp": {
+    "defaultMessage": "Bună! Aș dori să rezerv un pachet în Egipt."
+  },
+  "admin": {
+    "loginTitle": "Acces admin",
+    "loginHint": "Doar această pagină e protejată. Restul site-ului e public.",
+    "passwordNotConfigured": "Setează VITE_ADMIN_PASSWORD într-un fișier .env la rădăcina proiectului, apoi repornește serverul de dezvoltare.",
+    "invalidPassword": "Parolă incorectă.",
+    "email": "E-mail",
+    "password": "Parolă",
+    "signIn": "Autentificare",
+    "signOut": "Deconectare",
+    "dashboard": "Tablou de bord",
+    "trips": "Tururi",
+    "addTrip": "Adaugă tur",
+    "editTrip": "Editează turul",
+    "stats": {
+      "total": "Total tururi",
+      "active": "Active",
+      "featured": "Recomandate",
+      "inactive": "Inactive"
+    },
+    "table": {
+      "title": "Gestionare tururi",
+      "empty": "Niciun tur încă. Creează primul pachet.",
+      "loading": "Se încarcă…",
+      "actions": "Acțiuni",
+      "edit": "Editează",
+      "delete": "Șterge",
+      "confirmDelete": "Ștergi acest tur?"
+    },
+    "form": {
+      "titleAr": "Titlu (arabă)",
+      "titleEn": "Titlu (engleză)",
+      "shortAr": "Scurtă descriere (arabă)",
+      "shortEn": "Scurtă descriere (engleză)",
+      "fullAr": "Descriere completă (arabă)",
+      "fullEn": "Descriere completă (engleză)",
+      "destination": "Destinație",
+      "duration": "Durată",
+      "price": "Preț",
+      "currency": "Monedă",
+      "cover": "Imagine copertă",
+      "gallery": "Galerie imagini",
+      "featured": "Recomandat",
+      "active": "Activ",
+      "save": "Salvează turul",
+      "saving": "Se salvează…",
+      "uploading": "Se încarcă…",
+      "chooseFile": "Alege fișier",
+      "remove": "Elimină",
+      "addGallery": "Adaugă imagini"
+    },
+    "status": {
+      "active": "Activ",
+      "inactive": "Inactiv"
+    },
+    "destinations": {
+      "title": "Destinații",
+      "hint": "Destinațiile se gestionează per tur. Denumiri consistente în ambele limbi ajută SEO."
+    }
+  },
+  "common": {
+    "loading": "Se încarcă…",
+    "error": "A apărut o problemă",
+    "retry": "Reîncearcă",
+    "configureSupabase": "Adaugă VITE_SUPABASE_URL și VITE_SUPABASE_ANON_KEY în mediu pentru date live."
+  }
+}

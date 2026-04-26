@@ -1,0 +1,156 @@
+{
+  "brand": "SunSet Tours Egypt",
+  "tagline": "Starannie dobrane podróże do Egiptu nad Morzem Czerwonym",
+  "nav": {
+    "home": "Strona główna",
+    "destinations": "Kierunki",
+    "trips": "Wycieczki",
+    "about": "O nas",
+    "contact": "Kontakt",
+    "admin": "Panel"
+  },
+  "footer": {
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "explore": "Odkrywaj",
+    "legal": "Stworzone dla spokojnej turkusu i złotych wydm."
+  },
+  "home": {
+    "heroTitle": "Morze Czerwone w Egipcie, w dobrym stylu",
+    "heroSubtitle": "Pakiety w Szarm el-Szajch, Hurghadzie i Marsa Alam — prosta rezerwacja i wsparcie w stylu concierge.",
+    "ctaPrimary": "Przeglądaj wycieczki",
+    "ctaSecondary": "Kierunki",
+    "featured": "Polecane wycieczki",
+    "featuredSub": "Najciekawsze oferty z naszej kolekcji",
+    "why": "Dlaczego my",
+    "whyItems": {
+      "one": "Jasne ceny i elastyczny czas trwania",
+      "two": "Treści w wielu językach",
+      "three": "Wsparcie WhatsApp dla szybkich potwierdzeń"
+    }
+  },
+  "destinations": {
+    "title": "Kierunki",
+    "subtitle": "Trzy nadmorskie miejsca — każde ze swoim rytmem",
+    "sharm": {
+      "name": "Szarm el-Szajch",
+      "blurb": "Żywe rafy, wieczory w Naama Bay i światowej klasy nurkowanie."
+    },
+    "hurghada": {
+      "name": "Hurghada",
+      "blurb": "Skoki na wyspy, safarie na pustynię i resorty przyjazne rodzinom."
+    },
+    "marsa": {
+      "name": "Marsa Alam",
+      "blurb": "Spokojne laguny, delfiny i piaszczyste plaże z dala od tłumów."
+    },
+    "cta": "Zobacz wycieczki"
+  },
+  "trips": {
+    "title": "Wszystkie wycieczki",
+    "subtitle": "Filtruj region, dopasuj budżet, zarezerwuj przez WhatsApp",
+    "empty": "Żadna wycieczka nie pasuje do filtrów.",
+    "loading": "Ładowanie wycieczek…",
+    "filterDestination": "Kierunek",
+    "filterDestinationAll": "Wszystkie kierunki",
+    "sortPrice": "Sortuj według ceny",
+    "sortDefault": "Od najnowszych",
+    "sortPriceAsc": "Cena: od najniższej",
+    "sortPriceDesc": "Cena: od najwyższej",
+    "maxPrice": "Cena maks.",
+    "cardCta": "Szczegóły",
+    "featuredBadge": "Polecane",
+    "from": "Od"
+  },
+  "tripDetail": {
+    "loading": "Ładowanie wycieczki…",
+    "notFound": "Nie znaleziono tej wycieczki.",
+    "gallery": "Galeria",
+    "book": "Rezerwuj przez WhatsApp",
+    "duration": "Czas trwania",
+    "destination": "Kierunek"
+  },
+  "about": {
+    "title": "O SunSet Tours Egypt",
+    "p1": "Planujemy wyjazdy nad Morze Czerwone z naciskiem na przejrzystość: uczciwe ceny, treści w wielu językach i szybki kontakt.",
+    "p2": "Łączymy lokalną wiedzę z spokojnym, nowoczesnym designem — aby planowanie było bezstresowe.",
+    "p3": "Niezależnie, czy wolisz Sharm, Hurghadę czy Marsa Alam, pomożemy wybrać właściwy pakiet."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Podaj daty — odpowiemy na WhatsAppie z propozycjami.",
+    "whatsappCta": "Napisz na WhatsApp",
+    "emailLabel": "E-mail",
+    "hoursLabel": "Godziny",
+    "hoursValue": "Nd–Czw, 10:00–18:00 (czas kairski)",
+    "mapLabel": "Lokalizacja na mapie",
+    "mapCta": "Otwórz w Google Maps"
+  },
+  "whatsapp": {
+    "defaultMessage": "Cześć! Chciałbym zarezerwować pakiet do Egiptu."
+  },
+  "admin": {
+    "loginTitle": "Dostęp do panelu",
+    "loginHint": "Tylko ta strona jest chroniona. Reszta witryny jest publiczna.",
+    "passwordNotConfigured": "Ustaw VITE_ADMIN_PASSWORD w pliku .env w katalogu głównym projektu i zrestartuj serwer.",
+    "invalidPassword": "Nieprawidłowe hasło.",
+    "email": "E-mail",
+    "password": "Hasło",
+    "signIn": "Zaloguj",
+    "signOut": "Wyloguj",
+    "dashboard": "Pulpit",
+    "trips": "Wycieczki",
+    "addTrip": "Dodaj wycieczkę",
+    "editTrip": "Edytuj wycieczkę",
+    "stats": {
+      "total": "Wycieczek łącznie",
+      "active": "Aktywne",
+      "featured": "Polecane",
+      "inactive": "Nieaktywne"
+    },
+    "table": {
+      "title": "Zarządzaj wycieczkami",
+      "empty": "Brak wycieczek. Utwórz pierwszy pakiet.",
+      "loading": "Ładowanie…",
+      "actions": "Akcje",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "confirmDelete": "Usunąć tę wycieczkę?"
+    },
+    "form": {
+      "titleAr": "Tytuł (arabski)",
+      "titleEn": "Tytuł (angielski)",
+      "shortAr": "Krótki opis (arabski)",
+      "shortEn": "Krótki opis (angielski)",
+      "fullAr": "Pełny opis (arabski)",
+      "fullEn": "Pełny opis (angielski)",
+      "destination": "Kierunek",
+      "duration": "Czas trwania",
+      "price": "Cena",
+      "currency": "Waluta",
+      "cover": "Okładka",
+      "gallery": "Galeria",
+      "featured": "Polecane",
+      "active": "Aktywne",
+      "save": "Zapisz wycieczkę",
+      "saving": "Zapisywanie…",
+      "uploading": "Przesyłanie…",
+      "chooseFile": "Wybierz plik",
+      "remove": "Usuń",
+      "addGallery": "Dodaj zdjęcia"
+    },
+    "status": {
+      "active": "Aktywne",
+      "inactive": "Nieaktywne"
+    },
+    "destinations": {
+      "title": "Kierunki",
+      "hint": "Kierunki są przypisane do każdej wycieczki. Spójne nazewnictwo w obu językach wspiera SEO."
+    }
+  },
+  "common": {
+    "loading": "Ładowanie…",
+    "error": "Coś poszło nie tak",
+    "retry": "Ponów",
+    "configureSupabase": "Dodaj VITE_SUPABASE_URL i VITE_SUPABASE_ANON_KEY do środowiska, aby wczytywać dane na żywo."
+  }
+}

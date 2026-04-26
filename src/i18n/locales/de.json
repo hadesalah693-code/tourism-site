@@ -1,0 +1,156 @@
+{
+  "brand": "SunSet Tours Egypt",
+  "tagline": "Ausgewählte Ägypten-Reisen am Roten Meer",
+  "nav": {
+    "home": "Start",
+    "destinations": "Reiseziele",
+    "trips": "Reisen",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "admin": "Admin"
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "explore": "Entdecken",
+    "legal": "Für ruhiges Türkis und goldene Dünen."
+  },
+  "home": {
+    "heroTitle": "Ägyptens Rotes Meer, stilvoll",
+    "heroSubtitle": "Ausgewählte Pakete in Sharm El Sheikh, Hurghada und Marsa Alam — einfache Buchung und Concierge-Support.",
+    "ctaPrimary": "Reisen ansehen",
+    "ctaSecondary": "Reiseziele",
+    "featured": "Empfohlene Reisen",
+    "featuredSub": "Highlights aus unserer Kollektion",
+    "why": "Warum mit uns reisen",
+    "whyItems": {
+      "one": "Transparente Preise und flexible Dauer",
+      "two": "Inhalte in vielen Sprachen",
+      "three": "WhatsApp-Support für schnelle Bestätigungen"
+    }
+  },
+  "destinations": {
+    "title": "Reiseziele",
+    "subtitle": "Drei Küsten-Highlights — jedes mit eigenem Rhythmus",
+    "sharm": {
+      "name": "Sharm El Sheikh",
+      "blurb": "Lebendige Riffe, Abende in Naama Bay und erstklassiges Tauchen."
+    },
+    "hurghada": {
+      "name": "Hurghada",
+      "blurb": "Inselhüpfer, Wüstensafaris und familienfreundliche Resorts."
+    },
+    "marsa": {
+      "name": "Marsa Alam",
+      "blurb": "Ruhige Lagunen, Delfine und unberührte Strände abseits der Massen."
+    },
+    "cta": "Reisen ansehen"
+  },
+  "trips": {
+    "title": "Alle Reisen",
+    "subtitle": "Nach Küste filtern, Budget anpassen, dann per WhatsApp buchen",
+    "empty": "Keine Reisen entsprechen den Filtern.",
+    "loading": "Reisen werden geladen…",
+    "filterDestination": "Reiseziel",
+    "filterDestinationAll": "Alle Reiseziele",
+    "sortPrice": "Preis sortieren",
+    "sortDefault": "Neueste zuerst",
+    "sortPriceAsc": "Preis: niedrig → hoch",
+    "sortPriceDesc": "Preis: hoch → niedrig",
+    "maxPrice": "Max. Preis",
+    "cardCta": "Details",
+    "featuredBadge": "Highlight",
+    "from": "Ab"
+  },
+  "tripDetail": {
+    "loading": "Reise wird geladen…",
+    "notFound": "Diese Reise wurde nicht gefunden.",
+    "gallery": "Galerie",
+    "book": "Per WhatsApp buchen",
+    "duration": "Dauer",
+    "destination": "Reiseziel"
+  },
+  "about": {
+    "title": "Über SunSet Tours Egypt",
+    "p1": "Wir planen Küstenreisen am Roten Meer mit klarer Kommunikation: ehrliche Preise, mehrsprachige Texte und schneller Support.",
+    "p2": "Unser Team verbindet lokales Wissen mit ruhigem, modernem Stil — damit die Planung entspannt bleibt.",
+    "p3": "Ob Sharm, Hurghada oder Marsa Alam — wir helfen Ihnen, das passende Paket zu finden."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Nennen Sie uns Ihre Termine — wir antworten per WhatsApp mit Vorschlägen.",
+    "whatsappCta": "WhatsApp-Nachricht",
+    "emailLabel": "E-Mail",
+    "hoursLabel": "Zeiten",
+    "hoursValue": "So–Do, 10:00–18:00 (Kairo-Zeit)",
+    "mapLabel": "Lage auf der Karte",
+    "mapCta": "In Google Maps öffnen"
+  },
+  "whatsapp": {
+    "defaultMessage": "Hallo! Ich möchte ein Ägypten-Paket buchen."
+  },
+  "admin": {
+    "loginTitle": "Admin-Zugang",
+    "loginHint": "Nur diese Seite ist geschützt. Der Rest der Website ist öffentlich.",
+    "passwordNotConfigured": "Setzen Sie VITE_ADMIN_PASSWORD in einer .env-Datei im Projektstamm, dann dev-Server neu starten.",
+    "invalidPassword": "Falsches Passwort.",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "signIn": "Anmelden",
+    "signOut": "Abmelden",
+    "dashboard": "Dashboard",
+    "trips": "Reisen",
+    "addTrip": "Reise hinzufügen",
+    "editTrip": "Reise bearbeiten",
+    "stats": {
+      "total": "Reisen gesamt",
+      "active": "Aktiv",
+      "featured": "Highlights",
+      "inactive": "Inaktiv"
+    },
+    "table": {
+      "title": "Reisen verwalten",
+      "empty": "Noch keine Reisen. Legen Sie Ihr erstes Paket an.",
+      "loading": "Laden…",
+      "actions": "Aktionen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "confirmDelete": "Diese Reise löschen?"
+    },
+    "form": {
+      "titleAr": "Titel (Arabisch)",
+      "titleEn": "Titel (Englisch)",
+      "shortAr": "Kurzbeschreibung (Arabisch)",
+      "shortEn": "Kurzbeschreibung (Englisch)",
+      "fullAr": "Volltext (Arabisch)",
+      "fullEn": "Volltext (Englisch)",
+      "destination": "Reiseziel",
+      "duration": "Dauer",
+      "price": "Preis",
+      "currency": "Währung",
+      "cover": "Titelbild",
+      "gallery": "Galeriebilder",
+      "featured": "Highlight",
+      "active": "Aktiv",
+      "save": "Reise speichern",
+      "saving": "Speichern…",
+      "uploading": "Hochladen…",
+      "chooseFile": "Datei wählen",
+      "remove": "Entfernen",
+      "addGallery": "Bilder hinzufügen"
+    },
+    "status": {
+      "active": "Aktiv",
+      "inactive": "Inaktiv"
+    },
+    "destinations": {
+      "title": "Reiseziele",
+      "hint": "Ziele je Reise. Einheitliche Bezeichnungen in beiden Sprachen helfen der SEO."
+    }
+  },
+  "common": {
+    "loading": "Laden…",
+    "error": "Etwas ist schiefgelaufen",
+    "retry": "Erneut versuchen",
+    "configureSupabase": "VITE_SUPABASE_URL und VITE_SUPABASE_ANON_KEY in der Umgebung setzen, um Live-Daten zu laden."
+  }
+}
