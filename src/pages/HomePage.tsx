@@ -57,52 +57,6 @@ export function HomePage() {
 
   return (
     <div className="bg-sand-50">
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:py-16">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-ocean-700">{t('tagline')}</p>
-            <h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 text-balance sm:text-5xl sm:leading-[1.05]">
-              {t('brand')}
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Local tours in Hurghada, Sharm El Sheikh, and Marsa Alam with quick WhatsApp booking, clear prices, and
-              hand-picked sea, safari, and history programs.
-            </p>
-            <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap">
-              <Link to="/trips" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto">{t('home.ctaPrimary')}</Button>
-              </Link>
-              <Link to="/contact" className="w-full sm:w-auto">
-                <Button variant="secondary" size="lg" className="w-full sm:w-auto">
-                  {t('contact.whatsappCta')}
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 items-end gap-3 sm:gap-4">
-            <img
-              src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=85"
-              alt=""
-              className="aspect-[4/5] w-full rounded-lg object-cover shadow-elevate-lg"
-              loading="lazy"
-            />
-            <div className="space-y-4">
-              <div className="rounded-lg border border-slate-200 bg-sand-50 p-3 shadow-elevate sm:p-5">
-                <img src="/logo.png" alt="" className="mx-auto h-16 w-16 rounded-full object-cover shadow-elevate sm:h-24 sm:w-24" />
-                <p className="mt-3 text-center text-xs font-semibold text-slate-900 sm:mt-4 sm:text-sm">Egypt tours made simple</p>
-              </div>
-              <img
-                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85"
-                alt=""
-                className="aspect-[16/10] w-full rounded-lg object-cover shadow-elevate-lg"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="relative overflow-hidden">
         <img src={heroImage} alt="" className="absolute inset-0 h-full w-full object-cover" decoding="async" />
         <div className="absolute inset-0 bg-slate-950/45" />
