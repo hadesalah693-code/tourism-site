@@ -7,7 +7,7 @@ import { useTrips } from '../hooks/useTrips'
 import { useI18n } from '../i18n/useI18n'
 import { destinationName } from '../lib/destinations'
 import { TRIP_CATEGORIES, tripCategoryLabel } from '../lib/tripCategories'
-import { DESTINATIONS } from '../types/trip'
+import { DESTINATIONS, type Destination } from '../types/trip'
 import heroImage from '../assets/hero-red-sea.png'
 
 const categoryImages = {
@@ -16,6 +16,24 @@ const categoryImages = {
   historical: 'https://images.unsplash.com/photo-1539768942893-daf53e448371?auto=format&fit=crop&w=900&q=85',
   other: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=85',
 }
+
+const destinationCards: { key: 'sharm' | 'hurghada' | 'marsa'; dest: Destination; image: string }[] = [
+  {
+    key: 'sharm',
+    dest: 'sharm',
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=85',
+  },
+  {
+    key: 'hurghada',
+    dest: 'hurghada',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85',
+  },
+  {
+    key: 'marsa',
+    dest: 'marsa_alam',
+    image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85',
+  },
+]
 
 const reviews = [
   {
@@ -120,6 +138,54 @@ export function HomePage() {
                 className="rounded-md border border-white/15 bg-white/92 px-4 py-4 text-sm font-semibold text-slate-900 shadow-sm transition duration-200 hover:bg-white"
               >
                 {destinationName(locale, destination)}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean-700">{t('nav.destinations')}</p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+                {t('destinations.title')}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">{t('destinations.subtitle')}</p>
+            </div>
+            <Link to="/destinations" className="w-full sm:w-auto">
+              <Button variant="secondary" className="w-full sm:w-auto">
+                {t('home.ctaSecondary')}
+              </Button>
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {destinationCards.map(({ key, dest, image }) => (
+              <Link
+                key={dest}
+                to={`/trips?destination=${dest}`}
+                className="group overflow-hidden rounded-lg border border-slate-200/70 bg-white shadow-elevate transition duration-300 hover:-translate-y-1 hover:shadow-elevate-lg"
+              >
+                <div className="relative aspect-[16/11] overflow-hidden">
+                  <img
+                    src={image}
+                    alt=""
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
+                  <div className="absolute bottom-4 start-4 end-4">
+                    <h3 className="text-xl font-semibold text-white">{destinationName(locale, dest)}</h3>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="min-h-[4.5rem] text-sm leading-relaxed text-slate-600">{t(`destinations.${key}.blurb`)}</p>
+                  <div className="mt-5 inline-flex items-center rounded-full bg-ocean-50 px-4 py-2 text-sm font-semibold text-ocean-800 transition duration-200 group-hover:bg-ocean-700 group-hover:text-white">
+                    {t('destinations.cta')}
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
