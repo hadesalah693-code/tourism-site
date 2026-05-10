@@ -6,6 +6,7 @@ import { EmptyState } from '../components/ui/EmptyState'
 import { Spinner } from '../components/ui/Spinner'
 import { useI18n } from '../i18n/useI18n'
 import { destinationName } from '../lib/destinations'
+import { inferTripCategory, TRIP_CATEGORIES, tripCategoryLabel, type TripCategory } from '../lib/tripCategories'
 import { useTrips, type TripSort } from '../hooks/useTrips'
 import { DESTINATIONS, type Destination } from '../types/trip'
 
@@ -14,6 +15,7 @@ export function TripsPage() {
   const [params, setParams] = useSearchParams()
 
   const destinationParam = params.get('destination') as Destination | 'all' | null
+  const categoryParam = params.get('category') as TripCategory | 'all' | null
   const sortParam = (params.get('sort') as TripSort | null) ?? 'newest'
   const maxPriceParam = params.get('maxPrice')
 
@@ -23,6 +25,10 @@ export function TripsPage() {
       : 'all'
 
   const maxPrice = maxPriceParam ? Number(maxPriceParam) : undefined
+  const category: TripCategory | 'all' =
+    categoryParam && categoryParam !== 'all' && TRIP_CATEGORIES.includes(categoryParam as TripCategory)
+      ? (categoryParam as TripCategory)
+      : 'all'
 
   const filters = useMemo(
     () => ({
@@ -34,6 +40,10 @@ export function TripsPage() {
   )
 
   const { trips, loading, error } = useTrips(filters)
+  const visibleTrips = useMemo(
+    () => (category === 'all' ? trips : trips.filter((trip) => inferTripCategory(trip, locale) === category)),
+    [category, locale, trips],
+  )
 
   function updateParam(key: string, value: string | null) {
     const next = new URLSearchParams(params)
@@ -43,17 +53,34 @@ export function TripsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-      <header className="max-w-2xl">
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{t('trips.title')}</h1>
-        <p className="mt-3 text-lg text-slate-600/95">{t('trips.subtitle')}</p>
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+      <header className="rounded-lg bg-slate-950 px-5 py-8 text-white shadow-elevate-lg sm:px-8 sm:py-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">{t('tagline')}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{t('trips.title')}</h1>
+        <p className="mt-3 max-w-2xl text-base text-slate-200/95 sm:text-lg">{t('trips.subtitle')}</p>
       </header>
 
       <div className="mt-8">
         <SupabaseNotice />
       </div>
 
-      <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-slate-200/60 bg-white/90 p-4 shadow-elevate sm:flex-row sm:items-end sm:justify-between">
+      <div className="mt-6 grid gap-4 rounded-lg border border-slate-200/70 bg-white/95 p-4 shadow-elevate sm:mt-8 sm:grid-cols-2 lg:grid-cols-4">
+        <label className="flex flex-col gap-2 text-sm font-medium text-slate-700">
+          Category
+          <select
+            className="input-premium"
+            value={category}
+            onChange={(e) => updateParam('category', e.target.value)}
+          >
+            <option value="all">All categories</option>
+            {TRIP_CATEGORIES.map((c) => (
+              <option key={c} value={c}>
+                {tripCategoryLabel(c, locale)}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <label className="flex flex-col gap-2 text-sm font-medium text-slate-700">
           {t('trips.filterDestination')}
           <select
@@ -102,13 +129,13 @@ export function TripsPage() {
         </div>
       ) : error ? (
         <p className="mt-10 text-center text-red-600">{error}</p>
-      ) : trips.length === 0 ? (
+      ) : visibleTrips.length === 0 ? (
         <div className="mt-10">
           <EmptyState title={t('trips.empty')} />
         </div>
       ) : (
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {trips.map((trip) => (
+        <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          {visibleTrips.map((trip) => (
             <TripCard key={trip.id} trip={trip} />
           ))}
         </div>

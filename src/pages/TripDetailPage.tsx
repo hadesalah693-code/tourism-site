@@ -4,11 +4,10 @@ import { WhatsAppButton } from '../components/WhatsAppButton'
 import { Spinner } from '../components/ui/Spinner'
 import { useI18n } from '../i18n/useI18n'
 import { destinationName } from '../lib/destinations'
+import { applyFallbackImage, fallbackForTrip } from '../lib/tripImages'
+import { inferTripCategory } from '../lib/tripCategories'
 import { formatPrice, tripFullDescription, tripShortDescription, tripTitle } from '../lib/tripUtils'
 import { useTripById } from '../hooks/useTrips'
-
-const FALLBACK =
-  'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80'
 
 export function TripDetailPage() {
   const { id } = useParams()
@@ -37,11 +36,19 @@ export function TripDetailPage() {
   }
 
   const gallery = trip.gallery_images?.filter(Boolean) ?? []
+  const category = inferTripCategory(trip, locale)
+  const fallbackImage = fallbackForTrip(trip, category)
 
   return (
     <article className="pb-16">
       <div className="relative h-[min(52vh,520px)] w-full overflow-hidden">
-        <img src={trip.cover_image || FALLBACK} alt="" className="h-full w-full object-cover" />
+        <img
+          src={trip.cover_image || fallbackImage}
+          alt=""
+          className="h-full w-full object-cover"
+          referrerPolicy="no-referrer"
+          onError={(event) => applyFallbackImage(event.currentTarget, category, trip.id)}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent" />
         <div className="absolute bottom-0 mx-auto w-full max-w-6xl px-4 pb-10 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-widest text-teal-200/90">
@@ -82,6 +89,8 @@ export function TripDetailPage() {
                       alt=""
                       className="h-48 w-full rounded-2xl border border-slate-200/60 object-cover shadow-elevate transition duration-300 hover:shadow-elevate-lg"
                       loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(event) => applyFallbackImage(event.currentTarget, category, `${trip.id}-${url}`)}
                     />
                   ))}
                 </div>

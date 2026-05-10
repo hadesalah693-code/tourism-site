@@ -4,6 +4,8 @@ import { CloseIcon, MenuIcon } from '../icons'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import { useI18n } from '../../i18n/useI18n'
 
+const DEFAULT_WA = '201000000000'
+
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   `rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
     isActive
@@ -14,6 +16,8 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
 export function PublicNavbar() {
   const { t } = useI18n()
   const [open, setOpen] = useState(false)
+  const phone = String(import.meta.env.VITE_WHATSAPP_NUMBER || DEFAULT_WA)
+  const whatsapp = `https://wa.me/${phone.replace(/\D/g, '')}`
 
   const links = (
     <>
@@ -36,9 +40,22 @@ export function PublicNavbar() {
   )
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/50 bg-sand-50/80 shadow-[0_1px_0_0_rgba(15,23,42,0.04)] backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link to="/" className="flex items-center gap-2.5">
+    <header className="sticky top-0 z-50 border-b border-slate-200/50 bg-sand-50/90 shadow-[0_1px_0_0_rgba(15,23,42,0.04)] backdrop-blur-xl">
+      <div className="border-b border-slate-200/60 bg-slate-950 text-white">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-1 px-4 py-2 text-center text-[11px] sm:flex-row sm:justify-between sm:px-6 sm:text-xs">
+          <span className="font-medium text-slate-200">Hurghada, Sharm El Sheikh, Marsa Alam</span>
+          <a
+            href={whatsapp}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="font-semibold text-teal-200 transition hover:text-white"
+          >
+            WhatsApp: +{phone.replace(/\D/g, '')}
+          </a>
+        </div>
+      </div>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6">
+        <Link to="/" className="flex min-w-0 items-center gap-2.5">
           <img
             src="/logo.png"
             alt=""
@@ -47,7 +64,7 @@ export function PublicNavbar() {
             className="h-10 w-10 shrink-0 rounded-full object-cover shadow-elevate ring-2 ring-white/95"
             decoding="async"
           />
-          <span className="text-base font-semibold tracking-tight text-slate-900">{t('brand')}</span>
+          <span className="truncate text-sm font-semibold tracking-tight text-slate-900 sm:text-base">{t('brand')}</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">{links}</nav>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { demoTrips } from '../data/demoTrips'
 import { isSupabaseConfigured, supabase } from '../lib/supabase'
 import type { Destination, Trip } from '../types/trip'
 
@@ -10,6 +11,36 @@ export type TripFilters = {
   featuredOnly?: boolean
   includeInactive?: boolean
   sort?: TripSort
+}
+
+function sortTrips(rows: Trip[], sort: TripSort): Trip[] {
+  const next = [...rows]
+  if (sort === 'price_asc') {
+    next.sort((a, b) => a.price - b.price)
+  } else if (sort === 'price_desc') {
+    next.sort((a, b) => b.price - a.price)
+  } else {
+    next.sort((a, b) => (b.created_at ?? '').localeCompare(a.created_at ?? ''))
+  }
+  return next
+}
+
+function filterDemoTrips(filters: TripFilters): Trip[] {
+  let rows = demoTrips.filter((trip) => filters.includeInactive || trip.is_active)
+
+  if (filters.destination && filters.destination !== 'all') {
+    rows = rows.filter((trip) => trip.destination === filters.destination)
+  }
+
+  if (filters.featuredOnly) {
+    rows = rows.filter((trip) => trip.is_featured)
+  }
+
+  if (filters.maxPrice != null && !Number.isNaN(filters.maxPrice)) {
+    rows = rows.filter((trip) => trip.price <= filters.maxPrice!)
+  }
+
+  return sortTrips(rows, filters.sort ?? 'newest')
 }
 
 export function useTrips(filters: TripFilters = {}) {
@@ -24,8 +55,16 @@ export function useTrips(filters: TripFilters = {}) {
   const sort = filters.sort ?? 'newest'
 
   const fetchTrips = useCallback(async () => {
+    const activeFilters: TripFilters = {
+      destination,
+      maxPrice,
+      featuredOnly,
+      includeInactive,
+      sort,
+    }
+
     if (!isSupabaseConfigured) {
-      setTrips([])
+      setTrips(filterDemoTrips(activeFilters))
       setLoading(false)
       setError(null)
       return
@@ -60,13 +99,19 @@ export function useTrips(filters: TripFilters = {}) {
       q = q.order('created_at', { ascending: false })
     }
 
-    const { data, error: queryError } = await q
+    try {
+      const { data, error: queryError } = await q
 
-    if (queryError) {
-      setError(queryError.message)
-      setTrips([])
-    } else {
-      setTrips((data as Trip[]) ?? [])
+      if (queryError) {
+        setError(null)
+        setTrips(filterDemoTrips(activeFilters))
+      } else {
+        const rows = (data as Trip[]) ?? []
+        setTrips(rows.length > 0 ? rows : filterDemoTrips(activeFilters))
+      }
+    } catch {
+      setError(null)
+      setTrips(filterDemoTrips(activeFilters))
     }
     setLoading(false)
   }, [destination, maxPrice, featuredOnly, includeInactive, sort])
@@ -91,7 +136,8 @@ export function useTripById(id: string | undefined, opts?: { includeInactive?: b
     }
 
     if (!isSupabaseConfigured) {
-      setTrip(null)
+      const row = demoTrips.find((item) => item.id === id) ?? null
+      setTrip(row && (opts?.includeInactive || row.is_active) ? row : null)
       setLoading(false)
       return
     }
@@ -101,23 +147,33 @@ export function useTripById(id: string | undefined, opts?: { includeInactive?: b
     setError(null)
 
     void (async () => {
-      const { data, error: queryError } = await supabase
-        .from('trips')
-        .select('*')
-        .eq('id', id)
-        .maybeSingle()
+      try {
+        const { data, error: queryError } = await supabase
+          .from('trips')
+          .select('*')
+          .eq('id', id)
+          .maybeSingle()
 
-      if (cancelled) return
+        if (cancelled) return
 
-      if (queryError) {
-        setError(queryError.message)
-        setTrip(null)
-      } else {
-        const row = data as Trip | null
-        if (row && !opts?.includeInactive && !row.is_active) {
-          setTrip(null)
+        if (queryError) {
+          setError(null)
+          const fallback = demoTrips.find((item) => item.id === id) ?? null
+          setTrip(fallback && (opts?.includeInactive || fallback.is_active) ? fallback : null)
         } else {
-          setTrip(row)
+          const row = data as Trip | null
+          if (row && !opts?.includeInactive && !row.is_active) {
+            setTrip(null)
+          } else {
+            const fallback = demoTrips.find((item) => item.id === id) ?? null
+            setTrip(row ?? (fallback && (opts?.includeInactive || fallback.is_active) ? fallback : null))
+          }
+        }
+      } catch {
+        if (!cancelled) {
+          setError(null)
+          const fallback = demoTrips.find((item) => item.id === id) ?? null
+          setTrip(fallback && (opts?.includeInactive || fallback.is_active) ? fallback : null)
         }
       }
       setLoading(false)
