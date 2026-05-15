@@ -54,9 +54,21 @@ export function HomePage() {
   const { t, locale } = useI18n()
   const { trips, loading } = useTrips({ featuredOnly: true })
   const bestsellers = trips.slice(0, 6)
+  const soulMoments =
+    locale === 'ar'
+      ? [
+          ['بحر صافي', 'مياه فيروزية ورحلات مختارة بهدوء من غير زحمة أو تعقيد.'],
+          ['تنظيم مصري أصيل', 'استقبال دافئ، أسعار واضحة، وتفاصيل صغيرة تفرق في يومك.'],
+          ['حجز مطمئن', 'نرد عليك بسرعة ونرتب الرحلة حسب فندقك ووقتك.'],
+        ]
+      : [
+          ['Clear Red Sea', 'Turquoise water and hand-picked trips without noise or confusion.'],
+          ['Egyptian Warmth', 'Warm hosting, clear prices, and small details that shape the day.'],
+          ['Easy Booking', 'Fast replies and a trip plan matched to your hotel and timing.'],
+        ]
 
   return (
-    <div className="bg-sand-50">
+    <div className="bg-transparent">
       <section className="relative overflow-hidden">
         <img src={heroImage} alt="" className="absolute inset-0 h-full w-full object-cover" decoding="async" />
         <div className="absolute inset-0 bg-slate-950/45" />
@@ -68,15 +80,16 @@ export function HomePage() {
               {t('home.heroTitle')}
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-sky-100/[0.94] sm:text-lg">{t('home.heroSubtitle')}</p>
-            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+            <div className="mt-8 grid w-full max-w-sm gap-3 sm:flex sm:max-w-none sm:flex-wrap">
               <Link to="/trips" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto">{t('home.ctaPrimary')}</Button>
+                <Button size="lg" className="min-h-12 w-full px-7 text-sm font-semibold sm:w-auto sm:text-base">
+                  {t('home.ctaPrimary')}
+                </Button>
               </Link>
               <Link to="/destinations" className="w-full sm:w-auto">
                 <Button
-                  variant="secondary"
                   size="lg"
-                  className="w-full border border-white/25 bg-white/12 text-white shadow-none ring-0 backdrop-blur-sm transition duration-300 hover:border-white/35 hover:bg-white/20 sm:w-auto"
+                  className="min-h-12 w-full px-7 text-sm font-semibold sm:w-auto sm:text-base"
                 >
                   {t('home.ctaSecondary')}
                 </Button>
@@ -84,17 +97,40 @@ export function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-3 rounded-lg border border-white/20 bg-white/12 p-3 backdrop-blur-md sm:mt-12 sm:grid-cols-3">
+          <div className="mt-10 grid gap-2 rounded-2xl border border-white/20 bg-slate-950/28 p-2 shadow-elevate-lg backdrop-blur-md sm:mt-12 sm:grid-cols-3 sm:gap-3 sm:p-3">
             {DESTINATIONS.map((destination) => (
               <Link
                 key={destination}
                 to={`/trips?destination=${destination}`}
-                className="rounded-md border border-white/15 bg-white/92 px-4 py-4 text-sm font-semibold text-slate-900 shadow-sm transition duration-200 hover:bg-white"
+                className="group relative flex min-h-14 items-center justify-between overflow-hidden rounded-xl border border-white/25 bg-gradient-to-b from-white/96 to-ocean-50/92 px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm shadow-slate-950/10 transition duration-300 hover:-translate-y-0.5 hover:border-teal-200/80 hover:from-white hover:to-white hover:shadow-elevate-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean-500 sm:min-h-16 sm:px-5"
               >
-                {destinationName(locale, destination)}
+                <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/80 to-transparent opacity-70 transition duration-300 group-hover:opacity-100" />
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ocean-100 bg-white text-ocean-700 shadow-sm transition duration-300 group-hover:border-ocean-200 group-hover:bg-ocean-50">
+                  <span className="text-base leading-none">›</span>
+                </span>
+                <span className="truncate px-3 text-center">{destinationName(locale, destination)}</span>
+                <span className="h-2 w-2 shrink-0 rounded-full bg-teal-400/80 shadow-[0_0_14px_rgba(45,212,191,0.7)] transition duration-300 group-hover:scale-125 group-hover:bg-teal-500" />
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="relative -mt-8 z-10 mx-auto max-w-6xl px-4 sm:-mt-10 sm:px-6">
+        <div className="grid gap-3 rounded-2xl border border-white/60 bg-white/72 p-3 shadow-elevate-lg backdrop-blur-xl md:grid-cols-3">
+          {soulMoments.map(([title, text], index) => (
+            <div
+              key={title}
+              className="group relative overflow-hidden rounded-xl border border-white/70 bg-gradient-to-br from-white/92 via-ocean-50/72 to-sand-50/92 p-5 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-elevate"
+            >
+              <span className="pointer-events-none absolute -end-8 -top-8 h-24 w-24 rounded-full bg-teal-300/18 blur-2xl transition duration-500 group-hover:bg-teal-300/28" />
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean-700">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 className="mt-3 text-lg font-semibold tracking-tight text-slate-950">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">{text}</p>
+            </div>
+          ))}
         </div>
       </section>
 

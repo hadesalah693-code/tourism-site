@@ -36,10 +36,69 @@
   body {
     @apply antialiased;
     color: rgb(30 41 59);
-    background-color: var(--color-sand-50);
-    background-image: linear-gradient(180deg, #faf7f2 0%, #f4f6f8 50%, #f0f2f4 100%);
+    background-color: #edf8fb;
+    background-image:
+      radial-gradient(circle at 85% 8%, rgba(255, 255, 255, 0.9) 0 8%, transparent 24%),
+      radial-gradient(circle at 12% 18%, rgba(45, 212, 191, 0.24) 0 10%, transparent 30%),
+      linear-gradient(180deg, rgba(125, 211, 252, 0.42) 0%, rgba(224, 242, 254, 0.72) 28%, rgba(14, 165, 233, 0.12) 58%, rgba(243, 235, 224, 0.82) 100%),
+      repeating-linear-gradient(115deg, rgba(194, 141, 72, 0.08) 0 1px, transparent 1px 18px);
+    background-attachment: fixed;
+    background-size: cover;
     min-height: 100dvh;
     overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: auto -8vw 0 auto;
+    z-index: -1;
+    width: min(62vw, 760px);
+    height: min(46vw, 520px);
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 68% 16%, rgba(251, 191, 36, 0.34) 0 8%, rgba(251, 191, 36, 0.12) 9% 18%, transparent 19%),
+      linear-gradient(135deg, transparent 0 44%, rgba(151, 96, 45, 0.36) 45% 54%, transparent 55%) 17% 73% / 42% 48% no-repeat,
+      linear-gradient(225deg, transparent 0 44%, rgba(250, 204, 121, 0.5) 45% 54%, transparent 55%) 17% 73% / 42% 48% no-repeat,
+      linear-gradient(135deg, transparent 0 44%, rgba(146, 92, 42, 0.32) 45% 54%, transparent 55%) 58% 76% / 34% 38% no-repeat,
+      linear-gradient(225deg, transparent 0 44%, rgba(245, 190, 104, 0.44) 45% 54%, transparent 55%) 58% 76% / 34% 38% no-repeat,
+      linear-gradient(100deg, rgba(14, 116, 144, 0.18), transparent 58%);
+    filter: drop-shadow(0 34px 38px rgba(92, 52, 23, 0.16));
+    opacity: 0.9;
+    transform: perspective(900px) rotateX(54deg) rotateZ(-6deg) translate3d(0, 12%, 0);
+    transform-origin: bottom right;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: auto auto 0 -10vw;
+    z-index: -1;
+    width: min(58vw, 700px);
+    height: min(24vw, 260px);
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, transparent, rgba(6, 95, 70, 0.14), transparent),
+      repeating-linear-gradient(120deg, rgba(12, 74, 110, 0.1) 0 1px, transparent 1px 18px);
+    border-radius: 999px 999px 0 0;
+    filter: blur(0.2px);
+    opacity: 0.7;
+    transform: perspective(780px) rotateX(62deg) translateY(30%);
+  }
+
+  @media (max-width: 640px) {
+    body::before {
+      inset: auto -26vw 0 auto;
+      width: 118vw;
+      height: 58vw;
+      opacity: 0.58;
+    }
+
+    body::after {
+      width: 100vw;
+      height: 34vw;
+      opacity: 0.48;
+    }
   }
 
   [dir='rtl'] body {
