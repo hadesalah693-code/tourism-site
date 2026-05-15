@@ -90,31 +90,33 @@ export function HomePage() {
         <img
           src={heroImage}
           alt=""
-          className="absolute inset-0 h-full w-full scale-105 object-cover motion-safe:animate-[hero-drift_18s_ease-in-out_infinite_alternate]"
+          className="absolute inset-0 h-full w-full scale-105 object-cover motion-safe:animate-[hero-drift_22s_ease-in-out_infinite_alternate]"
           decoding="async"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(251,191,36,0.24),transparent_24%),linear-gradient(115deg,rgba(2,6,23,0.92)_0%,rgba(8,47,73,0.66)_42%,rgba(2,132,199,0.18)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-950 via-slate-950/72 to-transparent" />
-        <div className="absolute -start-20 top-24 h-72 w-72 rounded-full bg-cyan-300/16 blur-3xl" />
-        <div className="absolute -end-16 bottom-20 h-80 w-80 rounded-full bg-amber-300/14 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_12%,rgba(251,191,36,0.24),transparent_18%),radial-gradient(circle_at_16%_28%,rgba(34,211,238,0.18),transparent_24%),linear-gradient(105deg,rgba(2,6,23,0.86)_0%,rgba(8,47,73,0.42)_45%,rgba(2,132,199,0.08)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950 via-slate-950/64 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-950/58 to-transparent" />
+        <div className="absolute -start-24 top-24 h-80 w-80 rounded-full bg-cyan-200/14 blur-3xl" />
+        <div className="absolute end-[-10rem] top-20 h-96 w-96 rounded-full bg-amber-300/18 blur-3xl" />
+        <div className="absolute bottom-24 start-[12%] h-40 w-72 rotate-[-10deg] rounded-full bg-white/8 blur-3xl" />
 
-        <div className="relative mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-center gap-10 px-4 pb-14 pt-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:pb-20 lg:pt-20">
-          <div className="max-w-4xl">
-            <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-teal-100 shadow-elevate backdrop-blur-md">
+        <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col justify-center px-4 pb-44 pt-20 sm:px-6 sm:pb-48 lg:pb-40">
+          <div className="max-w-5xl">
+            <p className="inline-flex rounded-full border border-white/18 bg-white/8 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-teal-100 shadow-elevate backdrop-blur-md">
               {t('tagline')}
             </p>
-            <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.98] tracking-tight text-balance sm:text-7xl lg:text-8xl">
+            <h1 className="mt-8 max-w-5xl text-5xl font-semibold leading-[0.94] tracking-tight text-balance sm:text-7xl lg:text-8xl">
               {t('home.heroTitle')}
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-sky-50/90 sm:text-xl sm:leading-9">
+            <p className="mt-8 max-w-2xl text-base leading-8 text-sky-50/88 sm:text-xl sm:leading-9">
               {t('home.heroSubtitle')}
             </p>
 
-            <div className="mt-9 grid w-full max-w-md gap-3 sm:flex sm:max-w-none sm:flex-wrap">
+            <div className="mt-10 grid w-full max-w-md gap-3 sm:flex sm:max-w-none sm:flex-wrap">
               <Link to="/trips" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="min-h-14 w-full rounded-full px-8 text-sm font-bold shadow-[0_0_34px_rgba(14,165,233,0.38)] sm:w-auto sm:text-base"
+                  className="min-h-14 w-full rounded-full px-9 text-sm font-bold shadow-[0_0_42px_rgba(14,165,233,0.42)] sm:w-auto sm:text-base"
                 >
                   {t('home.ctaPrimary')}
                 </Button>
@@ -122,41 +124,37 @@ export function HomePage() {
               <Link to="/destinations" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="min-h-14 w-full rounded-full bg-gradient-to-b from-amber-300 to-orange-500 px-8 text-sm font-bold text-slate-950 shadow-[0_0_34px_rgba(251,146,60,0.34)] hover:from-amber-200 hover:to-orange-500 sm:w-auto sm:text-base"
+                  className="min-h-14 w-full rounded-full bg-gradient-to-b from-amber-200 to-orange-500 px-9 text-sm font-bold text-slate-950 shadow-[0_0_42px_rgba(251,146,60,0.36)] hover:from-amber-100 hover:to-orange-500 sm:w-auto sm:text-base"
                 >
                   {t('home.ctaSecondary')}
                 </Button>
               </Link>
             </div>
           </div>
+        </div>
 
-          <div className="relative mx-auto w-full max-w-xl lg:ms-auto">
-            <div className="absolute -inset-8 rounded-[2rem] bg-gradient-to-br from-cyan-300/18 via-transparent to-amber-300/18 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/18 bg-white/10 p-4 shadow-[0_30px_90px_rgba(2,6,23,0.42)] backdrop-blur-2xl">
-              <div className="grid grid-cols-3 gap-3">
-                {heroStats.map(([value, label]) => (
-                  <div key={label} className="rounded-2xl border border-white/14 bg-white/12 px-3 py-5 text-center shadow-inner-soft">
-                    <p className="text-2xl font-bold text-white sm:text-3xl">{value}</p>
-                    <p className="mt-2 text-[11px] font-semibold leading-4 text-sky-100/88">{label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 rounded-[1.5rem] border border-white/12 bg-slate-950/34 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-200">Concierge selection</p>
-                <div className="mt-5 grid gap-3">
-                  {DESTINATIONS.map((destination) => (
-                    <Link
-                      key={destination}
-                      to={`/trips?destination=${destination}`}
-                      className="group flex items-center justify-between rounded-2xl border border-white/12 bg-white/10 px-4 py-4 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/50 hover:bg-white/16"
-                    >
-                      <span>{destinationName(locale, destination)}</span>
-                      <span className="rounded-full bg-white px-3 py-1 text-xs text-ocean-900 transition group-hover:bg-amber-200">View trips</span>
-                    </Link>
-                  ))}
+        <div className="absolute inset-x-0 bottom-6 z-10 px-4 sm:bottom-8 sm:px-6">
+          <div className="mx-auto grid max-w-7xl gap-3 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
+            <div className="grid grid-cols-3 gap-2 rounded-3xl border border-white/14 bg-white/8 p-2 shadow-[0_24px_70px_rgba(2,6,23,0.28)] backdrop-blur-xl">
+              {heroStats.map(([value, label]) => (
+                <div key={label} className="rounded-2xl bg-white/9 px-3 py-3 text-center ring-1 ring-white/10 sm:py-4">
+                  <p className="text-lg font-bold text-white sm:text-2xl">{value}</p>
+                  <p className="mt-1 text-[10px] font-semibold leading-4 text-sky-100/82 sm:text-xs">{label}</p>
                 </div>
-              </div>
+              ))}
+            </div>
+
+            <div className="grid gap-2 rounded-3xl border border-white/14 bg-slate-950/28 p-2 shadow-[0_24px_70px_rgba(2,6,23,0.28)] backdrop-blur-xl sm:grid-cols-3">
+              {DESTINATIONS.map((destination) => (
+                <Link
+                  key={destination}
+                  to={`/trips?destination=${destination}`}
+                  className="group flex min-h-12 items-center justify-between rounded-2xl border border-white/10 bg-white/10 px-4 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-amber-200/45 hover:bg-white/16 sm:min-h-14"
+                >
+                  <span>{destinationName(locale, destination)}</span>
+                  <span className="text-amber-200 transition group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
