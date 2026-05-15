@@ -67,6 +67,7 @@
     opacity: 0.9;
     transform: perspective(900px) rotateX(54deg) rotateZ(-6deg) translate3d(0, 12%, 0);
     transform-origin: bottom right;
+    animation: egyptian-depth-drift 18s ease-in-out infinite alternate;
   }
 
   body::after {
@@ -84,6 +85,7 @@
     filter: blur(0.2px);
     opacity: 0.7;
     transform: perspective(780px) rotateX(62deg) translateY(30%);
+    animation: nile-shimmer 16s ease-in-out infinite alternate;
   }
 
   @media (max-width: 640px) {
@@ -111,6 +113,45 @@
 
   ::selection {
     background-color: color-mix(in srgb, var(--color-ocean-500) 24%, transparent);
+  }
+}
+
+@keyframes egyptian-depth-drift {
+  from {
+    transform: perspective(900px) rotateX(54deg) rotateZ(-6deg) translate3d(0, 12%, 0);
+  }
+
+  to {
+    transform: perspective(900px) rotateX(54deg) rotateZ(-4deg) translate3d(-1.5%, 10%, 0);
+  }
+}
+
+@keyframes nile-shimmer {
+  from {
+    opacity: 0.54;
+    transform: perspective(780px) rotateX(62deg) translateY(30%);
+  }
+
+  to {
+    opacity: 0.74;
+    transform: perspective(780px) rotateX(62deg) translateY(27%);
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1.05) translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: scale(1.1) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none;
   }
 }
 

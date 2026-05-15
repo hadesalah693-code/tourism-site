@@ -18,17 +18,20 @@ export function TripCard({ trip }: { trip: Trip }) {
   const fallbackImage = fallbackForTrip(trip, category)
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-200/70 bg-white shadow-elevate transition duration-500 ease-out will-change-transform hover:-translate-y-1 hover:border-slate-300/80 hover:shadow-elevate-lg">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/70 bg-white/90 shadow-elevate backdrop-blur transition duration-500 ease-out will-change-transform hover:-translate-y-1.5 hover:border-ocean-100 hover:shadow-elevate-lg">
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={trip.cover_image || fallbackImage}
           alt=""
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
           loading="lazy"
           referrerPolicy="no-referrer"
           onError={(event) => applyFallbackImage(event.currentTarget, category, trip.id)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent" />
+        <div className="absolute end-3 top-3 rounded-full border border-white/55 bg-white/92 px-3 py-1.5 text-sm font-bold text-ocean-800 shadow-elevate backdrop-blur">
+          {price}
+        </div>
         {trip.is_featured ? (
           <div className="absolute start-3 top-3">
             <Badge variant="warning">{t('trips.featuredBadge')}</Badge>
@@ -47,14 +50,13 @@ export function TripCard({ trip }: { trip: Trip }) {
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <h3 className="text-base font-semibold tracking-tight text-slate-900 transition duration-300 group-hover:text-ocean-800 sm:text-lg">{title}</h3>
         <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600/95">{desc}</p>
-        <div className="mt-4 flex items-end justify-between gap-3">
+        <div className="mt-auto flex items-end justify-between gap-3 pt-5">
           <div>
             <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{t('trips.from')}</p>
-            <p className="text-xl font-semibold text-ocean-800">{price}</p>
             <p className="text-xs text-slate-500">{trip.duration}</p>
           </div>
           <Link to={`/trips/${trip.id}`}>
-            <Button variant="secondary" size="sm">
+            <Button size="sm" className="rounded-full px-4">
               {t('trips.cardCta')}
             </Button>
           </Link>

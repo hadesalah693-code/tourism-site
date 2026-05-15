@@ -9,8 +9,8 @@ const DEFAULT_WA = '201000000000'
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   `rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 ${
     isActive
-      ? 'bg-white text-ocean-900 shadow-elevate ring-1 ring-slate-200/70'
-      : 'text-slate-600 hover:bg-white/70 hover:text-slate-950'
+      ? 'bg-white text-ocean-900 shadow-elevate ring-1 ring-white/80'
+      : 'text-slate-700 hover:bg-white/70 hover:text-ocean-900'
   }`
 
 export function PublicNavbar() {
@@ -40,15 +40,15 @@ export function PublicNavbar() {
   )
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-sand-50/90 shadow-[0_1px_0_0_rgba(15,23,42,0.04)] backdrop-blur-xl">
-      <div className="border-b border-slate-200/60 bg-slate-950 text-white">
+    <header className="sticky top-0 z-50 border-b border-white/30 bg-white/68 shadow-[0_1px_0_0_rgba(15,23,42,0.04)] backdrop-blur-2xl">
+      <div className="border-b border-white/10 bg-slate-950/92 text-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-1 px-4 py-2 text-center text-[11px] sm:flex-row sm:justify-between sm:px-6 sm:text-xs">
-          <span className="font-medium text-slate-200">Hurghada, Sharm El Sheikh, Marsa Alam</span>
+          <span className="font-medium text-slate-200">Red Sea escapes: Hurghada, Sharm El Sheikh, Marsa Alam</span>
           <a
             href={whatsapp}
             target="_blank"
             rel="noreferrer noopener"
-            className="font-semibold text-teal-200 transition hover:text-white"
+            className="rounded-full bg-white/10 px-3 py-1 font-semibold text-teal-100 transition hover:bg-white/15 hover:text-white"
           >
             WhatsApp: +{phone.replace(/\D/g, '')}
           </a>
@@ -64,10 +64,13 @@ export function PublicNavbar() {
             className="h-10 w-10 shrink-0 rounded-full object-cover shadow-elevate ring-2 ring-white/95 sm:h-11 sm:w-11"
             decoding="async"
           />
-          <span className="truncate text-sm font-bold tracking-tight text-slate-950 sm:text-base">{t('brand')}</span>
+          <span className="min-w-0">
+            <span className="block truncate text-sm font-bold tracking-tight text-slate-950 sm:text-base">{t('brand')}</span>
+            <span className="hidden text-[11px] font-semibold uppercase tracking-[0.18em] text-ocean-700 sm:block">Egypt travel</span>
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-slate-200/70 bg-white/45 p-1 shadow-sm md:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-white/70 bg-white/52 p-1 shadow-elevate backdrop-blur-xl md:flex">
           {links}
         </nav>
 
@@ -75,13 +78,13 @@ export function PublicNavbar() {
           <LanguageSwitcher />
           <Link
             to="/admin/login"
-            className="hidden h-10 items-center rounded-full border border-slate-200/80 bg-white/80 px-3 text-xs font-semibold text-slate-600 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-white hover:text-slate-900 sm:inline-flex"
+            className="hidden h-10 items-center rounded-full border border-white/80 bg-white/70 px-3 text-xs font-semibold text-slate-600 shadow-sm transition duration-200 hover:border-ocean-100 hover:bg-white hover:text-ocean-900 sm:inline-flex"
           >
             {t('nav.admin')}
           </Link>
           <button
             type="button"
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-200/80 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 md:hidden"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/80 bg-white/85 text-slate-700 shadow-sm transition hover:bg-white md:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label="Menu"
@@ -92,8 +95,8 @@ export function PublicNavbar() {
       </div>
 
       {open ? (
-        <div className="border-t border-slate-200/50 bg-sand-50/98 px-3 py-3 shadow-elevate-lg md:hidden">
-          <div className="grid gap-2 rounded-2xl border border-slate-200/70 bg-white p-2 shadow-elevate">{links}</div>
+        <div className="border-t border-white/50 bg-white/90 px-3 py-3 shadow-elevate-lg backdrop-blur-xl md:hidden">
+          <div className="grid gap-2 rounded-2xl border border-white/80 bg-white/80 p-2 shadow-elevate">{links}</div>
           <Link
             to="/admin/login"
             className="mt-3 block rounded-full border border-slate-200/80 bg-white px-3 py-2.5 text-center text-sm font-semibold text-slate-700 shadow-elevate transition hover:bg-slate-50"

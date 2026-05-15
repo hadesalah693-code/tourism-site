@@ -11,27 +11,30 @@ import { DESTINATIONS, type Destination } from '../types/trip'
 import heroImage from '../assets/hero-red-sea.png'
 
 const categoryImages = {
-  sea: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=85',
-  safari: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=900&q=85',
-  historical: 'https://images.unsplash.com/photo-1539768942893-daf53e448371?auto=format&fit=crop&w=900&q=85',
-  other: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=85',
+  sea: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=88',
+  safari: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=88',
+  historical: 'https://images.unsplash.com/photo-1539768942893-daf53e448371?auto=format&fit=crop&w=1200&q=88',
+  other: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=88',
 }
 
-const destinationCards: { key: 'sharm' | 'hurghada' | 'marsa'; dest: Destination; image: string }[] = [
+const destinationCards: { key: 'sharm' | 'hurghada' | 'marsa'; dest: Destination; image: string; tone: string }[] = [
   {
     key: 'sharm',
     dest: 'sharm',
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=85',
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=88',
+    tone: 'Private reefs, yacht days, and cinematic desert horizons.',
   },
   {
     key: 'hurghada',
     dest: 'hurghada',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=88',
+    tone: 'Island escapes, family boat trips, and warm Red Sea mornings.',
   },
   {
     key: 'marsa',
     dest: 'marsa_alam',
-    image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85',
+    image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=88',
+    tone: 'Quiet beaches, turtles, coral gardens, and slow luxury.',
   },
 ]
 
@@ -54,42 +57,72 @@ export function HomePage() {
   const { t, locale } = useI18n()
   const { trips, loading } = useTrips({ featuredOnly: true })
   const bestsellers = trips.slice(0, 6)
+
+  const heroStats =
+    locale === 'ar'
+      ? [
+          ['12+', 'رحلة منتقاة'],
+          ['3', 'وجهات البحر الأحمر'],
+          ['24/7', 'تنسيق واتساب'],
+        ]
+      : [
+          ['12+', 'Curated escapes'],
+          ['3', 'Red Sea resorts'],
+          ['24/7', 'WhatsApp concierge'],
+        ]
+
   const soulMoments =
     locale === 'ar'
       ? [
-          ['بحر صافي', 'مياه فيروزية ورحلات مختارة بهدوء من غير زحمة أو تعقيد.'],
-          ['تنظيم مصري أصيل', 'استقبال دافئ، أسعار واضحة، وتفاصيل صغيرة تفرق في يومك.'],
-          ['حجز مطمئن', 'نرد عليك بسرعة ونرتب الرحلة حسب فندقك ووقتك.'],
+          ['إحساس البحر', 'مياه فيروزية، يوم مرتب، واختيارات تشبه مزاج الإجازة الحقيقي.'],
+          ['ضيافة مصرية', 'تفاصيل واضحة، رد سريع، وروح دافئة من أول رسالة لحد الرجوع للفندق.'],
+          ['رفاهية سهلة', 'نختصر عليك الاختيار ونرتب رحلة تناسب وقتك، فندقك، وميزانيتك.'],
         ]
       : [
-          ['Clear Red Sea', 'Turquoise water and hand-picked trips without noise or confusion.'],
-          ['Egyptian Warmth', 'Warm hosting, clear prices, and small details that shape the day.'],
-          ['Easy Booking', 'Fast replies and a trip plan matched to your hotel and timing.'],
+          ['Sea Mood', 'Turquoise water, curated days, and a holiday rhythm that feels effortless.'],
+          ['Egyptian Warmth', 'Clear details, fast replies, and warm hosting from first message to hotel return.'],
+          ['Easy Luxury', 'We simplify choices and shape the trip around your hotel, timing, and style.'],
         ]
 
   return (
-    <div className="bg-transparent">
-      <section className="relative overflow-hidden">
-        <img src={heroImage} alt="" className="absolute inset-0 h-full w-full object-cover" decoding="async" />
-        <div className="absolute inset-0 bg-slate-950/45" />
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950/80 via-slate-950/25 to-transparent" />
-        <div className="relative mx-auto flex min-h-[520px] max-w-6xl flex-col justify-center px-4 py-12 sm:min-h-[560px] sm:px-6 sm:py-16">
-          <div className="max-w-3xl text-white">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-200">{t('tagline')}</p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-balance sm:text-6xl sm:leading-[1.05]">
+    <div className="overflow-hidden bg-transparent">
+      <section className="relative min-h-[calc(100svh-5rem)] overflow-hidden bg-slate-950 text-white">
+        <img
+          src={heroImage}
+          alt=""
+          className="absolute inset-0 h-full w-full scale-105 object-cover motion-safe:animate-[hero-drift_18s_ease-in-out_infinite_alternate]"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(251,191,36,0.24),transparent_24%),linear-gradient(115deg,rgba(2,6,23,0.92)_0%,rgba(8,47,73,0.66)_42%,rgba(2,132,199,0.18)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-950 via-slate-950/72 to-transparent" />
+        <div className="absolute -start-20 top-24 h-72 w-72 rounded-full bg-cyan-300/16 blur-3xl" />
+        <div className="absolute -end-16 bottom-20 h-80 w-80 rounded-full bg-amber-300/14 blur-3xl" />
+
+        <div className="relative mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-center gap-10 px-4 pb-14 pt-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:pb-20 lg:pt-20">
+          <div className="max-w-4xl">
+            <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-teal-100 shadow-elevate backdrop-blur-md">
+              {t('tagline')}
+            </p>
+            <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.98] tracking-tight text-balance sm:text-7xl lg:text-8xl">
               {t('home.heroTitle')}
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-sky-100/[0.94] sm:text-lg">{t('home.heroSubtitle')}</p>
-            <div className="mt-8 grid w-full max-w-sm gap-3 sm:flex sm:max-w-none sm:flex-wrap">
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-sky-50/90 sm:text-xl sm:leading-9">
+              {t('home.heroSubtitle')}
+            </p>
+
+            <div className="mt-9 grid w-full max-w-md gap-3 sm:flex sm:max-w-none sm:flex-wrap">
               <Link to="/trips" className="w-full sm:w-auto">
-                <Button size="lg" className="min-h-12 w-full px-7 text-sm font-semibold sm:w-auto sm:text-base">
+                <Button
+                  size="lg"
+                  className="min-h-14 w-full rounded-full px-8 text-sm font-bold shadow-[0_0_34px_rgba(14,165,233,0.38)] sm:w-auto sm:text-base"
+                >
                   {t('home.ctaPrimary')}
                 </Button>
               </Link>
               <Link to="/destinations" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="min-h-12 w-full px-7 text-sm font-semibold sm:w-auto sm:text-base"
+                  className="min-h-14 w-full rounded-full bg-gradient-to-b from-amber-300 to-orange-500 px-8 text-sm font-bold text-slate-950 shadow-[0_0_34px_rgba(251,146,60,0.34)] hover:from-amber-200 hover:to-orange-500 sm:w-auto sm:text-base"
                 >
                   {t('home.ctaSecondary')}
                 </Button>
@@ -97,84 +130,93 @@ export function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-2 rounded-2xl border border-white/20 bg-slate-950/28 p-2 shadow-elevate-lg backdrop-blur-md sm:mt-12 sm:grid-cols-3 sm:gap-3 sm:p-3">
-            {DESTINATIONS.map((destination) => (
-              <Link
-                key={destination}
-                to={`/trips?destination=${destination}`}
-                className="group relative flex min-h-14 items-center justify-between overflow-hidden rounded-xl border border-white/25 bg-gradient-to-b from-white/96 to-ocean-50/92 px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm shadow-slate-950/10 transition duration-300 hover:-translate-y-0.5 hover:border-teal-200/80 hover:from-white hover:to-white hover:shadow-elevate-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean-500 sm:min-h-16 sm:px-5"
-              >
-                <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/80 to-transparent opacity-70 transition duration-300 group-hover:opacity-100" />
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ocean-100 bg-white text-ocean-700 shadow-sm transition duration-300 group-hover:border-ocean-200 group-hover:bg-ocean-50">
-                  <span className="text-base leading-none">›</span>
-                </span>
-                <span className="truncate px-3 text-center">{destinationName(locale, destination)}</span>
-                <span className="h-2 w-2 shrink-0 rounded-full bg-teal-400/80 shadow-[0_0_14px_rgba(45,212,191,0.7)] transition duration-300 group-hover:scale-125 group-hover:bg-teal-500" />
-              </Link>
-            ))}
+          <div className="relative mx-auto w-full max-w-xl lg:ms-auto">
+            <div className="absolute -inset-8 rounded-[2rem] bg-gradient-to-br from-cyan-300/18 via-transparent to-amber-300/18 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/18 bg-white/10 p-4 shadow-[0_30px_90px_rgba(2,6,23,0.42)] backdrop-blur-2xl">
+              <div className="grid grid-cols-3 gap-3">
+                {heroStats.map(([value, label]) => (
+                  <div key={label} className="rounded-2xl border border-white/14 bg-white/12 px-3 py-5 text-center shadow-inner-soft">
+                    <p className="text-2xl font-bold text-white sm:text-3xl">{value}</p>
+                    <p className="mt-2 text-[11px] font-semibold leading-4 text-sky-100/88">{label}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-4 rounded-[1.5rem] border border-white/12 bg-slate-950/34 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-200">Concierge selection</p>
+                <div className="mt-5 grid gap-3">
+                  {DESTINATIONS.map((destination) => (
+                    <Link
+                      key={destination}
+                      to={`/trips?destination=${destination}`}
+                      className="group flex items-center justify-between rounded-2xl border border-white/12 bg-white/10 px-4 py-4 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/50 hover:bg-white/16"
+                    >
+                      <span>{destinationName(locale, destination)}</span>
+                      <span className="rounded-full bg-white px-3 py-1 text-xs text-ocean-900 transition group-hover:bg-amber-200">View trips</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="relative -mt-8 z-10 mx-auto max-w-6xl px-4 sm:-mt-10 sm:px-6">
-        <div className="grid gap-3 rounded-2xl border border-white/60 bg-white/72 p-3 shadow-elevate-lg backdrop-blur-xl md:grid-cols-3">
+      <section className="relative z-10 -mt-10 mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid gap-4 rounded-[2rem] border border-white/60 bg-white/78 p-3 shadow-[0_24px_80px_rgba(8,47,73,0.14)] backdrop-blur-2xl md:grid-cols-3">
           {soulMoments.map(([title, text], index) => (
             <div
               key={title}
-              className="group relative overflow-hidden rounded-xl border border-white/70 bg-gradient-to-br from-white/92 via-ocean-50/72 to-sand-50/92 p-5 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-elevate"
+              className="group relative overflow-hidden rounded-[1.5rem] border border-white/80 bg-gradient-to-br from-white via-ocean-50/70 to-amber-50/70 p-6 shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-elevate-lg"
             >
-              <span className="pointer-events-none absolute -end-8 -top-8 h-24 w-24 rounded-full bg-teal-300/18 blur-2xl transition duration-500 group-hover:bg-teal-300/28" />
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean-700">
+              <span className="pointer-events-none absolute -end-10 -top-10 h-28 w-28 rounded-full bg-teal-300/22 blur-2xl transition duration-500 group-hover:bg-amber-300/24" />
+              <span className="text-xs font-bold uppercase tracking-[0.22em] text-ocean-700">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <h3 className="mt-3 text-lg font-semibold tracking-tight text-slate-950">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{text}</p>
+              <h2 className="mt-4 text-xl font-semibold tracking-tight text-slate-950">{title}</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean-700">{t('nav.destinations')}</p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+      <section className="relative bg-white/94 py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-ocean-700">{t('nav.destinations')}</p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950 sm:text-6xl">
                 {t('destinations.title')}
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">{t('destinations.subtitle')}</p>
             </div>
-            <Link to="/destinations" className="w-full sm:w-auto">
-              <Button variant="secondary" className="w-full sm:w-auto">
-                {t('home.ctaSecondary')}
-              </Button>
-            </Link>
+            <p className="max-w-2xl text-base leading-8 text-slate-600 lg:justify-self-end">
+              {t('destinations.subtitle')}
+            </p>
           </div>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {destinationCards.map(({ key, dest, image }) => (
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {destinationCards.map(({ key, dest, image, tone }, index) => (
               <Link
                 key={dest}
                 to={`/trips?destination=${dest}`}
-                className="group overflow-hidden rounded-lg border border-slate-200/70 bg-white shadow-elevate transition duration-300 hover:-translate-y-1 hover:shadow-elevate-lg"
+                className={`group relative min-h-[420px] overflow-hidden rounded-[2rem] bg-slate-950 shadow-[0_24px_80px_rgba(15,23,42,0.16)] transition duration-700 hover:-translate-y-2 hover:shadow-[0_34px_100px_rgba(8,47,73,0.24)] ${
+                  index === 1 ? 'lg:mt-10' : ''
+                }`}
               >
-                <div className="relative aspect-[16/11] overflow-hidden">
-                  <img
-                    src={image}
-                    alt=""
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
-                  <div className="absolute bottom-4 start-4 end-4">
-                    <h3 className="text-xl font-semibold text-white">{destinationName(locale, dest)}</h3>
-                  </div>
+                <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/28 to-transparent" />
+                <div className="absolute inset-x-5 top-5 flex items-center justify-between">
+                  <span className="rounded-full border border-white/24 bg-white/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md">
+                    Egypt
+                  </span>
+                  <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-ocean-900">0{index + 1}</span>
                 </div>
-                <div className="p-5">
-                  <p className="min-h-[4.5rem] text-sm leading-relaxed text-slate-600">{t(`destinations.${key}.blurb`)}</p>
-                  <div className="mt-5 inline-flex items-center rounded-full bg-ocean-50 px-4 py-2 text-sm font-semibold text-ocean-800 transition duration-200 group-hover:bg-ocean-700 group-hover:text-white">
+                <div className="absolute inset-x-5 bottom-5">
+                  <h3 className="text-3xl font-semibold text-white">{destinationName(locale, dest)}</h3>
+                  <p className="mt-3 text-sm leading-6 text-sky-50/86">{locale === 'ar' ? t(`destinations.${key}.blurb`) : tone}</p>
+                  <span className="mt-5 inline-flex rounded-full bg-white px-4 py-2 text-sm font-bold text-ocean-900 transition group-hover:bg-amber-200">
                     {t('destinations.cta')}
-                  </div>
+                  </span>
                 </div>
               </Link>
             ))}
@@ -182,136 +224,114 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
-        <SupabaseNotice />
-        <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean-700">Tour categories</p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">Find your trip type</h2>
-        </div>
+      <section className="relative bg-slate-950 py-16 text-white sm:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(45,212,191,0.16),transparent_32%),radial-gradient(circle_at_78%_22%,rgba(251,146,60,0.14),transparent_30%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+          <SupabaseNotice />
+          <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-teal-200">Bestsellers</p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-6xl">{t('home.featured')}</h2>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300">{t('home.featuredSub')}</p>
+            </div>
+            <Link to="/trips" className="w-full sm:w-auto">
+              <Button className="min-h-12 w-full rounded-full px-6 sm:w-auto">{t('nav.trips')}</Button>
+            </Link>
+          </div>
 
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {TRIP_CATEGORIES.map((category) => (
-            <Link
-              key={category}
-              to={`/trips?category=${category}`}
-              className="group overflow-hidden rounded-lg bg-white shadow-elevate transition duration-300 hover:-translate-y-1 hover:shadow-elevate-lg"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
+          <div className="mt-10">
+            {loading ? (
+              <div className="flex justify-center py-16">
+                <Spinner />
+              </div>
+            ) : bestsellers.length === 0 ? (
+              <p className="rounded-[1.5rem] border border-white/10 bg-white/8 px-4 py-10 text-center text-slate-300 shadow-elevate">
+                {t('trips.empty')}
+              </p>
+            ) : (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {bestsellers.map((trip) => (
+                  <TripCard key={trip.id} trip={trip} />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative bg-white/94 py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {TRIP_CATEGORIES.map((category) => (
+              <Link
+                key={category}
+                to={`/trips?category=${category}`}
+                className="group relative min-h-[300px] overflow-hidden rounded-[1.75rem] bg-slate-950 shadow-elevate-lg transition duration-500 hover:-translate-y-1.5"
+              >
                 <img
                   src={categoryImages[category]}
                   alt=""
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 to-transparent" />
-                <p className="absolute bottom-4 start-4 end-4 text-lg font-semibold text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent" />
+                <p className="absolute bottom-5 start-5 end-5 text-2xl font-semibold text-white">
                   {tripCategoryLabel(category, locale)}
                 </p>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6">
-        <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean-700">Bestsellers</p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">{t('home.featured')}</h2>
-          <p className="mt-1 text-slate-600/95">{t('home.featuredSub')}</p>
-        </div>
-
-        <div className="mt-8">
-          {loading ? (
-            <div className="flex justify-center py-16">
-              <Spinner />
-            </div>
-          ) : bestsellers.length === 0 ? (
-            <p className="rounded-lg border border-slate-200/70 bg-white/90 px-4 py-10 text-center text-slate-600 shadow-elevate">
-              {t('trips.empty')}
-            </p>
-          ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {bestsellers.map((trip) => (
-                <TripCard key={trip.id} trip={trip} />
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className="mt-9 text-center">
-          <Link to="/trips">
-            <Button variant="secondary">{t('nav.trips')}</Button>
-          </Link>
-        </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 sm:py-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <section className="bg-slate-950 px-4 py-16 text-white sm:px-6 sm:py-24">
+        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/8 shadow-[0_30px_100px_rgba(2,6,23,0.35)] backdrop-blur lg:grid-cols-[1.05fr_0.95fr]">
           <img
-            src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1400&q=85"
+            src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1600&q=88"
             alt=""
-            className="aspect-[4/3] w-full rounded-lg object-cover shadow-elevate-lg"
+            className="h-full min-h-[360px] w-full object-cover"
             loading="lazy"
           />
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean-700">Private tour</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">Need a custom trip?</h2>
-            <p className="mt-4 text-slate-600">
+          <div className="p-7 sm:p-10 lg:p-14">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-amber-200">Private tour</p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">Need a custom trip?</h2>
+            <p className="mt-5 text-base leading-8 text-slate-300">
               Tell us your hotel, date, group size, and preferred style. We will send a clear plan and price on
               WhatsApp.
             </p>
-            <div className="mt-6">
+            <div className="mt-8">
               <Link to="/contact">
-                <Button className="w-full sm:w-auto">{t('contact.whatsappCta')}</Button>
+                <Button className="min-h-12 w-full rounded-full px-7 sm:w-auto">{t('contact.whatsappCta')}</Button>
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-slate-200/60 bg-sand-50">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <div className="grid gap-4 text-center sm:grid-cols-3">
-            {[
-              ['12+', 'Top excursions'],
-              ['3', 'Red Sea destinations'],
-              ['24/7', 'WhatsApp support'],
-            ].map(([value, label]) => (
-              <div key={label} className="rounded-lg bg-white p-6 shadow-elevate">
-                <p className="text-3xl font-semibold text-ocean-800">{value}</p>
-                <p className="mt-2 text-sm font-medium text-slate-600">{label}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+      <section className="border-y border-white/60 bg-white/82 py-16 backdrop-blur sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid gap-5 md:grid-cols-[0.8fr_1.2fr] md:items-start">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean-700">Why us</p>
-              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">{t('home.why')}</h2>
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-ocean-700">Why us</p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950">{t('home.why')}</h2>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               {[t('home.whyItems.one'), t('home.whyItems.two'), t('home.whyItems.three')].map((text) => (
-                <div key={text} className="rounded-lg border border-slate-200/70 bg-white p-5 shadow-elevate">
-                  <p className="text-sm leading-relaxed text-slate-600">{text}</p>
+                <div key={text} className="rounded-[1.5rem] border border-white/80 bg-white/82 p-6 shadow-elevate backdrop-blur">
+                  <p className="text-sm leading-7 text-slate-600">{text}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="mt-12">
-            <div className="text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean-700">Reviews</p>
-              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Guest opinions</h2>
-            </div>
-            <div className="mt-7 grid gap-5 md:grid-cols-3">
-              {reviews.map((review) => (
-                <figure key={review.name} className="rounded-lg border border-slate-200/70 bg-white p-6 shadow-elevate">
-                  <div className="text-ocean-700">*****</div>
-                  <blockquote className="mt-4 text-sm leading-relaxed text-slate-600">"{review.text}"</blockquote>
-                  <figcaption className="mt-5 text-sm font-semibold text-slate-900">{review.name}</figcaption>
-                </figure>
-              ))}
-            </div>
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            {reviews.map((review) => (
+              <figure key={review.name} className="rounded-[1.5rem] border border-white/80 bg-white/88 p-6 shadow-elevate">
+                <div className="text-amber-500">*****</div>
+                <blockquote className="mt-4 text-sm leading-7 text-slate-600">"{review.text}"</blockquote>
+                <figcaption className="mt-5 text-sm font-semibold text-slate-900">{review.name}</figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
