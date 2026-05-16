@@ -5,10 +5,31 @@ export type Trip = {
   id: string
   title_ar: string
   title_en: string
+  title_de?: string | null
+  title_pl?: string | null
+  title_cs?: string | null
+  title_ro?: string | null
+  title_bg?: string | null
+  title_it?: string | null
+  title_fr?: string | null
   short_description_ar: string | null
   short_description_en: string | null
+  short_description_de?: string | null
+  short_description_pl?: string | null
+  short_description_cs?: string | null
+  short_description_ro?: string | null
+  short_description_bg?: string | null
+  short_description_it?: string | null
+  short_description_fr?: string | null
   full_description_ar: string | null
   full_description_en: string | null
+  full_description_de?: string | null
+  full_description_pl?: string | null
+  full_description_cs?: string | null
+  full_description_ro?: string | null
+  full_description_bg?: string | null
+  full_description_it?: string | null
+  full_description_fr?: string | null
   destination: Destination
   duration: string
   price: number

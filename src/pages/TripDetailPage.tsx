@@ -9,6 +9,122 @@ import { inferTripCategory } from '../lib/tripCategories'
 import { formatPrice, tripFullDescription, tripShortDescription, tripTitle } from '../lib/tripUtils'
 import { useTripById } from '../hooks/useTrips'
 
+type ParsedTripDetails = {
+  intro: string[]
+  program: string[]
+  sections: Array<{ title: string; value: string }>
+}
+
+const detailTitleMap: Record<string, string> = {
+  timing: 'Timing',
+  children: 'Children',
+  requirements: 'Requirements',
+  notes: 'Notes',
+  'extra notes': 'Notes',
+  duration: 'Duration',
+}
+
+function parseTripDetails(text: string): ParsedTripDetails {
+  const details: ParsedTripDetails = { intro: [], program: [], sections: [] }
+  const lines = text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+
+  let active: 'intro' | 'program' = 'intro'
+
+  for (const line of lines) {
+    const headingMatch = line.match(/^([^:]+):\s*(.*)$/)
+    if (headingMatch) {
+      const rawTitle = headingMatch[1].trim()
+      const titleKey = rawTitle.toLowerCase()
+      const value = headingMatch[2].trim()
+
+      if (titleKey === 'program') {
+        active = 'program'
+        continue
+      }
+
+      active = 'intro'
+
+      if (titleKey === 'hero image theme') continue
+
+      const title = detailTitleMap[titleKey] ?? rawTitle
+      if (value) {
+        const existing = details.sections.find((section) => section.title === title)
+        if (existing) existing.value = `${existing.value}\n${value}`
+        else details.sections.push({ title, value })
+      }
+      continue
+    }
+
+    if (line.startsWith('- ')) {
+      const item = line.slice(2).trim()
+      if (active === 'program') details.program.push(item)
+      else details.intro.push(item)
+      continue
+    }
+
+    if (active === 'program') details.program.push(line)
+    else details.intro.push(line)
+  }
+
+  return details
+}
+
+function TripDetailsContent({ text }: { text: string }) {
+  const details = parseTripDetails(text)
+  const hasStructuredDetails = details.program.length > 0 || details.sections.length > 0
+
+  if (!hasStructuredDetails) {
+    return <p className="whitespace-pre-line text-base leading-relaxed text-slate-700">{text}</p>
+  }
+
+  return (
+    <div className="space-y-8">
+      {details.intro.length > 0 ? (
+        <div className="space-y-3 text-base leading-relaxed text-slate-700">
+          {details.intro.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
+      ) : null}
+
+      {details.program.length > 0 ? (
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">Program</h2>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            {details.program.map((item) => (
+              <li
+                key={item}
+                className="rounded-lg border border-slate-200/70 bg-white px-4 py-3 text-sm font-medium leading-relaxed text-slate-700 shadow-sm"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {details.sections.length > 0 ? (
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">Trip Details</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {details.sections.map((section) => (
+              <div key={`${section.title}-${section.value}`} className="rounded-lg border border-slate-200/70 bg-slate-50 px-4 py-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{section.title}</p>
+                <p className="mt-1 whitespace-pre-line text-sm font-semibold leading-relaxed text-slate-900">
+                  {section.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+    </div>
+  )
+}
+
 export function TripDetailPage() {
   const { id } = useParams()
   const { t, locale } = useI18n()
@@ -74,9 +190,7 @@ export function TripDetailPage() {
         <SupabaseNotice />
         <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_320px]">
           <div>
-            <p className="whitespace-pre-line text-base leading-relaxed text-slate-700">
-              {tripFullDescription(trip, locale) || tripShortDescription(trip, locale)}
-            </p>
+            <TripDetailsContent text={tripFullDescription(trip, locale) || tripShortDescription(trip, locale)} />
 
             {gallery.length > 0 ? (
               <div className="mt-10">
