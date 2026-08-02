@@ -20,9 +20,9 @@ export function ContactPage() {
             <dd>
               <a
                 className="font-medium text-ocean-800 transition duration-200 hover:text-ocean-950 hover:underline hover:underline-offset-4"
-                href="mailto:hello@nilehorizon.example"
+                href="mailto:Info@sunsettoursegypt.com"
               >
-                hello@nilehorizon.example
+                Info@sunsettoursegypt.com
               </a>
             </dd>
           </div>
