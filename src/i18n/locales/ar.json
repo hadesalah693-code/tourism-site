@@ -69,6 +69,22 @@
     "duration": "المدة",
     "destination": "الوجهة"
   },
+  "booking": {
+    "title": "احجز أونلاين",
+    "subtitle": "أرسل طلب حجز — سنتواصل معك للتأكيد عبر الهاتف أو واتساب.",
+    "name": "الاسم الكامل",
+    "phone": "الهاتف / واتساب",
+    "email": "البريد (اختياري)",
+    "travelDate": "التاريخ المفضل",
+    "guests": "عدد الأشخاص",
+    "message": "ملاحظات (اختياري)",
+    "submit": "إرسال طلب الحجز",
+    "submitting": "جاري الإرسال…",
+    "successTitle": "تم استلام طلبك",
+    "successBody": "شكراً! سيتواصل معك فريقنا قريباً للتأكيد.",
+    "newRequest": "إرسال طلب آخر",
+    "error": "تعذر حفظ الطلب. جرّب واتساب بدلاً من ذلك."
+  },
   "about": {
     "title": "عن SunSet Tours Egypt",
     "p1": "نصمم برامج ساحلية على البحر الأحمر مع التركيز على الوضوح: أسعار صادقة، سرد ثنائي اللغة، ودعم سريع الاستجابة.",
@@ -136,7 +152,17 @@
       "uploading": "جاري الرفع…",
       "chooseFile": "اختر ملفاً",
       "remove": "إزالة",
-      "addGallery": "إضافة صور"
+      "addGallery": "إضافة صور",
+      "uploadFailed": "فشل رفع الصورة. جرّب ملف JPG أو PNG أصغر.",
+      "uploadLocalHint": "تم حفظ الصورة محلياً (تخزين Supabase غير متاح). احفظ الرحلة للاحتفاظ بها.",
+      "saveLocalHint": "تم حفظ الرحلة محلياً في هذا المتصفح. ستظهر على الموقع من هذا الجهاز.",
+      "saveFailed": "تعذر حفظ الرحلة. تحقق من الحقول المطلوبة وحاول مرة أخرى.",
+      "networkError": "لا يمكن الاتصال بـ Supabase — تم الحفظ محلياً. تحقق من الإنترنت أو إعدادات Supabase في ملف .env",
+      "notFound": "الرحلة غير موجودة.",
+      "currencies": {
+        "USD": "دولار أمريكي ($)",
+        "EUR": "يورو (€)"
+      }
     },
     "status": {
       "active": "نشط",
@@ -145,12 +171,45 @@
     "destinations": {
       "title": "الوجهات",
       "hint": "تُدار الوجهات لكل رحلة. استخدم تسميات متسقة باللغتين لتحسين الظهور."
+    },
+    "bookings": {
+      "nav": "الحجوزات",
+      "title": "إدارة الحجوزات",
+      "subtitle": "طلبات الحجز المرسلة من صفحات الرحلات على الموقع.",
+      "manage": "فتح الحجوزات",
+      "empty": "لا توجد طلبات حجز بعد.",
+      "localHint": "يتم عرض الحجوزات المحفوظة في هذا المتصفح. فعّل Supabase ونفّذ schema الحجوزات للتخزين المشترك.",
+      "filterAll": "كل الحالات",
+      "confirmDelete": "حذف هذا الحجز؟",
+      "changeStatus": "تغيير الحالة",
+      "viewTrip": "عرض الرحلة",
+      "colDate": "تاريخ الإرسال",
+      "colTrip": "الرحلة",
+      "colCustomer": "العميل",
+      "colPhone": "الهاتف",
+      "colTravel": "تاريخ السفر",
+      "colGuests": "الضيوف",
+      "colStatus": "الحالة",
+      "stats": {
+        "total": "إجمالي الحجوزات",
+        "pending": "قيد الانتظار",
+        "confirmed": "مؤكدة",
+        "cancelled": "ملغاة"
+      },
+      "status": {
+        "pending": "قيد الانتظار",
+        "confirmed": "مؤكدة",
+        "cancelled": "ملغاة"
+      }
     }
   },
   "common": {
     "loading": "جاري التحميل…",
     "error": "حدث خطأ ما",
     "retry": "إعادة المحاولة",
-    "configureSupabase": "أضف VITE_SUPABASE_URL و VITE_SUPABASE_ANON_KEY إلى البيئة لتحميل البيانات الحية."
+    "configureSupabase": "أضف VITE_SUPABASE_URL و VITE_SUPABASE_ANON_KEY في ملف .env لتحميل البيانات من السحابة.",
+    "supabaseConnected": "Supabase متصل — الرحلات والحجوزات ورفع الصور تعمل على قاعدة البيانات السحابية.",
+    "supabaseUnreachable": "تعذر الاتصال بـ Supabase. رابط المشروع أو المفتاح في .env قد يكون خاطئاً، أو المشروع متوقف.",
+    "supabaseUnreachableHint": "افتح supabase.com/dashboard → مشروعك → Settings → API. انسخ Project URL و Publishable key إلى .env، نفّذ supabase/enable.sql في SQL Editor، ثم أعد تشغيل npm run dev."
   }
 }

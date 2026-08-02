@@ -7,7 +7,7 @@ import { Spinner } from '../../components/ui/Spinner'
 import { useI18n } from '../../i18n/useI18n'
 import { destinationName } from '../../lib/destinations'
 import { formatPrice, tripTitle } from '../../lib/tripUtils'
-import { supabase } from '../../lib/supabase'
+import { removeAdminTrip } from '../../lib/tripAdmin'
 import { useTrips } from '../../hooks/useTrips'
 
 export function AdminTripsPage() {
@@ -16,7 +16,7 @@ export function AdminTripsPage() {
 
   async function remove(id: string) {
     if (!confirm(t('admin.table.confirmDelete'))) return
-    await supabase.from('trips').delete().eq('id', id)
+    await removeAdminTrip(id)
     void refetch()
   }
 

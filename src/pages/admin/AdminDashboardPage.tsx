@@ -4,16 +4,25 @@ import { Button } from '../../components/ui/Button'
 import { Spinner } from '../../components/ui/Spinner'
 import { useI18n } from '../../i18n/useI18n'
 import { useTripStats } from '../../hooks/useTrips'
+import { useBookingStats } from '../../hooks/useBookings'
 
 export function AdminDashboardPage() {
   const { t } = useI18n()
   const { stats, loading } = useTripStats()
+  const { stats: bookingStats, loading: bookingsLoading } = useBookingStats()
 
   const cards = [
     { label: t('admin.stats.total'), value: stats.total },
     { label: t('admin.stats.active'), value: stats.active },
     { label: t('admin.stats.featured'), value: stats.featured },
     { label: t('admin.stats.inactive'), value: stats.inactive },
+  ]
+
+  const bookingCards = [
+    { label: t('admin.bookings.stats.total'), value: bookingStats.total },
+    { label: t('admin.bookings.stats.pending'), value: bookingStats.pending },
+    { label: t('admin.bookings.stats.confirmed'), value: bookingStats.confirmed },
+    { label: t('admin.bookings.stats.cancelled'), value: bookingStats.cancelled },
   ]
 
   return (
@@ -49,6 +58,34 @@ export function AdminDashboardPage() {
           ))}
         </div>
       )}
+
+      <div className="mt-10">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <h2 className="text-lg font-semibold text-slate-900">{t('admin.bookings.title')}</h2>
+          <Link to="/admin/bookings">
+            <Button variant="ghost" size="sm">
+              {t('admin.bookings.manage')} →
+            </Button>
+          </Link>
+        </div>
+        {bookingsLoading ? (
+          <div className="mt-6 flex justify-center">
+            <Spinner />
+          </div>
+        ) : (
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {bookingCards.map((c) => (
+              <div
+                key={c.label}
+                className="rounded-2xl border border-slate-200/60 bg-white p-6 shadow-elevate transition duration-300 hover:-translate-y-0.5 hover:shadow-elevate-lg"
+              >
+                <p className="text-sm font-medium text-slate-500/95">{c.label}</p>
+                <p className="mt-3 text-3xl font-semibold tabular-nums tracking-tight text-slate-900">{c.value}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       <div className="mt-10 rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900 via-ocean-900 to-teal-800 p-8 text-white shadow-elevate-lg">
         <h2 className="text-lg font-semibold tracking-tight">{t('admin.table.title')}</h2>

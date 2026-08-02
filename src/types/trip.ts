@@ -1,6 +1,9 @@
 export const DESTINATIONS = ['sharm', 'hurghada', 'marsa_alam'] as const
 export type Destination = (typeof DESTINATIONS)[number]
 
+export const TRIP_CURRENCIES = ['USD', 'EUR'] as const
+export type TripCurrency = (typeof TRIP_CURRENCIES)[number]
+
 export type Trip = {
   id: string
   title_ar: string

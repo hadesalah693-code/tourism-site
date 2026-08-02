@@ -69,6 +69,22 @@
     "duration": "Продължителност",
     "destination": "Дестинация"
   },
+  "booking": {
+    "title": "Book online",
+    "subtitle": "Send a request — we will confirm by phone or WhatsApp.",
+    "name": "Full name",
+    "phone": "Phone / WhatsApp",
+    "email": "Email (optional)",
+    "travelDate": "Preferred date",
+    "guests": "Guests",
+    "message": "Notes (optional)",
+    "submit": "Send booking request",
+    "submitting": "Sending…",
+    "successTitle": "Request received",
+    "successBody": "Thank you! Our team will contact you shortly to confirm.",
+    "newRequest": "Send another request",
+    "error": "Could not save your request. Please try WhatsApp instead."
+  },
   "about": {
     "title": "За SunSet Tours Egypt",
     "p1": "Проектираме крайбрежни маршрути по Червено море с ясни цени, многоезичен текст и бърза подкрепа.",
@@ -145,6 +161,27 @@
     "destinations": {
       "title": "Дестинации",
       "hint": "Дестинациите са към всеки тур. Единна номенклатура на двата езика подпомага SEO."
+    },
+    "bookings": {
+      "nav": "Bookings",
+      "title": "Manage bookings",
+      "subtitle": "Requests submitted from trip pages on the website.",
+      "manage": "Open bookings",
+      "empty": "No booking requests yet.",
+      "localHint": "Showing bookings saved in this browser. Connect Supabase and run the bookings schema for shared storage.",
+      "filterAll": "All statuses",
+      "confirmDelete": "Delete this booking?",
+      "changeStatus": "Change status",
+      "viewTrip": "View trip",
+      "colDate": "Submitted",
+      "colTrip": "Trip",
+      "colCustomer": "Customer",
+      "colPhone": "Phone",
+      "colTravel": "Travel date",
+      "colGuests": "Guests",
+      "colStatus": "Status",
+      "stats": { "total": "Total bookings", "pending": "Pending", "confirmed": "Confirmed", "cancelled": "Cancelled" },
+      "status": { "pending": "Pending", "confirmed": "Confirmed", "cancelled": "Cancelled" }
     }
   },
   "common": {

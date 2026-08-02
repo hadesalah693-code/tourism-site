@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { SupabaseNotice } from '../components/SupabaseNotice'
 import { WhatsAppButton } from '../components/WhatsAppButton'
+import { BookingForm } from '../components/booking/BookingForm'
 import { Spinner } from '../components/ui/Spinner'
 import { useI18n } from '../i18n/useI18n'
 import { destinationName } from '../lib/destinations'
@@ -218,6 +219,7 @@ export function TripDetailPage() {
             <div className="mt-6">
               <WhatsAppButton label={t('tripDetail.book')} message={waMessage} />
             </div>
+            <BookingForm trip={trip} />
           </aside>
         </div>
       </div>

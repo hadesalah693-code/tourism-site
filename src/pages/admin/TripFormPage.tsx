@@ -4,9 +4,9 @@ import { Button } from '../../components/ui/Button'
 import { Spinner } from '../../components/ui/Spinner'
 import { useI18n } from '../../i18n/useI18n'
 import { destinationName } from '../../lib/destinations'
-import { supabase } from '../../lib/supabase'
+import { loadAdminTrip, saveAdminTrip } from '../../lib/tripAdmin'
 import { uploadTripImage } from '../../lib/storage'
-import { DESTINATIONS, type Destination, type Trip } from '../../types/trip'
+import { DESTINATIONS, TRIP_CURRENCIES, type Destination, type Trip } from '../../types/trip'
 
 const empty: Omit<Trip, 'id' | 'created_at' | 'updated_at'> = {
   title_ar: '',
@@ -36,6 +36,19 @@ export function TripFormPage() {
   const [uploading, setUploading] = useState(false)
   const [form, setForm] = useState(empty)
   const [error, setError] = useState<string | null>(null)
+  const [uploadNote, setUploadNote] = useState<string | null>(null)
+  const [saveNote, setSaveNote] = useState<string | null>(null)
+
+  function friendlyError(message: string | undefined) {
+    if (!message) return t('admin.form.saveFailed')
+    const lower = message.toLowerCase()
+    if (lower.includes('failed to fetch') || lower.includes('network')) {
+      return t('admin.form.networkError')
+    }
+    if (message === 'UPLOAD_FAILED') return t('admin.form.uploadFailed')
+    if (message === 'SAVE_FAILED') return t('admin.form.saveFailed')
+    return message
+  }
 
   useEffect(() => {
     if (!id) return
@@ -43,14 +56,13 @@ export function TripFormPage() {
     let cancelled = false
     void (async () => {
       setLoading(true)
-      const { data, error: qe } = await supabase.from('trips').select('*').eq('id', id).maybeSingle()
+      const row = await loadAdminTrip(id)
       if (cancelled) return
-      if (qe || !data) {
-        setError(qe?.message ?? 'Not found')
+      if (!row) {
+        setError(t('admin.form.notFound'))
         setLoading(false)
         return
       }
-      const row = data as Trip
       setForm({
         title_ar: row.title_ar,
         title_en: row.title_en,
@@ -78,28 +90,34 @@ export function TripFormPage() {
   async function onCover(file: File | null) {
     if (!file) return
     setUploading(true)
-    const { url, error: upErr } = await uploadTripImage(file, 'covers')
+    setError(null)
+    const { url, error: upErr, localFallback } = await uploadTripImage(file, 'covers')
     setUploading(false)
     if (upErr || !url) {
-      setError(upErr?.message ?? 'Upload failed')
+      setError(friendlyError(upErr?.message))
       return
     }
+    setUploadNote(localFallback ? t('admin.form.uploadLocalHint') : null)
     setForm((f) => ({ ...f, cover_image: url }))
   }
 
   async function onGallery(files: FileList | null) {
     if (!files?.length) return
     setUploading(true)
+    setError(null)
+    let usedLocal = false
     const next: string[] = [...(form.gallery_images ?? [])]
     for (const file of Array.from(files)) {
-      const { url, error: upErr } = await uploadTripImage(file, 'gallery')
+      const { url, error: upErr, localFallback } = await uploadTripImage(file, 'gallery')
       if (upErr || !url) {
-        setError(upErr?.message ?? 'Upload failed')
+        setError(friendlyError(upErr?.message))
         break
       }
+      if (localFallback) usedLocal = true
       next.push(url)
     }
     setForm((f) => ({ ...f, gallery_images: next }))
+    setUploadNote(usedLocal ? t('admin.form.uploadLocalHint') : null)
     setUploading(false)
   }
 
@@ -114,6 +132,7 @@ export function TripFormPage() {
     e.preventDefault()
     setSaving(true)
     setError(null)
+    setSaveNote(null)
 
     const payload = {
       title_ar: form.title_ar,
@@ -132,21 +151,23 @@ export function TripFormPage() {
       is_active: form.is_active,
     }
 
-    if (isEdit && id) {
-      const { error: ue } = await supabase.from('trips').update(payload).eq('id', id)
-      setSaving(false)
-      if (ue) {
-        setError(ue.message)
-        return
-      }
-    } else {
-      const { data, error: ie } = await supabase.from('trips').insert(payload).select('id').single()
-      setSaving(false)
-      if (ie) {
-        setError(ie.message)
-        return
-      }
-      navigate(`/admin/trips/${(data as { id: string }).id}/edit`, { replace: true })
+    const { trip: saved, savedLocally, error: saveErr } = await saveAdminTrip({
+      ...payload,
+      id: isEdit ? id : undefined,
+    })
+    setSaving(false)
+
+    if (saveErr || !saved) {
+      setError(friendlyError(saveErr ?? undefined))
+      return
+    }
+
+    if (savedLocally) {
+      setSaveNote(t('admin.form.saveLocalHint'))
+    }
+
+    if (!isEdit) {
+      navigate(`/admin/trips/${saved.id}/edit`, { replace: true })
       return
     }
 
@@ -173,6 +194,16 @@ export function TripFormPage() {
       <form className="mt-8 space-y-6" onSubmit={onSubmit}>
         {error ? (
           <p className="rounded-xl border border-red-200/80 bg-red-50/95 px-4 py-3 text-sm text-red-800 shadow-elevate">{error}</p>
+        ) : null}
+        {uploadNote ? (
+          <p className="rounded-xl border border-sky-200/80 bg-sky-50/95 px-4 py-3 text-sm text-sky-900 shadow-elevate">
+            {uploadNote}
+          </p>
+        ) : null}
+        {saveNote ? (
+          <p className="rounded-xl border border-emerald-200/80 bg-emerald-50/95 px-4 py-3 text-sm text-emerald-900 shadow-elevate">
+            {saveNote}
+          </p>
         ) : null}
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -277,12 +308,17 @@ export function TripFormPage() {
           </label>
           <label className="block text-sm font-medium text-slate-700">
             {t('admin.form.currency')}
-            <input
+            <select
               value={form.currency}
-              onChange={(e) => setForm((f) => ({ ...f, currency: e.target.value.toUpperCase() }))}
+              onChange={(e) => setForm((f) => ({ ...f, currency: e.target.value }))}
               className="input-premium mt-1"
-              placeholder="USD"
-            />
+            >
+              {TRIP_CURRENCIES.map((c) => (
+                <option key={c} value={c}>
+                  {t(`admin.form.currencies.${c}`)}
+                </option>
+              ))}
+            </select>
           </label>
         </div>
 

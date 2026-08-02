@@ -69,6 +69,22 @@
     "duration": "Czas trwania",
     "destination": "Kierunek"
   },
+  "booking": {
+    "title": "Book online",
+    "subtitle": "Send a request — we will confirm by phone or WhatsApp.",
+    "name": "Full name",
+    "phone": "Phone / WhatsApp",
+    "email": "Email (optional)",
+    "travelDate": "Preferred date",
+    "guests": "Guests",
+    "message": "Notes (optional)",
+    "submit": "Send booking request",
+    "submitting": "Sending…",
+    "successTitle": "Request received",
+    "successBody": "Thank you! Our team will contact you shortly to confirm.",
+    "newRequest": "Send another request",
+    "error": "Could not save your request. Please try WhatsApp instead."
+  },
   "about": {
     "title": "O SunSet Tours Egypt",
     "p1": "Planujemy wyjazdy nad Morze Czerwone z naciskiem na przejrzystość: uczciwe ceny, treści w wielu językach i szybki kontakt.",
@@ -145,6 +161,27 @@
     "destinations": {
       "title": "Kierunki",
       "hint": "Kierunki są przypisane do każdej wycieczki. Spójne nazewnictwo w obu językach wspiera SEO."
+    },
+    "bookings": {
+      "nav": "Bookings",
+      "title": "Manage bookings",
+      "subtitle": "Requests submitted from trip pages on the website.",
+      "manage": "Open bookings",
+      "empty": "No booking requests yet.",
+      "localHint": "Showing bookings saved in this browser. Connect Supabase and run the bookings schema for shared storage.",
+      "filterAll": "All statuses",
+      "confirmDelete": "Delete this booking?",
+      "changeStatus": "Change status",
+      "viewTrip": "View trip",
+      "colDate": "Submitted",
+      "colTrip": "Trip",
+      "colCustomer": "Customer",
+      "colPhone": "Phone",
+      "colTravel": "Travel date",
+      "colGuests": "Guests",
+      "colStatus": "Status",
+      "stats": { "total": "Total bookings", "pending": "Pending", "confirmed": "Confirmed", "cancelled": "Cancelled" },
+      "status": { "pending": "Pending", "confirmed": "Confirmed", "cancelled": "Cancelled" }
     }
   },
   "common": {
