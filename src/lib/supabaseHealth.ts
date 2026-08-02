@@ -11,7 +11,7 @@ export function getSupabaseHealth(): SupabaseHealth {
   return cached
 }
 
-/** Ping Supabase REST — updates cached health status. */
+/** Ping Supabase via supabase-js (same path as the app — avoids CORS issues with raw HEAD). */
 export async function checkSupabaseConnection(): Promise<SupabaseHealth> {
   if (!isSupabaseConfigured || !url || !key) {
     cached = 'not_configured'
@@ -19,15 +19,13 @@ export async function checkSupabaseConnection(): Promise<SupabaseHealth> {
   }
 
   try {
-    const res = await fetch(`${url.replace(/\/$/, '')}/rest/v1/`, {
-      method: 'HEAD',
-      headers: {
-        apikey: key,
-        Authorization: `Bearer ${key}`,
-      },
-    })
-    // 200, 401, 404 = server reachable
-    cached = res.status < 500 ? 'ok' : 'unreachable'
+    const { error } = await supabase.from('trips').select('id').limit(1)
+    // Any HTTP response (even missing table / RLS) means the project is reachable.
+    if (error && (error.message?.includes('Failed to fetch') || error.message?.includes('NetworkError'))) {
+      cached = 'unreachable'
+    } else {
+      cached = 'ok'
+    }
   } catch {
     cached = 'unreachable'
   }

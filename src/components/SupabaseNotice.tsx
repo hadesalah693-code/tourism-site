@@ -22,6 +22,14 @@ export function SupabaseNotice() {
 
   if (health === 'unknown') return null
 
+  if (health === 'not_configured') {
+    return (
+      <div className="rounded-2xl border border-amber-200/80 bg-amber-50/95 px-4 py-3 text-sm text-amber-950 shadow-elevate backdrop-blur-sm">
+        {t('common.configureSupabase')}
+      </div>
+    )
+  }
+
   if (health === 'ok') {
     return (
       <div className="rounded-2xl border border-emerald-200/80 bg-emerald-50/95 px-4 py-3 text-sm text-emerald-900 shadow-elevate backdrop-blur-sm">
