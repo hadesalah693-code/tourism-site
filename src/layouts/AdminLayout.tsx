@@ -28,7 +28,7 @@ export function AdminLayout() {
             <Link to="/admin" className="text-lg font-semibold text-slate-900">
               {t('brand')} — {t('admin.dashboard')}
             </Link>
-            <Link to="/" className="text-sm text-slate-500 transition hover:text-ocean-800 hover:underline">
+            <Link to="/" className="text-sm text-slate-500 transition hover:text-orange-600 hover:underline">
               ← {t('nav.home')}
             </Link>
           </div>
@@ -42,6 +42,9 @@ export function AdminLayout() {
           </NavLink>
           <NavLink to="/admin/trips" className={adminLink}>
             {t('admin.trips')}
+          </NavLink>
+          <NavLink to="/admin/bookings" className={adminLink}>
+            {t('admin.bookings.nav')}
           </NavLink>
           <NavLink to="/admin/destinations" className={adminLink}>
             {t('admin.destinations.title')}

@@ -1,18 +1,45 @@
 import type { Locale } from '../i18n/config'
 import type { Trip } from '../types/trip'
 
+const localeField = {
+  ar: 'ar',
+  en: 'en',
+  de: 'de',
+  pl: 'pl',
+  cs: 'cs',
+  ro: 'ro',
+  bg: 'bg',
+  it: 'it',
+  fr: 'fr',
+} as const satisfies Record<Locale, string>
+
+function localizedTripValue(
+  trip: Trip,
+  base: 'title' | 'short_description' | 'full_description',
+  locale: Locale,
+): string {
+  const key = `${base}_${localeField[locale]}` as keyof Trip
+  const value = trip[key]
+  if (typeof value === 'string' && value.trim()) return value
+
+  if (locale !== 'en') {
+    const fallback = trip[`${base}_en` as keyof Trip]
+    if (typeof fallback === 'string') return fallback
+  }
+
+  return ''
+}
+
 export function tripTitle(trip: Trip, locale: Locale): string {
-  return locale === 'ar' ? trip.title_ar : trip.title_en
+  return localizedTripValue(trip, 'title', locale)
 }
 
 export function tripShortDescription(trip: Trip, locale: Locale): string {
-  const v = locale === 'ar' ? trip.short_description_ar : trip.short_description_en
-  return v ?? ''
+  return localizedTripValue(trip, 'short_description', locale)
 }
 
 export function tripFullDescription(trip: Trip, locale: Locale): string {
-  const v = locale === 'ar' ? trip.full_description_ar : trip.full_description_en
-  return v ?? ''
+  return localizedTripValue(trip, 'full_description', locale)
 }
 
 const numberFormatLocale: Record<Locale, string> = {

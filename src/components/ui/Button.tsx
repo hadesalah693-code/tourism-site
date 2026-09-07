@@ -1,26 +1,28 @@
 import type { ButtonHTMLAttributes } from 'react'
+import { Magnetic } from './Magnetic'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'secondary' | 'ghost' | 'danger'
   size?: 'sm' | 'md' | 'lg'
+  magnetic?: boolean
 }
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-300 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean-500/80 disabled:pointer-events-none disabled:opacity-45'
+  'inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-wide transition-all duration-500 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500/70 disabled:pointer-events-none disabled:opacity-45'
 
 const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
   primary:
-    'bg-gradient-to-b from-ocean-500 to-ocean-700 text-white shadow-elevate-lg shadow-ocean-900/10 hover:from-ocean-500 hover:to-ocean-800 hover:shadow-elevate-lg active:scale-[0.99] [text-shadow:0_1px_0_rgba(0,0,0,0.12)]',
+    'btn-sheen bg-gradient-to-r from-gold-400 to-orange-500 text-navy-950 shadow-[0_18px_50px_-12px_rgba(255,107,53,0.55)] hover:from-gold-300 hover:to-orange-400 hover:shadow-[0_20px_60px_-12px_rgba(239,88,52,0.6)] active:scale-[0.99]',
   secondary:
-    'bg-white/95 text-slate-800 shadow-elevate ring-1 ring-slate-200/80 hover:ring-slate-300/90 hover:shadow-elevate-lg active:scale-[0.99]',
-  ghost: 'bg-transparent text-slate-600 hover:bg-slate-100/80 hover:text-slate-900 active:scale-[0.99]',
+    'bg-transparent text-navy-800 border border-navy-900/15 hover:border-orange-500/50 hover:text-orange-600 active:scale-[0.99] backdrop-blur-sm',
+  ghost: 'bg-transparent text-sand-700 hover:bg-sand-100/70 hover:text-sand-900 active:scale-[0.99]',
   danger: 'bg-red-600 text-white shadow-elevate hover:bg-red-700 hover:shadow-elevate-lg active:scale-[0.99]',
 }
 
 const sizes: Record<NonNullable<ButtonProps['size']>, string> = {
-  sm: 'px-3 py-1.5 text-sm',
-  md: 'px-4 py-2.5 text-sm',
-  lg: 'px-6 py-3 text-base',
+  sm: 'px-4 py-2 text-xs',
+  md: 'px-6 py-3 text-sm',
+  lg: 'px-9 py-4 text-sm tracking-[0.08em] uppercase',
 }
 
 export function Button({
@@ -28,7 +30,19 @@ export function Button({
   variant = 'primary',
   size = 'md',
   type = 'button',
+  magnetic = false,
   ...props
 }: ButtonProps) {
-  return <button type={type} className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...props} />
+  const button = (
+    <button
+      type={type}
+      className={`relative overflow-hidden ${base} ${variants[variant]} ${sizes[size]} ${className}`}
+      {...props}
+    />
+  )
+
+  if (magnetic) {
+    return <Magnetic>{button}</Magnetic>
+  }
+  return button
 }

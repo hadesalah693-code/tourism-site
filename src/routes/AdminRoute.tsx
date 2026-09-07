@@ -8,7 +8,7 @@ export function AdminRoute() {
   if (loading) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center bg-slate-50">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-ocean-500 border-t-transparent" />
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-orange-500 border-t-transparent" />
       </div>
     )
   }

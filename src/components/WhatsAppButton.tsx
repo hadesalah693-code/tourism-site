@@ -3,7 +3,7 @@ import { MessageCircle } from './icons'
 const DEFAULT_WA = '201000000000'
 
 const btnPrimary =
-  'inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-base font-medium transition-all duration-300 ease-out bg-gradient-to-b from-ocean-500 to-ocean-700 text-white shadow-elevate-lg shadow-ocean-900/10 hover:from-ocean-500 hover:to-ocean-800 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean-500/80 [text-shadow:0_1px_0_rgba(0,0,0,0.1)]'
+  'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-medium transition-all duration-500 ease-out bg-gradient-to-r from-gold-400 to-orange-500 text-navy-950 shadow-[0_18px_40px_-12px_rgba(255,107,53,0.5)] hover:from-gold-300 hover:to-orange-400 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500/70'
 
 function buildWhatsAppUrl(phone: string, text: string): string {
   const n = phone.replace(/\D/g, '')
@@ -43,7 +43,7 @@ export function WhatsAppFloatingButton({ message, label }: { message: string; la
       href={href}
       target="_blank"
       rel="noreferrer noopener"
-      className="fixed bottom-5 z-40 flex h-14 w-14 items-center justify-center rounded-full border border-white/25 bg-[#25D366] text-white shadow-elevate-lg shadow-emerald-900/20 transition duration-300 ease-out hover:scale-105 hover:shadow-elevate-lg ltr:right-5 rtl:left-5"
+      className="fixed bottom-5 z-40 flex h-14 w-14 items-center justify-center rounded-full border border-gold-300/50 bg-gradient-to-r from-gold-400 to-orange-500 text-navy-950 shadow-[0_18px_50px_-10px_rgba(240,68,36,0.55)] transition duration-300 ease-out hover:scale-105 ltr:right-5 rtl:left-5"
       aria-label={label}
     >
       <MessageCircle className="h-7 w-7" />

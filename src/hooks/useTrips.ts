@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { demoTrips } from '../data/demoTrips'
+import { allCatalogTrips, mergeRemoteTrips } from '../lib/tripAdmin'
 import { isSupabaseConfigured, supabase } from '../lib/supabase'
 import type { Destination, Trip } from '../types/trip'
 
@@ -25,8 +25,8 @@ function sortTrips(rows: Trip[], sort: TripSort): Trip[] {
   return next
 }
 
-function filterDemoTrips(filters: TripFilters): Trip[] {
-  let rows = demoTrips.filter((trip) => filters.includeInactive || trip.is_active)
+function filterTrips(source: Trip[], filters: TripFilters): Trip[] {
+  let rows = source.filter((trip) => filters.includeInactive || trip.is_active)
 
   if (filters.destination && filters.destination !== 'all') {
     rows = rows.filter((trip) => trip.destination === filters.destination)
@@ -41,6 +41,10 @@ function filterDemoTrips(filters: TripFilters): Trip[] {
   }
 
   return sortTrips(rows, filters.sort ?? 'newest')
+}
+
+function filterDemoTrips(filters: TripFilters): Trip[] {
+  return filterTrips(allCatalogTrips(), filters)
 }
 
 export function useTrips(filters: TripFilters = {}) {
@@ -107,7 +111,7 @@ export function useTrips(filters: TripFilters = {}) {
         setTrips(filterDemoTrips(activeFilters))
       } else {
         const rows = (data as Trip[]) ?? []
-        setTrips(rows.length > 0 ? rows : filterDemoTrips(activeFilters))
+        setTrips(filterTrips(mergeRemoteTrips(rows), activeFilters))
       }
     } catch {
       setError(null)
@@ -136,7 +140,7 @@ export function useTripById(id: string | undefined, opts?: { includeInactive?: b
     }
 
     if (!isSupabaseConfigured) {
-      const row = demoTrips.find((item) => item.id === id) ?? null
+      const row = allCatalogTrips().find((item) => item.id === id) ?? null
       setTrip(row && (opts?.includeInactive || row.is_active) ? row : null)
       setLoading(false)
       return
@@ -158,21 +162,21 @@ export function useTripById(id: string | undefined, opts?: { includeInactive?: b
 
         if (queryError) {
           setError(null)
-          const fallback = demoTrips.find((item) => item.id === id) ?? null
+          const fallback = allCatalogTrips().find((item) => item.id === id) ?? null
           setTrip(fallback && (opts?.includeInactive || fallback.is_active) ? fallback : null)
         } else {
           const row = data as Trip | null
           if (row && !opts?.includeInactive && !row.is_active) {
             setTrip(null)
           } else {
-            const fallback = demoTrips.find((item) => item.id === id) ?? null
+            const fallback = allCatalogTrips().find((item) => item.id === id) ?? null
             setTrip(row ?? (fallback && (opts?.includeInactive || fallback.is_active) ? fallback : null))
           }
         }
       } catch {
         if (!cancelled) {
           setError(null)
-          const fallback = demoTrips.find((item) => item.id === id) ?? null
+          const fallback = allCatalogTrips().find((item) => item.id === id) ?? null
           setTrip(fallback && (opts?.includeInactive || fallback.is_active) ? fallback : null)
         }
       }

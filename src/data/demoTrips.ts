@@ -1,690 +1,398 @@
 import type { Trip } from '../types/trip'
 
+function trip({
+  id,
+  title,
+  short,
+  full,
+  duration,
+  price,
+  featured = false,
+}: {
+  id: string
+  title: string
+  short: string
+  full: string
+  duration: string
+  price: number
+  featured?: boolean
+}): Trip {
+  const gallery_images = [`/trips/${id}/1.jpg`, `/trips/${id}/2.jpg`, `/trips/${id}/3.jpg`]
+
+  return {
+    id,
+    title_ar: title,
+    title_en: title,
+    short_description_ar: short,
+    short_description_en: short,
+    full_description_ar: full,
+    full_description_en: full,
+    destination: 'hurghada',
+    duration,
+    price,
+    currency: 'USD',
+    cover_image: gallery_images[0],
+    gallery_images,
+    is_featured: featured,
+    is_active: true,
+  }
+}
+
 export const demoTrips: Trip[] = [
-  {
-    id: 'real-orange-bay-island',
-    title_ar: 'Orange Bay Island',
-    title_en: 'Orange Bay Island',
-    short_description_ar: 'Snorkeling day from Hurghada with two sea stops, lunch on board, and time on Orange Bay.',
-    short_description_en: 'Snorkeling day from Hurghada with two sea stops, lunch on board, and time on Orange Bay.',
-    full_description_ar:
-      'Enjoy a relaxing day swimming, snorkeling, and sunbathing on a boat cruise to Orange Bay Giftun Island from Hurghada. Includes hotel pickup, two snorkeling stops, lunch on board, equipment, and around two hours on the island.',
-    full_description_en:
-      'Enjoy a relaxing day swimming, snorkeling, and sunbathing on a boat cruise to Orange Bay Giftun Island from Hurghada. Includes hotel pickup, two snorkeling stops, lunch on board, equipment, and around two hours on the island.',
-    destination: 'hurghada',
-    duration: '7 hours',
-    price: 30,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-dolphin-house',
-    title_ar: 'Dolphin House',
-    title_en: 'Dolphin House',
-    short_description_ar: 'Boat trip to swim and snorkel near dolphins with lunch, transfers, and crew support.',
-    short_description_en: 'Boat trip to swim and snorkel near dolphins with lunch, transfers, and crew support.',
-    full_description_ar:
-      'Start with hotel pickup to the boat pier, then enjoy a Red Sea cruise, snorkeling stops, the chance to see dolphins, lunch, and soft drinks before returning to your hotel.',
-    full_description_en:
-      'Start with hotel pickup to the boat pier, then enjoy a Red Sea cruise, snorkeling stops, the chance to see dolphins, lunch, and soft drinks before returning to your hotel.',
-    destination: 'hurghada',
-    duration: '7 hours',
+  trip({
+    id: 'moto-safari-dinner-show',
+    title: 'Moto Safari + Dinner + Show',
+    short:
+      'Exciting desert adventure combining quad biking, Bedouin culture, camel rides, dinner, and oriental entertainment.',
+    full:
+      'Program:\n- 50 km quad safari ride\n- Visit Bedouin village\n- Egyptian tea and fresh bread tasting\n- Camel riding\n- Buffet dinner\n- Belly dance and fire show\n- Hotel transfer included\n\nTiming: Daily — 14:00 to 19:00\nChildren: Kids under 5 free. Kids 5–10: 50% discount.\nHero image theme: Desert quad biking at sunset + Bedouin camp + oriental night show.',
+    duration: '14:00 to 19:00',
     price: 25,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-mahmya-island',
-    title_ar: 'Mahmya Island',
-    title_en: 'Mahmya Island',
-    short_description_ar: 'Giftun Island National Park, turquoise water, snorkeling, beach time, and island lunch.',
-    short_description_en: 'Giftun Island National Park, turquoise water, snorkeling, beach time, and island lunch.',
-    full_description_ar:
-      'Discover Mahmya Island in the Red Sea, part of Giftun Island National Park. The trip includes hotel transfers, boat sailing, snorkeling in clear lagoons, beach time, and lunch at the island restaurant.',
-    full_description_en:
-      'Discover Mahmya Island in the Red Sea, part of Giftun Island National Park. The trip includes hotel transfers, boat sailing, snorkeling in clear lagoons, beach time, and lunch at the island restaurant.',
-    destination: 'hurghada',
-    duration: '7 hours',
-    price: 65,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-paradise-island',
-    title_ar: 'Paradise Island',
-    title_en: 'Paradise Island',
-    short_description_ar: 'Classic island boat trip with snorkeling, beach time, lunch, and Red Sea views.',
-    short_description_en: 'Classic island boat trip with snorkeling, beach time, lunch, and Red Sea views.',
-    full_description_ar:
-      'A full-day boat excursion to Paradise Island with pickup from your accommodation, a scenic cruise, snorkeling stops, lunch, and time to relax by the clear water.',
-    full_description_en:
-      'A full-day boat excursion to Paradise Island with pickup from your accommodation, a scenic cruise, snorkeling stops, lunch, and time to relax by the clear water.',
-    destination: 'hurghada',
-    duration: '8 hours',
-    price: 30,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2019/11/222129697_2733987863559543_7214314454712246348_n.jpg',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2019/11/222129697_2733987863559543_7214314454712246348_n.jpg'],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-super-utopia-island',
-    title_ar: 'Super Utopia Island',
-    title_en: 'Super Utopia Island',
-    short_description_ar: 'Utopia Island sea day with snorkeling, glass boat, banana boat, and crazy sofa.',
-    short_description_en: 'Utopia Island sea day with snorkeling, glass boat, banana boat, and crazy sofa.',
-    full_description_ar:
-      'For water sports lovers: enjoy the Red Sea on Utopia Island with snorkeling, glass boat, banana boat, crazy sofa ride, lunch, and hotel transfers.',
-    full_description_en:
-      'For water sports lovers: enjoy the Red Sea on Utopia Island with snorkeling, glass boat, banana boat, crazy sofa ride, lunch, and hotel transfers.',
-    destination: 'hurghada',
-    duration: '8 hours',
-    price: 30,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2021/07/b6.jpg',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2021/07/b6.jpg'],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-abu-dabab',
-    title_ar: 'Abu Dabab',
-    title_en: 'Abu Dabab',
-    short_description_ar: 'Famous Marsa Alam snorkeling and diving bay with turtles, reefs, lunch, and guide.',
-    short_description_en: 'Famous Marsa Alam snorkeling and diving bay with turtles, reefs, lunch, and guide.',
-    full_description_ar:
-      'Abu Dabab is one of the most famous Red Sea snorkeling and diving sites. Swim near green turtles, colorful reefs, and clear shallow water. Includes lunch, guide, tea or coffee, and transfer.',
-    full_description_en:
-      'Abu Dabab is one of the most famous Red Sea snorkeling and diving sites. Swim near green turtles, colorful reefs, and clear shallow water. Includes lunch, guide, tea or coffee, and transfer.',
-    destination: 'marsa_alam',
-    duration: '8 hours',
-    price: 45,
-    currency: 'USD',
-    cover_image: '/trips/marsa-alam/marsa-alam-01.jfif',
-    gallery_images: ['/trips/marsa-alam/marsa-alam-08.jfif'],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-sataya-dolphin-house',
-    title_ar: 'Sataya Dolphin House',
-    title_en: 'Sataya Dolphin House',
-    short_description_ar: 'Snorkeling in Sataya reef, one of Marsa Alam best places to see dolphins in the wild.',
-    short_description_en: 'Snorkeling in Sataya reef, one of Marsa Alam best places to see dolphins in the wild.',
-    full_description_ar:
-      'Snorkel in the amazing Sataya reef, known for wild dolphins and beautiful coral. A long sea day for guests who want one of the best Marsa Alam snorkeling experiences.',
-    full_description_en:
-      'Snorkel in the amazing Sataya reef, known for wild dolphins and beautiful coral. A long sea day for guests who want one of the best Marsa Alam snorkeling experiences.',
-    destination: 'marsa_alam',
-    duration: '8 hours',
+    featured: true,
+  }),
+  trip({
+    id: 'utopia-island',
+    title: 'Utopia Island',
+    short: 'Relaxing island trip with snorkeling, SeaScope experience, lunch, and beautiful Red Sea views.',
+    full:
+      'Program:\n- Snorkeling stop at coral reefs\n- SeaScope glass boat experience\n- Snorkeling equipment included\n- Lunch and soft drinks\n- 1.5-hour stay on Utopia Island\n- Hotel transfer included\n\nTiming: Daily — 09:00 to 17:00\nChildren: Kids under 5 free. Kids 5–10: 50% discount.\nHero image theme: Crystal-clear beach water + island relaxation + snorkeling.',
+    duration: '09:00 to 17:00',
     price: 60,
-    currency: 'USD',
-    cover_image: '/trips/marsa-alam/marsa-alam-02.jfif',
-    gallery_images: [],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-hamata-island',
-    title_ar: 'Hamata Island',
-    title_en: 'Hamata Island',
-    short_description_ar: 'Southern Red Sea island trip near Marsa Alam with coral reefs and quiet beaches.',
-    short_description_en: 'Southern Red Sea island trip near Marsa Alam with coral reefs and quiet beaches.',
-    full_description_ar:
-      'Hamata is one of the top snorkeling areas in the south of Egypt, with quiet islands, clear water, reefs, and a peaceful Red Sea atmosphere.',
-    full_description_en:
-      'Hamata is one of the top snorkeling areas in the south of Egypt, with quiet islands, clear water, reefs, and a peaceful Red Sea atmosphere.',
-    destination: 'marsa_alam',
-    duration: '8 hours',
-    price: 55,
-    currency: 'USD',
-    cover_image: '/trips/marsa-alam/marsa-alam-03.jfif',
-    gallery_images: [],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'real-sea-scope-submarine',
-    title_ar: 'Sea Scope Submarine Trip',
-    title_en: 'Sea Scope Submarine Trip',
-    short_description_ar: 'Semi-submarine trip to see coral reefs and fish without diving.',
-    short_description_en: 'Semi-submarine trip to see coral reefs and fish without diving.',
-    full_description_ar:
-      'Climb aboard a semi-submarine with panoramic underwater windows and explore the colorful underwater world off Hurghada without getting wet.',
-    full_description_en:
-      'Climb aboard a semi-submarine with panoramic underwater windows and explore the colorful underwater world off Hurghada without getting wet.',
-    destination: 'hurghada',
-    duration: '3 hours',
-    price: 15,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2019/11/Sea-Scope-submarine-hurghada-picasso-travel.png',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2019/11/Sea-Scope-submarine-hurghada-picasso-travel.png'],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'real-sindbad-submarine',
-    title_ar: 'Hurghada Sindbad Submarine',
-    title_en: 'Hurghada Sindbad Submarine',
-    short_description_ar: 'Unique underwater adventure by submarine in Hurghada.',
-    short_description_en: 'Unique underwater adventure by submarine in Hurghada.',
-    full_description_ar:
-      'Experience an entertaining underwater excursion on board the Sindbad Submarine, with hotel transfer and views of coral reefs and Red Sea marine life.',
-    full_description_en:
-      'Experience an entertaining underwater excursion on board the Sindbad Submarine, with hotel transfer and views of coral reefs and Red Sea marine life.',
-    destination: 'hurghada',
-    duration: '3 hours',
-    price: 35,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2019/11/Sindbad-Submarine-trip-picasso-travel-3.png',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2019/11/Sindbad-Submarine-trip-picasso-travel-3.png'],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'real-intro-diving',
-    title_ar: 'Intro Diving',
-    title_en: 'Intro Diving',
-    short_description_ar: 'Beginner diving trip from Hurghada with instructor, equipment, and boat day.',
-    short_description_en: 'Beginner diving trip from Hurghada with instructor, equipment, and boat day.',
-    full_description_ar:
-      'A beginner-friendly diving experience from Hurghada. The boat takes you to beautiful reef sites with professional instructor support and diving equipment.',
-    full_description_en:
-      'A beginner-friendly diving experience from Hurghada. The boat takes you to beautiful reef sites with professional instructor support and diving equipment.',
-    destination: 'hurghada',
-    duration: '7 hours',
-    price: 35,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2019/11/travel-egypt-picasso-travel-hurghada-excursion-Picasso-diving.png',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2019/11/travel-egypt-picasso-travel-hurghada-excursion-Picasso-diving.png'],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'real-quad-3-hours',
-    title_ar: '3 Hours Quad Morning or Afternoon',
-    title_en: '3 Hours Quad Morning or Afternoon',
-    short_description_ar: 'Exciting quad bike desert tour from Hurghada, available morning or afternoon.',
-    short_description_en: 'Exciting quad bike desert tour from Hurghada, available morning or afternoon.',
-    full_description_ar:
-      'Explore the desert by quad bike on this exciting tour from Hurghada. Includes hotel pickup, quad driving, desert views, and a short Bedouin-style stop.',
-    full_description_en:
-      'Explore the desert by quad bike on this exciting tour from Hurghada. Includes hotel pickup, quad driving, desert views, and a short Bedouin-style stop.',
-    destination: 'hurghada',
-    duration: '3 hours',
-    price: 35,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2019/11/270173365_232219119064671_390314491738445415_n.jpg',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2019/11/270173365_232219119064671_390314491738445415_n.jpg'],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-super-safari',
-    title_ar: 'Super Safari',
-    title_en: 'Super Safari',
-    short_description_ar: 'Quad bike, jeep, camel ride, Bedouin dinner, tea, water, and desert guide.',
-    short_description_en: 'Quad bike, jeep, camel ride, Bedouin dinner, tea, water, and desert guide.',
-    full_description_ar:
-      'A complete desert adventure with 45-minute quad bike ride, jeep ride, camel ride, Bedouin party, dinner, cola, water, tea, and guide.',
-    full_description_en:
-      'A complete desert adventure with 45-minute quad bike ride, jeep ride, camel ride, Bedouin party, dinner, cola, water, tea, and guide.',
-    destination: 'hurghada',
-    duration: '6 hours',
-    price: 45,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2021/07/redseatour011.jpg',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2021/07/redseatour011.jpg'],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-golden-safari',
-    title_ar: 'Golden Safari',
-    title_en: 'Golden Safari',
-    short_description_ar: 'Bedouin village, buggy, quad, jeep, camel ride, dinner, show program, and sunset.',
-    short_description_en: 'Bedouin village, buggy, quad, jeep, camel ride, dinner, show program, and sunset.',
-    full_description_ar:
-      'A full desert program including a real Bedouin village, buggy ride, quad ride, jeep ride, camel ride, Bedouin bread, dinner, drinks, show program, and sunset.',
-    full_description_en:
-      'A full desert program including a real Bedouin village, buggy ride, quad ride, jeep ride, camel ride, Bedouin bread, dinner, drinks, show program, and sunset.',
-    destination: 'hurghada',
-    duration: '6 hours',
-    price: 35,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2019/11/desert-trip-picasso-safari.png',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2019/11/desert-trip-picasso-safari.png'],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'real-horse-riding-desert',
-    title_ar: 'Riding Arabic Horses in the Desert',
-    title_en: 'Riding Arabic Horses in the Desert',
-    short_description_ar: 'Visit an Arabic horse farm and ride in the desert with hotel transfer.',
-    short_description_en: 'Visit an Arabic horse farm and ride in the desert with hotel transfer.',
-    full_description_ar:
-      'Visit the Arabic Horses Farm, learn about the horses, then enjoy one hour riding in the desert. Hotel pickup and drop-off are included.',
-    full_description_en:
-      'Visit the Arabic Horses Farm, learn about the horses, then enjoy one hour riding in the desert. Hotel pickup and drop-off are included.',
-    destination: 'hurghada',
+    featured: true,
+  }),
+  trip({
+    id: 'horse-riding',
+    title: 'Horse Riding',
+    short: 'Peaceful horseback riding experience through desert landscapes and Red Sea beaches.',
+    full:
+      'Program:\n- 2-hour horse ride\n- Desert trail\n- Beach trail with water entry option\n- Hotel transfer included\n\nTiming: Daily — 10:00 to 16:00\nHero image theme: Horse riding on the beach during sunset.',
     duration: '2 hours',
-    price: 35,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2021/09/IMG-20210901-WA0033.jpg',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2021/09/IMG-20210901-WA0033.jpg'],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'real-luxor-from-hurghada',
-    title_ar: 'Luxor from Hurghada',
-    title_en: 'Luxor from Hurghada',
-    short_description_ar: 'Full-day Luxor trip from Hurghada with Karnak Temple, lunch, and historic sites.',
-    short_description_en: 'Full-day Luxor trip from Hurghada with Karnak Temple, lunch, and historic sites.',
-    full_description_ar:
-      'After hotel pickup, travel to Luxor to visit famous ancient Egyptian sites including Karnak Temple. Enjoy lunch and guided sightseeing before returning to Hurghada.',
-    full_description_en:
-      'After hotel pickup, travel to Luxor to visit famous ancient Egyptian sites including Karnak Temple. Enjoy lunch and guided sightseeing before returning to Hurghada.',
-    destination: 'hurghada',
-    duration: '1 day',
-    price: 65,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2019/11/luxor-day-trip-picasso-travel-2.png',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2019/11/luxor-day-trip-picasso-travel-2.png'],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-cairo-from-hurghada',
-    title_ar: 'Cairo from Hurghada',
-    title_en: 'Cairo from Hurghada',
-    short_description_ar: 'Full-day Cairo and Giza tour with pyramids, Sphinx, museum, and transfers.',
-    short_description_en: 'Full-day Cairo and Giza tour with pyramids, Sphinx, museum, and transfers.',
-    full_description_ar:
-      'Travel back in time on a full-day tour to Cairo and Giza from Hurghada, with air-conditioned transfers, the pyramids, Sphinx, museum visit, lunch, and guide.',
-    full_description_en:
-      'Travel back in time on a full-day tour to Cairo and Giza from Hurghada, with air-conditioned transfers, the pyramids, Sphinx, museum visit, lunch, and guide.',
-    destination: 'hurghada',
-    duration: '1 day',
-    price: 65,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'real-el-gouna-city-tour',
-    title_ar: 'El Gouna City Tour',
-    title_en: 'El Gouna City Tour',
-    short_description_ar: 'Visit El Gouna beaches, marina, lagoons, and sunny city atmosphere from Hurghada.',
-    short_description_en: 'Visit El Gouna beaches, marina, lagoons, and sunny city atmosphere from Hurghada.',
-    full_description_ar:
-      'Experience El Gouna with hotel pickup from Hurghada, beaches, marina, lagoons, and time to enjoy one of the Red Sea most relaxed resort towns.',
-    full_description_en:
-      'Experience El Gouna with hotel pickup from Hurghada, beaches, marina, lagoons, and time to enjoy one of the Red Sea most relaxed resort towns.',
-    destination: 'hurghada',
-    duration: '4 hours',
-    price: 30,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2021/09/الجونه.jpg',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2021/09/الجونه.jpg'],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'real-hurghada-city-tour',
-    title_ar: 'Hurghada City Tour',
-    title_en: 'Hurghada City Tour',
-    short_description_ar: 'A local guided city tour through Hurghada highlights, marina, mosque, and markets.',
-    short_description_en: 'A local guided city tour through Hurghada highlights, marina, mosque, and markets.',
-    full_description_ar:
-      'A relaxed sightseeing tour in Hurghada with a local guide introducing the city highlights, marina, mosque, shops, and local atmosphere.',
-    full_description_en:
-      'A relaxed sightseeing tour in Hurghada with a local guide introducing the city highlights, marina, mosque, shops, and local atmosphere.',
-    destination: 'hurghada',
-    duration: '3 hours',
-    price: 10,
-    currency: 'USD',
-    cover_image: 'https://redsea-tours.com/wp-content/uploads/2021/08/06обзорная-по-городу.jpg',
-    gallery_images: ['https://redsea-tours.com/wp-content/uploads/2021/08/06обзорная-по-городу.jpg'],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'hula-hula-giftun',
-    title_ar: 'Hula Hula - Paradise Island',
-    title_en: 'Hula Hula - Paradise Island',
-    short_description_ar: 'Full-day sea trip to Giftun with beach time, lunch, snorkeling, and transfers.',
-    short_description_en: 'Full-day sea trip to Giftun with beach time, lunch, snorkeling, and transfers.',
-    full_description_ar:
-      'A bright Red Sea day with hotel pickup, boat cruise, two snorkeling stops, lunch on board, and relaxed beach time on Giftun Island.',
-    full_description_en:
-      'A bright Red Sea day with hotel pickup, boat cruise, two snorkeling stops, lunch on board, and relaxed beach time on Giftun Island.',
-    destination: 'hurghada',
-    duration: '9 hours',
-    price: 35,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [
-      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1400&q=85',
-      'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=85',
-    ],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'orange-bay-hurghada',
-    title_ar: 'Orange Bay',
-    title_en: 'Orange Bay',
-    short_description_ar: 'Cruise, snorkeling, lunch, and beach time on one of Hurghada best-known islands.',
-    short_description_en: 'Cruise, snorkeling, lunch, and beach time on one of Hurghada best-known islands.',
-    full_description_ar:
-      'A classic Hurghada island day: clear water, sandy beach, snorkeling equipment, lunch, soft drinks, and simple WhatsApp booking.',
-    full_description_en:
-      'A classic Hurghada island day: clear water, sandy beach, snorkeling equipment, lunch, soft drinks, and simple WhatsApp booking.',
-    destination: 'hurghada',
-    duration: '8 hours',
-    price: 40,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=85',
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=1400&q=85',
-    ],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'diving-hurghada',
-    title_ar: 'Intro Diving Hurghada',
-    title_en: 'Intro Diving Hurghada',
-    short_description_ar: 'Two guided intro dives for beginners with equipment, lunch, and boat transfers.',
-    short_description_en: 'Two guided intro dives for beginners with equipment, lunch, and boat transfers.',
-    full_description_ar:
-      'Beginner-friendly diving with instructors, full equipment, two sea stops, lunch on board, and transfer from your hotel.',
-    full_description_en:
-      'Beginner-friendly diving with instructors, full equipment, two sea stops, lunch on board, and transfer from your hotel.',
-    destination: 'hurghada',
-    duration: '7 hours',
-    price: 45,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [
-      'https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1400&q=85',
-      'https://images.unsplash.com/photo-1582967788606-a171c1080cb0?auto=format&fit=crop&w=1400&q=85',
-    ],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'sea-scope',
-    title_ar: 'Sea Scope Glass Boat',
-    title_en: 'Sea Scope Glass Boat',
-    short_description_ar: 'Glass-bottom boat trip for families who want to see reefs without diving.',
-    short_description_en: 'Glass-bottom boat trip for families who want to see reefs without diving.',
-    full_description_ar:
-      'A light family trip by glass-bottom boat, ideal for children and guests who prefer staying dry while seeing the reef.',
-    full_description_en:
-      'A light family trip by glass-bottom boat, ideal for children and guests who prefer staying dry while seeing the reef.',
-    destination: 'hurghada',
-    duration: '3 hours',
-    price: 20,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1526495124232-a04e1849168c?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [
-      'https://images.unsplash.com/photo-1540202404-a2f29016b523?auto=format&fit=crop&w=1400&q=85',
-    ],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'quad-vip-safari',
-    title_ar: 'Quad VIP Desert Safari',
-    title_en: 'Quad VIP Desert Safari',
-    short_description_ar: 'Fast desert quad ride with Bedouin stop, tea, and sunset atmosphere.',
-    short_description_en: 'Fast desert quad ride with Bedouin stop, tea, and sunset atmosphere.',
-    full_description_ar:
-      'Ride through the desert by quad bike, visit a Bedouin-style stop, drink tea, and enjoy a golden sunset outside Hurghada.',
-    full_description_en:
-      'Ride through the desert by quad bike, visit a Bedouin-style stop, drink tea, and enjoy a golden sunset outside Hurghada.',
-    destination: 'hurghada',
-    duration: '3 hours',
-    price: 35,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [
-      'https://images.unsplash.com/photo-1682686580391-615b1f28e5ee?auto=format&fit=crop&w=1400&q=85',
-      'https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?auto=format&fit=crop&w=1400&q=85',
-    ],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'super-bedouin-safari',
-    title_ar: 'Super Bedouin Safari',
-    title_en: 'Super Bedouin Safari',
-    short_description_ar: 'Jeep safari, quad, camel ride, dinner, and evening desert show.',
-    short_description_en: 'Jeep safari, quad, camel ride, dinner, and evening desert show.',
-    full_description_ar:
-      'A full desert program with pickup, jeep ride, quad experience, camel ride, dinner, and a relaxed evening show.',
-    full_description_en:
-      'A full desert program with pickup, jeep ride, quad experience, camel ride, dinner, and a relaxed evening show.',
-    destination: 'hurghada',
-    duration: '6 hours',
-    price: 30,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [
-      'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1400&q=85',
-    ],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'cairo-museum-pyramids',
-    title_ar: 'Cairo + Grand Egyptian Museum',
-    title_en: 'Cairo + Grand Egyptian Museum',
-    short_description_ar: 'One-day history tour to Cairo, pyramids, Sphinx, museum, lunch, and transfers.',
-    short_description_en: 'One-day history tour to Cairo, pyramids, Sphinx, museum, lunch, and transfers.',
-    full_description_ar:
-      'Visit Cairo in one day with the pyramids, Sphinx, Grand Egyptian Museum, lunch, guided program, and hotel pickup.',
-    full_description_en:
-      'Visit Cairo in one day with the pyramids, Sphinx, Grand Egyptian Museum, lunch, guided program, and hotel pickup.',
-    destination: 'hurghada',
-    duration: '1 day',
-    price: 110,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1539768942893-daf53e448371?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [
-      'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1400&q=85',
-      'https://images.unsplash.com/photo-1572252009286-268acec5ca0a?auto=format&fit=crop&w=1400&q=85',
-    ],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'luxor-day-trip',
-    title_ar: 'Luxor Day Trip',
-    title_en: 'Luxor Day Trip',
-    short_description_ar: 'Temples, tombs, Nile atmosphere, lunch, and guided history in Luxor.',
-    short_description_en: 'Temples, tombs, Nile atmosphere, lunch, and guided history in Luxor.',
-    full_description_ar:
-      'A rich day in Luxor with Karnak Temple, the West Bank, famous tombs, lunch, and guided storytelling.',
-    full_description_en:
-      'A rich day in Luxor with Karnak Temple, the West Bank, famous tombs, lunch, and guided storytelling.',
-    destination: 'hurghada',
-    duration: '1 day',
-    price: 95,
-    currency: 'USD',
-    cover_image: 'https://images.unsplash.com/photo-1602526210295-d50f6e688f0e?auto=format&fit=crop&w=1600&q=85',
-    gallery_images: [
-      'https://images.unsplash.com/photo-1592488831372-7f536a39d6dc?auto=format&fit=crop&w=1400&q=85',
-    ],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'hurghada-pirate-boat',
-    title_ar: 'رحلة القراصنة البحرية',
-    title_en: 'Pirate Boat Hurghada',
-    short_description_ar: 'يوم بحري ممتع من الغردقة على مركب القراصنة مع سنوركلينج، غداء، وفقرات ترفيهية.',
-    short_description_en: 'Fun sea day from Hurghada on a pirate-style boat with snorkeling, lunch, and entertainment.',
-    full_description_ar:
-      'استمتع برحلة بحرية مناسبة للعائلات من الغردقة على مركب القراصنة. البرنامج يشمل انتقالات الفندق، إبحار في البحر الأحمر، توقفات سنوركلينج، غداء على المركب، مشروبات، ووقت للاسترخاء وسط أجواء مرحة.',
-    full_description_en:
-      'Enjoy a family-friendly pirate boat trip from Hurghada with hotel transfers, Red Sea sailing, snorkeling stops, lunch on board, drinks, and a relaxed entertainment atmosphere.',
-    destination: 'hurghada',
-    duration: '7 hours',
-    price: 35,
-    currency: 'USD',
-    cover_image: '/trips/hurghada/hurghada-01.jfif',
-    gallery_images: [],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'hurghada-mega-safari',
-    title_ar: 'ميجا سفاري الغردقة',
-    title_en: 'Hurghada Mega Safari',
-    short_description_ar: 'مغامرة صحراوية كاملة من الغردقة تشمل كواد، جيب، جمل، عشاء بدوي، وعرض مسائي.',
-    short_description_en: 'Full Hurghada desert adventure with quad bike, jeep, camel ride, Bedouin dinner, and evening show.',
-    full_description_ar:
-      'برنامج سفاري شامل في صحراء الغردقة يبدأ بالانتقال من الفندق، ثم قيادة الكواد، جولة جيب، ركوب جمل، زيارة محطة بدوية، عشاء، مشروبات، وعرض مسائي قبل العودة.',
-    full_description_en:
-      'A complete safari program in the Hurghada desert with hotel pickup, quad biking, jeep tour, camel ride, Bedouin stop, dinner, drinks, and an evening show before returning.',
-    destination: 'hurghada',
-    duration: '6 hours',
-    price: 40,
-    currency: 'USD',
-    cover_image: '/trips/hurghada/hurghada-02.jfif',
-    gallery_images: [],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'hurghada-eden-island',
-    title_ar: 'جزيرة إيدن من الغردقة',
-    title_en: 'Eden Island from Hurghada',
-    short_description_ar: 'رحلة جزيرة هادئة بمياه صافية، سنوركلينج، غداء، ووقت على الشاطئ.',
-    short_description_en: 'Quiet island trip with clear water, snorkeling, lunch, and relaxed beach time.',
-    full_description_ar:
-      'رحلة بحرية يوم كامل من الغردقة إلى جزيرة إيدن، تشمل انتقالات الفندق، توقفات سنوركلينج، معدات، غداء على المركب، مشروبات، ووقت حر للاستمتاع بالشاطئ والمياه الصافية.',
-    full_description_en:
-      'A full-day sea trip from Hurghada to Eden Island with hotel transfers, snorkeling stops, equipment, lunch on board, drinks, and free time to enjoy the beach and clear water.',
-    destination: 'hurghada',
-    duration: '8 hours',
-    price: 45,
-    currency: 'USD',
-    cover_image: '/trips/hurghada/hurghada-03.jfif',
-    gallery_images: [],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'hurghada-family-aquarium',
-    title_ar: 'أكواريوم الغردقة للعائلات',
-    title_en: 'Hurghada Grand Aquarium',
-    short_description_ar: 'زيارة خفيفة ومناسبة للأطفال لمشاهدة الحياة البحرية والشعاب في أجواء مريحة.',
-    short_description_en: 'Easy family visit to see Red Sea marine life and reefs in a relaxed indoor setting.',
-    full_description_ar:
-      'اختيار مناسب للعائلات والأطفال في الغردقة. تشمل الرحلة انتقالات الفندق ووقت كاف داخل الأكواريوم للتعرف على أسماك البحر الأحمر والحياة البحرية بدون الحاجة لرحلة بحرية طويلة.',
-    full_description_en:
-      'A good choice for families and children in Hurghada. Includes hotel transfers and enough time inside the aquarium to discover Red Sea fish and marine life without a long boat trip.',
-    destination: 'hurghada',
-    duration: '3 hours',
     price: 25,
-    currency: 'USD',
-    cover_image: '/trips/hurghada/hurghada-04.jfif',
-    gallery_images: [],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'marsa-alam-sharm-el-luli',
-    title_ar: 'شاطئ شرم اللولي',
-    title_en: 'Sharm El Luli Beach',
-    short_description_ar: 'واحد من أجمل شواطئ مرسى علم بمياه فيروزية، رمال بيضاء، وسنوركلينج هادئ.',
-    short_description_en: 'One of Marsa Alam finest beaches with turquoise water, white sand, and easy snorkeling.',
-    full_description_ar:
-      'يوم مريح إلى شاطئ شرم اللولي من مرسى علم، يشمل الانتقالات، وقت حر على الشاطئ، سنوركلينج في مياه صافية، ومساعدة من المرشد للاستمتاع بالمكان بهدوء.',
-    full_description_en:
-      'A relaxing day to Sharm El Luli Beach from Marsa Alam with transfers, free beach time, snorkeling in clear water, and guide support for an easy experience.',
-    destination: 'marsa_alam',
-    duration: '7 hours',
-    price: 50,
-    currency: 'USD',
-    cover_image: '/trips/marsa-alam/marsa-alam-04.jfif',
-    gallery_images: [],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'marsa-alam-port-ghalib',
-    title_ar: 'جولة بورت غالب',
-    title_en: 'Port Ghalib City Tour',
-    short_description_ar: 'جولة مسائية هادئة في بورت غالب مع المارينا، الكافيهات، والتسوق.',
-    short_description_en: 'Relaxed evening tour in Port Ghalib with marina views, cafes, and shopping time.',
-    full_description_ar:
-      'استمتع بجولة سهلة من مرسى علم إلى بورت غالب، تشمل الانتقال من الفندق، المشي في المارينا، وقت حر للكافيهات والتسوق، وأجواء مسائية مناسبة للعائلات والأزواج.',
-    full_description_en:
-      'Enjoy an easy tour from Marsa Alam to Port Ghalib with hotel pickup, marina walk, free time for cafes and shopping, and a relaxed evening atmosphere for families and couples.',
-    destination: 'marsa_alam',
-    duration: '4 hours',
-    price: 20,
-    currency: 'USD',
-    cover_image: '/trips/marsa-alam/marsa-alam-05.jfif',
-    gallery_images: [],
-    is_featured: false,
-    is_active: true,
-  },
-  {
-    id: 'marsa-alam-super-safari',
-    title_ar: 'سوبر سفاري مرسى علم',
-    title_en: 'Marsa Alam Super Safari',
-    short_description_ar: 'رحلة صحراء من مرسى علم مع كواد، جمل، قرية بدوية، عشاء، ومشاهدة الغروب.',
-    short_description_en: 'Marsa Alam desert trip with quad bike, camel ride, Bedouin village, dinner, and sunset.',
-    full_description_ar:
-      'برنامج سفاري في صحراء مرسى علم يشمل الانتقالات، قيادة الكواد، ركوب الجمل، زيارة قرية بدوية، شاي، عشاء، ومشاهدة الغروب في أجواء صحراوية هادئة.',
-    full_description_en:
-      'A Marsa Alam desert safari with transfers, quad biking, camel ride, Bedouin village visit, tea, dinner, and sunset views in a calm desert setting.',
-    destination: 'marsa_alam',
-    duration: '5 hours',
-    price: 45,
-    currency: 'USD',
-    cover_image: '/trips/marsa-alam/marsa-alam-06.jfif',
-    gallery_images: [],
-    is_featured: true,
-    is_active: true,
-  },
-  {
-    id: 'marsa-alam-coral-garden',
-    title_ar: 'كورال جاردن مرسى علم',
-    title_en: 'Marsa Alam Coral Garden',
-    short_description_ar: 'سنوركلينج في شعاب مرجانية قريبة من مرسى علم مع مرشد، معدات، وغداء.',
-    short_description_en: 'Snorkeling at colorful reefs near Marsa Alam with guide, equipment, and lunch.',
-    full_description_ar:
-      'رحلة سنوركلينج مناسبة لكل المستويات في مرسى علم، تشمل الانتقالات، مرشد، معدات سنوركلينج، وقت في مواقع شعاب مرجانية ملونة، وغداء خفيف خلال اليوم.',
-    full_description_en:
-      'A snorkeling trip for all levels in Marsa Alam with transfers, guide, snorkeling equipment, time at colorful reef sites, and a light lunch during the day.',
-    destination: 'marsa_alam',
-    duration: '6 hours',
+  }),
+  trip({
+    id: 'hula-hula-island-vip',
+    title: 'Hula Hula Island VIP',
+    short: 'Premium island trip with snorkeling, luxury boat experience, and tropical beach vibes.',
+    full:
+      'Program:\n- Two snorkeling stops\n- Snorkeling equipment included\n- Lunch and soft drinks\n- 1.5-hour island stay\n- Hotel transfer included\n\nTiming: Daily — 09:00 to 17:00\nHero image theme: Luxury beach island + swings + turquoise water.',
+    duration: '09:00 to 17:00',
+    price: 25,
+    featured: true,
+  }),
+  trip({
+    id: 'moto-beach-safari',
+    title: 'Moto Beach Safari',
+    short: 'Adventure safari mixing beach scenery with desert quad biking.',
+    full:
+      'Program:\n- 2-hour quad tour\n- Desert and beach routes\n- Scenic photo stops\n- Hotel transfer included\n\nTiming: Daily — 09:00 to 16:00\nHero image theme: Quad bike on beach and desert roads.',
+    duration: '2 hours',
+    price: 30,
+  }),
+  trip({
+    id: 'dolphin-house',
+    title: 'Dolphin House',
+    short: 'Boat trip to Dolphin House with snorkeling and chance to swim near dolphins.',
+    full:
+      'Program:\n- Dolphin House snorkeling stop\n- Coral reef snorkeling stop\n- Snorkeling equipment included\n- Lunch and soft drinks\n- Hotel transfer included\n\nTiming: Daily — 09:00 to 17:00\nChildren: Kids under 5 free. Kids 5–10: 15 USD.\nHero image theme: Wild dolphins swimming in open sea.',
+    duration: '09:00 to 17:00',
+    price: 25,
+    featured: true,
+  }),
+  trip({
+    id: 'professional-diving',
+    title: 'Professional Diving',
+    short: 'Professional diving experience for certified divers in the Red Sea.',
+    full:
+      'Program:\n- Two deep diving spots\n- Diving equipment included\n- Personal instructor\n- Lunch and soft drinks\n- Hotel transfer included\n\nTiming: Daily — 09:00 to 16:00\nRequirements: PADI certification required.\nHero image theme: Deep diving with colorful coral reefs and sea life.',
+    duration: '09:00 to 16:00',
     price: 40,
-    currency: 'USD',
-    cover_image: '/trips/marsa-alam/marsa-alam-07.jfif',
-    gallery_images: [],
-    is_featured: false,
-    is_active: true,
-  },
+  }),
+  trip({
+    id: 'eden-island',
+    title: 'Eden Island',
+    short: 'Luxury island day trip with snorkeling and relaxing beach atmosphere.',
+    full:
+      'Program:\n- Snorkeling stop\n- Snorkeling equipment included\n- Breakfast, snacks, and lunch\n- Soft drinks included\n- 3-hour island stay\n- Hotel transfer included\n\nTiming: Daily — 09:00 to 17:00\nHero image theme: Luxury island swing + turquoise water + tropical beach.',
+    duration: '09:00 to 17:00',
+    price: 70,
+    featured: true,
+  }),
+  trip({
+    id: 'paradise-island',
+    title: 'Paradise Island',
+    short: 'Relaxing tropical island trip perfect for snorkeling and beach lovers.',
+    full:
+      'Program:\n- Coral reef snorkeling stop\n- Snorkeling equipment included\n- Lunch and soft drinks\n- 2.5-hour island stay\n- Hotel transfer included\n\nTiming: Daily — 09:00 to 17:00\nExtra notes: Government island tax may apply.\nHero image theme: White sand beach + tropical island + crystal water.',
+    duration: '09:00 to 17:00',
+    price: 45,
+  }),
+  trip({
+    id: 'super-safari',
+    title: 'Super Safari',
+    short: 'Full desert experience with jeep safari, buggy rides, camel riding, dinner, and entertainment.',
+    full:
+      'Program:\n- Jeep desert safari\n- Bedouin village visit\n- Tea and bread tasting\n- Camel riding\n- 30-minute quad ride\n- 20-minute buggy ride\n- Buffet dinner\n- Belly dance and fire show\n- Hotel transfer included\n\nTiming: Daily — 13:00 to 19:00\nHero image theme: Quad biking + camel + desert dinner show.',
+    duration: '13:00 to 19:00',
+    price: 22,
+    featured: true,
+  }),
+  trip({
+    id: 'camel-riding',
+    title: 'Camel Riding',
+    short: 'Traditional camel riding experience through desert and beach areas.',
+    full:
+      'Program:\n- 2-hour camel ride\n- Desert and beach route\n- Hotel transfer included\n\nTiming: Daily — 10:00 to 16:00\nHero image theme: Camel ride in desert during sunset.',
+    duration: '2 hours',
+    price: 25,
+  }),
+  trip({
+    id: 'orange-bay-intro-diving',
+    title: 'Orange Bay + Intro Diving',
+    short: 'Island relaxation combined with beginner diving experience.',
+    full:
+      'Program:\n- Coral reef snorkeling stop\n- Intro diving session with instructor\n- Snorkeling and diving equipment included\n- Lunch and soft drinks\n- 1.5-hour Orange Bay stay\n- Hotel transfer included\n\nTiming: Daily — 09:00 to 17:00\nHero image theme: Orange Bay beach + beginner diving + coral reefs.',
+    duration: '09:00 to 17:00',
+    price: 35,
+    featured: true,
+  }),
+  trip({
+    id: 'swimming-with-dolphins',
+    title: 'Swimming with Dolphins',
+    short: 'Unique dolphin swimming experience in Hurghada dolphinarium.',
+    full:
+      'Program:\n- 5-minute dolphin swimming session\n- Safety equipment available\n- Professional photographers available\n- Hotel transfer included\n\nTiming: Daily — 11:00 and 13:00\nHero image theme: People swimming and playing with dolphins.',
+    duration: '11:00 and 13:00',
+    price: 55,
+  }),
+  trip({
+    id: 'dolphin-photo-session',
+    title: 'Dolphin Photo Session',
+    short: 'Professional dolphin photo session with memorable moments.',
+    full:
+      'Program:\n- 10–20 professional photos\n- Poolside photography session\n- Hotel transfer included\n\nTiming: Daily — 11:00 and 13:00\nHero image theme: Kissing and posing with dolphins.',
+    duration: '11:00 and 13:00',
+    price: 50,
+  }),
+  trip({
+    id: 'intro-diving',
+    title: 'Intro Diving',
+    short: 'First diving experience for beginners in the Red Sea.',
+    full:
+      'Program:\n- Two diving stops\n- Diving equipment included\n- Personal instructor\n- Lunch and soft drinks\n- Hotel transfer included\n\nTiming: Daily — 09:00 to 16:00\nNotes: Maximum beginner depth: 6–8 meters.\nHero image theme: Beginner scuba diving with colorful fish.',
+    duration: '09:00 to 16:00',
+    price: 30,
+  }),
+  trip({
+    id: 'bianca-island',
+    title: 'Bianca Island',
+    short: 'Premium island trip with snorkeling and crystal-clear water.',
+    full:
+      'Program:\n- Coral reef snorkeling stop\n- SeaScope experience\n- Snorkeling equipment included\n- Seafood lunch and drinks\n- 2-hour island stay\n- Hotel transfer included\n\nTiming: Thursday & Sunday — 09:00 to 17:00\nHero image theme: White luxury beach and island relaxation.',
+    duration: '09:00 to 17:00',
+    price: 65,
+    featured: true,
+  }),
+  trip({
+    id: 'mahmya-island',
+    title: 'Mahmya Island',
+    short: 'Exclusive Red Sea island experience with snorkeling and beach relaxation.',
+    full:
+      'Program:\n- Snorkeling stop\n- Snorkeling equipment included\n- Lunch and drinks\n- 4-hour island stay\n- Hotel transfer included\n\nTiming: Tuesday, Thursday, Sunday — 09:00 to 17:00\nHero image theme: Luxury white sand island and turquoise sea.',
+    duration: '09:00 to 17:00',
+    price: 95,
+    featured: true,
+  }),
+  trip({
+    id: 'magawish-island',
+    title: 'Magawish Island',
+    short: 'Quiet island escape for snorkeling and relaxation lovers.',
+    full:
+      'Program:\n- Two snorkeling stops\n- Snorkeling equipment included\n- Lunch and drinks\n- 1.5-hour island stay\n- Hotel transfer included\n\nTiming: Monday & Friday — 09:00 to 17:00\nHero image theme: Relaxed island vibes with beach lounges and turquoise water.',
+    duration: '09:00 to 17:00',
+    price: 30,
+  }),
+  trip({
+    id: 'moto-safari-3-hours',
+    title: 'Moto Safari (3 Hours)',
+    short:
+      'Fast-paced quad biking experience through the Egyptian desert, perfect for adrenaline lovers looking for a shorter adventure.',
+    full:
+      'Program:\n- 50 km quad biking through desert\n- Bedouin village visit\n- Egyptian tea and bread tasting\n- Camel riding\n- Hotel transfer included\n\nTiming: Daily — 09:00 or 14:00\nDuration: 3 to 5 hours\nChildren: Kids under 5 free. Kids 5–10: 50% discount.\nHero image theme: Short desert quad safari adventure with dunes and beach views.',
+    duration: '3 to 5 hours',
+    price: 22,
+  }),
+  trip({
+    id: 'dolphin-show',
+    title: 'Dolphin Show',
+    short: 'Family dolphinarium show with dolphins, sea lions, tricks, and live entertainment.',
+    full:
+      'Program:\n- 1-hour stay at the dolphinarium complex\n- Dolphin and sea lion show\n- Family entertainment with trainers\n- Hotel transfer included\n\nTiming: Daily — 10:00 and 15:00\nChildren: Kids under 5 free. Kids 5–10: 50% discount.\nHero image theme: Dolphins performing tricks and family entertainment.',
+    duration: '1 hour',
+    price: 18,
+  }),
+  trip({
+    id: 'new-cairo-exclusive-mini-bus',
+    title: 'New Cairo Exclusive (Mini Bus)',
+    short:
+      'Executive mini-bus day from Hurghada: Grand Egyptian Museum, Giza Pyramids & Sphinx, optional Nile cruise, perfumes & souvenirs, buffet lunch.',
+    full:
+      'Program:\n- New Grand Egyptian Museum\n- Pyramids of Giza\n- Great Sphinx\n- Optional Nile felucca ride (+10 USD)\n- Perfume & souvenir shop stop\n- Free buffet lunch; drinks paid extra\n- Polish-speaking escort/guide\n- Hotel transfers both ways\n\nTiming: Depart Tuesday, Thursday & Sunday at 01:00; back around 22:00\nChildren: Under 5: 40 USD; 5–12 years: 55 USD.',
+    duration: 'Tue / Thu / Sun — dep. 01:00, ~22:00 return',
+    price: 105,
+    featured: true,
+  }),
+  trip({
+    id: 'super-el-gouna',
+    title: 'Super El Gouna',
+    short:
+      'Snorkeling on coral reefs, Dolphin House snorkeling, 30-minute SeaScope, seafood lunch on board, plus a 1-hour El Gouna city tour.',
+    full:
+      'Program:\n- Snorkeling at coral reefs\n- Snorkeling at Dolphin House (wild dolphins sometimes sighted)\n- 30-minute SeaScope submarine-style viewing\n- Seafood lunch & drinks on the boat\n- 1-hour El Gouna town tour\n- Hotel transfers included\n\nTiming: Daily — 09:00 to 16:00\nChildren: Under 5 free; 5–10 years: 25 USD.',
+    duration: '09:00–16:00',
+    price: 45,
+  }),
+  trip({
+    id: 'kleopatra-spa',
+    title: 'Kleopatra Spa',
+    short:
+      'Traditional Moroccan/Turkish bath, scrub, foam massage session, sauna, jacuzzi, and drinks — about 2 hours of spa relaxation.',
+    full:
+      'Program:\n- Traditional Moroccan/Turkish bath\n- Steam room\n- Full body scrub\n- Foam wash & cleanse\n- 45-minute full body massage\n- Dry sauna & steam sauna\n- Jacuzzi\n- Drinks during the visit\n- Hotel transfers included\n\nTiming: Daily — slots at 10:00, 14:00 or 16:00 (about 2 hours)\nNotes: Children — no discount stated.',
+    duration: '~2 hours',
+    price: 25,
+  }),
+  trip({
+    id: 'new-cairo-by-bus',
+    title: 'New Cairo by Bus',
+    short:
+      'Budget-friendly bus trip: Grand Egyptian Museum, Pyramids & Sphinx, optional Nile ride, perfumes & souvenirs, buffet lunch.',
+    full:
+      'Program:\n- New Grand Egyptian Museum\n- Optional Nile felucca ride (+10 USD)\n- Perfume & souvenir shop\n- Free buffet lunch; drinks paid extra\n- Pyramids of Giza & Great Sphinx\n- Polish-speaking escort/guide\n- Hotel transfers both ways\n\nTiming: Depart Tuesday, Thursday & Sunday from 00:00; back around 23:00\nChildren: Under 5: 10 USD; 5–12 years: 45 USD.',
+    duration: 'Tue / Thu / Sun — dep. 00:00, ~23:00 return',
+    price: 85,
+    featured: true,
+  }),
+  trip({
+    id: 'cairo-by-plane',
+    title: 'Cairo by Plane',
+    short:
+      'Fly from Hurghada to Cairo for the Egyptian Museum (Tahrir), Nile cruise option, souvenirs, buffet lunch & Giza plateau.',
+    full:
+      'Program:\n- Old Egyptian Museum collection\n- Optional Nile felucca\n- Perfume & souvenir shop\n- Free buffet lunch; drinks paid extra\n- Pyramids of Giza & Great Sphinx\n- Polish-speaking escort/guide\n- Airport transfers both ways\n\nTiming: Runs daily.\nNotes: Children — no discount stated.',
+    duration: 'Full day flight excursion',
+    price: 270,
+    featured: true,
+  }),
+  trip({
+    id: 'mini-egypt-park',
+    title: 'Mini Egypt Park',
+    short:
+      'Around 2-hour visit at Mini Egypt Park in Hurghada: scale models of famous Egyptian landmarks.',
+    full:
+      'Program:\n- About 2 hours at Mini Egypt Park\n- Detailed miniature models of major Egyptian monuments\n- Hotel transfers included\n\nTiming: Daily — 10:00 to 15:00\nChildren: Under 5 free; 5–10 years: 50% discount.',
+    duration: '10:00–15:00',
+    price: 30,
+  }),
+  trip({
+    id: 'luxor-hot-air-balloon',
+    title: 'Luxor + Hot Air Balloon',
+    short:
+      'Overnight in Luxor, sunrise balloon, Karnak, Hatshepsut, Memnon statues, Valley of the Kings — optional Banana Island Nile (+15 USD).',
+    full:
+      'Program:\n- Overnight stay in Luxor\n- Sunrise hot air balloon ride\n- Karnak Temple\n- Mortuary temple of Hatshepsut\n- Colossi of Memnon\n- Valley of the Kings\n- Optional Banana Island Nile trip (+15 USD)\n- Polish-speaking escort/guide\n- Buffet lunch; drinks paid extra\n- Hotel transfers both ways\n\nTiming: Depart Tuesday, Thursday, Friday & Sunday ~16:00; return next day ~20:00\nChildren: Under 10 years: 230 USD.',
+    duration: '~2 days (eve dep. ~16:00)',
+    price: 250,
+    featured: true,
+  }),
+  trip({
+    id: 'city-tour-hurghada',
+    title: 'Hurghada City Tour',
+    short:
+      'Marina stroll, fish & produce market, Al Mina mosque viewpoint, panorama, Coptic church, and free shopping time.',
+    full:
+      'Program:\n- New Marina waterfront\n- Fish, vegetable & fruit market\n- Al Mina mosque\n- Scenic panorama stop\n- Coptic Orthodox church visit\n- Free shopping & souvenirs\n- Hotel transfers included\n\nTiming: Tuesday & Friday — 16:00 to 20:00 (according to minimum group)\nChildren: Under 5 free; 5–10 years: 50% discount.',
+    duration: '16:00–20:00',
+    price: 10,
+  }),
+  trip({
+    id: 'grand-aquarium-hurghada',
+    title: 'Grand Aquarium',
+    short:
+      'About two hours at Grand Aquarium Hurghada: glass tunnels, rainforest & mini zoo, shark feeding dives (scheduled).',
+    full:
+      'Program:\n- ~2-hour visit to Grand Aquarium\n- Glass tunnels & exhibits\n- Mini zoo & tropical rainforest zones\n- Shark feeding shows by scuba divers\n- Hotel transfers included\n\nTiming: Daily arrival window 10:00–16:00\nNotes: Shark feeding roughly 11:00–12:00 and 15:00–16:00\nChildren: Under 4 free; 4–10 years: 50% discount.',
+    duration: '~2 hours slot',
+    price: 40,
+  }),
+  trip({
+    id: 'cairo-vip-mini-bus',
+    title: 'Cairo VIP Mini Bus',
+    short:
+      'Comfort mini-bus: Old Egyptian Museum, optional Nile (+10 USD), perfumes, buffet lunch & Giza Pyramids with Sphinx.',
+    full:
+      'Program:\n- Old Egyptian Museum\n- Optional Nile felucca (+10 USD)\n- Perfume & souvenir shop\n- Free buffet lunch; drinks paid extra\n- Pyramids of Giza & Great Sphinx\n- Polish-speaking escort/guide\n- Hotel transfers both ways\n\nTiming: Monday, Wednesday, Friday & Saturday — departure 01:00; back around 22:00\nChildren: Under 5: 20 USD; 5–12 years: 40 USD.',
+    duration: 'Mon / Wed / Fri / Sat — dep. 01:00, ~22:00 return',
+    price: 70,
+  }),
+  trip({
+    id: 'new-cairo-exclusive-by-plane',
+    title: 'New Cairo Exclusive by Plane',
+    short:
+      'Fly to Cairo for the new Grand Egyptian Museum, Pyramids & Sphinx, optional Nile, souvenirs & buffet lunch.',
+    full:
+      'Program:\n- New Grand Egyptian Museum\n- Pyramids of Giza & Great Sphinx\n- Optional Nile felucca\n- Perfume & souvenir shop\n- Free buffet lunch; drinks paid extra\n- Polish-speaking escort/guide\n- Airport transfers both ways\n\nTiming: Daily.\nNotes: Children — no discount stated.',
+    duration: 'Full day flight excursion',
+    price: 320,
+    featured: true,
+  }),
+  trip({
+    id: 'luxor-vip-mini-bus',
+    title: 'Luxor VIP Mini Bus',
+    short:
+      'Same-day Luxor highlights: Karnak, Hatshepsut, Memnon, Valley of the Kings — optional Banana Island (+15 USD).',
+    full:
+      'Program:\n- Karnak Temple\n- Mortuary temple of Hatshepsut\n- Colossi of Memnon\n- Valley of the Kings\n- Optional Banana Island Nile trip (+15 USD)\n- Polish-speaking escort/guide\n- Buffet lunch; drinks paid extra\n- Hotel transfers both ways\n\nTiming: Monday, Wednesday, Friday & Saturday — depart ~04:00; back ~20:00\nChildren: Under 5: 20 USD; 5–12 years: 40 USD.',
+    duration: 'Mon / Wed / Fri / Sat — dep. ~04:00, ~20:00 return',
+    price: 75,
+  }),
+  trip({
+    id: 'cairo-by-bus',
+    title: 'Cairo by Bus',
+    short:
+      'Economy overnight bus excursion: Tahrir Egyptian Museum, optional Nile (+10 USD), perfumes, lunch & pyramids.',
+    full:
+      'Program:\n- Old Egyptian Museum (Tahrir)\n- Optional Nile felucca (+10 USD)\n- Perfume & souvenir shop\n- Free buffet lunch; drinks paid extra\n- Pyramids of Giza & Great Sphinx\n- Polish-speaking escort/guide\n- Hotel transfers both ways\n\nTiming: Daily — depart 00:00; back around 23:00\nChildren: Under 5: 10 USD; 5–12 years: 35 USD.',
+    duration: 'Daily — dep. 00:00, ~23:00 return',
+    price: 60,
+  }),
+  trip({
+    id: 'parasailing',
+    title: 'Parasailing',
+    short:
+      'Motorboat trip with single or tandem parasail over the Red Sea coast — transfers included (~2 hr total window).',
+    full:
+      'Program:\n- Motorboat offshore trip\n- Parasail flight (solo or tandem)\n- Hotel transfers included\n\nTiming: Daily — 10:00 to 16:00 (experience ~2 hours)\nRequirements: Combined weight for tandem max 150 kg\nNotes: Children — no discount stated.',
+    duration: '~2 hours',
+    price: 20,
+  }),
+  trip({
+    id: 'seascope-hurghada',
+    title: 'SeaScope',
+    short:
+      'Panoramic underwater viewing plus 30-minute snorkeling slot with equipment — multiple daily departures.',
+    full:
+      'Program:\n- ~45 minutes panoramic underwater/semi-sub viewing\n- 30 minutes snorkeling at a reef spot\n- Snorkeling equipment included\n- Hotel transfers included\n\nTiming daily windows:\n- 08:30–10:30\n- 11:00–13:00\n- 13:00–15:00\n- 15:00–17:00\nChildren: Under 5 free; 5–10 years: 10 USD.',
+    duration: 'Choose time window',
+    price: 17,
+  }),
+  trip({
+    id: 'luxor-by-bus',
+    title: 'Luxor by Bus',
+    short:
+      'Guided Luxor day from Hurghada: Karnak & Hatshepsut temples, Memnon, Valley of the Kings — optional Banana Island (+15 USD).',
+    full:
+      'Program:\n- Karnak Temple\n- Mortuary temple of Hatshepsut\n- Colossi of Memnon\n- Valley of the Kings\n- Optional Banana Island Nile trip (+15 USD)\n- Polish-speaking escort/guide\n- Buffet lunch; drinks paid extra\n- Hotel transfers both ways\n\nTiming: Daily — depart ~03:00; back ~21:00\nChildren: Under 5: 10 USD; 5–12 years: 35 USD.',
+    duration: 'Daily — dep. ~03:00, ~21:00 return',
+    price: 65,
+  }),
 ]

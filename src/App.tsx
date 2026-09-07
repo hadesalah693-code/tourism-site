@@ -8,6 +8,7 @@ import { DestinationsPage } from './pages/DestinationsPage'
 import { HomePage } from './pages/HomePage'
 import { TripDetailPage } from './pages/TripDetailPage'
 import { TripsPage } from './pages/TripsPage'
+import { AdminBookingsPage } from './pages/admin/AdminBookingsPage'
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage'
 import { AdminDestinationsPage } from './pages/admin/AdminDestinationsPage'
 import { AdminLoginPage } from './pages/admin/AdminLoginPage'
@@ -41,6 +42,7 @@ export default function App() {
                 <Route path="trips/new" element={<TripFormPage />} />
                 <Route path="trips/:id/edit" element={<TripFormPage />} />
                 <Route path="destinations" element={<AdminDestinationsPage />} />
+                <Route path="bookings" element={<AdminBookingsPage />} />
               </Route>
             </Route>
 

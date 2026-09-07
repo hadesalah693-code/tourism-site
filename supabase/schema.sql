@@ -43,38 +43,39 @@ for each row execute procedure public.set_updated_at();
 
 alter table public.trips enable row level security;
 
--- Anonymous users: only active trips
-create policy "trips_select_public_active"
+-- Admin panel + public site use anon/publishable key
+create policy "trips_select_anon"
   on public.trips
   for select
   to anon
-  using (is_active = true);
-
--- Authenticated users (admins): full access
-create policy "trips_select_authenticated"
-  on public.trips
-  for select
-  to authenticated
   using (true);
 
-create policy "trips_insert_authenticated"
+create policy "trips_insert_anon"
   on public.trips
   for insert
-  to authenticated
+  to anon
   with check (true);
 
-create policy "trips_update_authenticated"
+create policy "trips_update_anon"
   on public.trips
   for update
-  to authenticated
+  to anon
   using (true)
   with check (true);
 
-create policy "trips_delete_authenticated"
+create policy "trips_delete_anon"
   on public.trips
   for delete
-  to authenticated
+  to anon
   using (true);
+
+-- Authenticated users (Supabase Auth) — full access
+create policy "trips_all_authenticated"
+  on public.trips
+  for all
+  to authenticated
+  using (true)
+  with check (true);
 
 -- Storage -------------------------------------------------------------------
 insert into storage.buckets (id, name, public)
@@ -104,3 +105,85 @@ create policy "trip_images_auth_delete"
   for delete
   to authenticated
   using (bucket_id = 'trip-images');
+
+-- Admin panel uses anon key (local password auth) — allow image uploads
+create policy "trip_images_anon_upload"
+  on storage.objects
+  for insert
+  to anon
+  with check (bucket_id = 'trip-images');
+
+create policy "trip_images_anon_update"
+  on storage.objects
+  for update
+  to anon
+  using (bucket_id = 'trip-images');
+
+create policy "trip_images_anon_delete"
+  on storage.objects
+  for delete
+  to anon
+  using (bucket_id = 'trip-images');
+
+-- Bookings ------------------------------------------------------------------
+create table if not exists public.bookings (
+  id uuid primary key default gen_random_uuid(),
+  trip_id text not null,
+  trip_title text,
+  customer_name text not null,
+  customer_email text,
+  customer_phone text not null,
+  travel_date date,
+  guests int not null default 1 check (guests > 0),
+  message text,
+  status text not null default 'pending'
+    check (status in ('pending', 'confirmed', 'cancelled')),
+  locale text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create index if not exists bookings_status_idx on public.bookings (status);
+create index if not exists bookings_created_idx on public.bookings (created_at desc);
+create index if not exists bookings_trip_idx on public.bookings (trip_id);
+
+drop trigger if exists bookings_set_updated_at on public.bookings;
+create trigger bookings_set_updated_at
+before update on public.bookings
+for each row execute procedure public.set_updated_at();
+
+alter table public.bookings enable row level security;
+
+-- Public website: submit booking requests
+create policy "bookings_insert_anon"
+  on public.bookings
+  for insert
+  to anon
+  with check (true);
+
+create policy "bookings_select_anon"
+  on public.bookings
+  for select
+  to anon
+  using (true);
+
+create policy "bookings_update_anon"
+  on public.bookings
+  for update
+  to anon
+  using (true)
+  with check (true);
+
+create policy "bookings_delete_anon"
+  on public.bookings
+  for delete
+  to anon
+  using (true);
+
+-- Authenticated admins (Supabase Auth)
+create policy "bookings_all_authenticated"
+  on public.bookings
+  for all
+  to authenticated
+  using (true)
+  with check (true);
