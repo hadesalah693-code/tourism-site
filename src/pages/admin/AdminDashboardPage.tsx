@@ -87,7 +87,7 @@ export function AdminDashboardPage() {
         )}
       </div>
 
-      <div className="mt-10 rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900 via-ocean-900 to-teal-800 p-8 text-white shadow-elevate-lg">
+      <div className="mt-10 rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900 via-orange-900 to-amber-900 p-8 text-white shadow-elevate-lg">
         <h2 className="text-lg font-semibold tracking-tight">{t('admin.table.title')}</h2>
         <p className="mt-2 max-w-xl text-sm text-sky-100/[0.88]">{t('admin.destinations.hint')}</p>
         <div className="mt-6">

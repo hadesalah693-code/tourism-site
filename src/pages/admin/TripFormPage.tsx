@@ -186,7 +186,7 @@ export function TripFormPage() {
     <div>
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="text-2xl font-semibold text-slate-900">{isEdit ? t('admin.editTrip') : t('admin.addTrip')}</h1>
-        <Link to="/admin/trips" className="text-sm font-semibold text-ocean-700 hover:underline">
+        <Link to="/admin/trips" className="text-sm font-semibold text-orange-600 hover:underline">
           ← {t('admin.trips')}
         </Link>
       </div>
@@ -332,7 +332,7 @@ export function TripFormPage() {
             />
           ) : null}
           <div className="mt-3 flex flex-wrap items-center gap-3">
-            <label className="inline-flex cursor-pointer rounded-xl border border-ocean-200/80 bg-ocean-50/90 px-4 py-2 text-sm font-semibold text-ocean-900 shadow-elevate transition hover:bg-ocean-100/90">
+            <label className="inline-flex cursor-pointer rounded-xl border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-700 shadow-elevate transition hover:bg-orange-100">
               {uploading ? t('admin.form.uploading') : t('admin.form.chooseFile')}
               <input
                 type="file"

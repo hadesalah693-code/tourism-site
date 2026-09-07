@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
-import { defaultLocale, isRtl, type Locale, locales } from './config'
+import { detectBrowserLocale, defaultLocale, isRtl, type Locale, locales } from './config'
 import { I18nContext, type I18nContextValue } from './i18n-context'
 import { translate } from './translate'
 
@@ -12,7 +12,7 @@ function readStoredLocale(): Locale {
   } catch {
     /* ignore */
   }
-  return defaultLocale
+  return detectBrowserLocale()
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {

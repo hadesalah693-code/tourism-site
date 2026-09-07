@@ -70,11 +70,11 @@ export function BookingForm({ trip }: BookingFormProps) {
   }
 
   return (
-    <form className="mt-6 space-y-3 border-t border-slate-200/70 pt-6" onSubmit={(e) => void onSubmit(e)}>
-      <h3 className="text-base font-semibold text-slate-900">{t('booking.title')}</h3>
-      <p className="text-sm text-slate-600">{t('booking.subtitle')}</p>
+    <form className="mt-6 space-y-3 border-t border-sand-200 pt-6" onSubmit={(e) => void onSubmit(e)}>
+      <h3 className="font-serif text-xl font-medium text-navy-950">{t('booking.title')}</h3>
+      <p className="text-sm font-light text-sand-700">{t('booking.subtitle')}</p>
 
-      <label className="block text-sm font-medium text-slate-700">
+      <label className="block text-sm font-medium text-sand-800">
         {t('booking.name')}
         <input
           type="text"
@@ -85,7 +85,7 @@ export function BookingForm({ trip }: BookingFormProps) {
         />
       </label>
 
-      <label className="block text-sm font-medium text-slate-700">
+      <label className="block text-sm font-medium text-sand-800">
         {t('booking.phone')}
         <input
           type="tel"
@@ -96,7 +96,7 @@ export function BookingForm({ trip }: BookingFormProps) {
         />
       </label>
 
-      <label className="block text-sm font-medium text-slate-700">
+      <label className="block text-sm font-medium text-sand-800">
         {t('booking.email')}
         <input
           type="email"
@@ -106,7 +106,7 @@ export function BookingForm({ trip }: BookingFormProps) {
         />
       </label>
 
-      <label className="block text-sm font-medium text-slate-700">
+      <label className="block text-sm font-medium text-sand-800">
         {t('booking.travelDate')}
         <input
           type="date"
@@ -116,7 +116,7 @@ export function BookingForm({ trip }: BookingFormProps) {
         />
       </label>
 
-      <label className="block text-sm font-medium text-slate-700">
+      <label className="block text-sm font-medium text-sand-800">
         {t('booking.guests')}
         <input
           type="number"
@@ -129,7 +129,7 @@ export function BookingForm({ trip }: BookingFormProps) {
         />
       </label>
 
-      <label className="block text-sm font-medium text-slate-700">
+      <label className="block text-sm font-medium text-sand-800">
         {t('booking.message')}
         <textarea
           rows={3}
@@ -147,3 +147,5 @@ export function BookingForm({ trip }: BookingFormProps) {
     </form>
   )
 }
+
+

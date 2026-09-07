@@ -4,6 +4,7 @@ import { TripCard } from '../components/trips/TripCard'
 import { SupabaseNotice } from '../components/SupabaseNotice'
 import { EmptyState } from '../components/ui/EmptyState'
 import { Spinner } from '../components/ui/Spinner'
+import { PageHeader } from '../components/layout/PageHeader'
 import { useI18n } from '../i18n/useI18n'
 import { destinationName } from '../lib/destinations'
 import { inferTripCategory, TRIP_CATEGORIES, tripCategoryLabel, type TripCategory } from '../lib/tripCategories'
@@ -53,93 +54,91 @@ export function TripsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
-      <header className="rounded-lg bg-slate-950 px-5 py-8 text-white shadow-elevate-lg sm:px-8 sm:py-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">{t('tagline')}</p>
-        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{t('trips.title')}</h1>
-        <p className="mt-3 max-w-2xl text-base text-slate-200/95 sm:text-lg">{t('trips.subtitle')}</p>
-      </header>
+    <div>
+      <PageHeader eyebrow="tagline" title={t('trips.title')} subtitle={t('trips.subtitle')} />
 
-      <div className="mt-8">
-        <SupabaseNotice />
-      </div>
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <div className="mt-8">
+          <SupabaseNotice />
+        </div>
 
-      <div className="mt-6 grid gap-4 rounded-lg border border-slate-200/70 bg-white/95 p-4 shadow-elevate sm:mt-8 sm:grid-cols-2 lg:grid-cols-4">
-        <label className="flex flex-col gap-2 text-sm font-medium text-slate-700">
-          Category
-          <select
-            className="input-premium"
-            value={category}
-            onChange={(e) => updateParam('category', e.target.value)}
-          >
-            <option value="all">All categories</option>
-            {TRIP_CATEGORIES.map((c) => (
-              <option key={c} value={c}>
-                {tripCategoryLabel(c, locale)}
-              </option>
+        <div className="mt-6 grid gap-4 rounded-2xl border border-sand-200 bg-ivory-50 p-4 shadow-elevate sm:mt-8 sm:grid-cols-2 lg:grid-cols-4">
+          <label className="flex flex-col gap-2 text-sm font-medium text-sand-800">
+            Category
+            <select
+              className="input-premium"
+              value={category}
+              onChange={(e) => updateParam('category', e.target.value)}
+            >
+              <option value="all">All categories</option>
+              {TRIP_CATEGORIES.map((c) => (
+                <option key={c} value={c}>
+                  {tripCategoryLabel(c, locale)}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className="flex flex-col gap-2 text-sm font-medium text-sand-800">
+            {t('trips.filterDestination')}
+            <select
+              className="input-premium"
+              value={destination}
+              onChange={(e) => updateParam('destination', e.target.value)}
+            >
+              <option value="all">{t('trips.filterDestinationAll')}</option>
+              {DESTINATIONS.map((d) => (
+                <option key={d} value={d}>
+                  {destinationName(locale, d)}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className="flex flex-col gap-2 text-sm font-medium text-sand-800">
+            {t('trips.sortPrice')}
+            <select
+              className="input-premium"
+              value={sortParam}
+              onChange={(e) => updateParam('sort', e.target.value)}
+            >
+              <option value="newest">{t('trips.sortDefault')}</option>
+              <option value="price_asc">{t('trips.sortPriceAsc')}</option>
+              <option value="price_desc">{t('trips.sortPriceDesc')}</option>
+            </select>
+          </label>
+
+          <label className="flex flex-col gap-2 text-sm font-medium text-sand-800">
+            {t('trips.maxPrice')}
+            <input
+              type="number"
+              min={0}
+              placeholder="e.g. 2000"
+              className="input-premium"
+              value={maxPriceParam ?? ''}
+              onChange={(e) => updateParam('maxPrice', e.target.value || null)}
+            />
+          </label>
+        </div>
+
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <Spinner />
+          </div>
+        ) : error ? (
+          <p className="mt-10 text-center text-red-600">{error}</p>
+        ) : visibleTrips.length === 0 ? (
+          <div className="mt-10">
+            <EmptyState title={t('trips.empty')} />
+          </div>
+        ) : (
+          <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            {visibleTrips.map((trip) => (
+              <TripCard key={trip.id} trip={trip} />
             ))}
-          </select>
-        </label>
-
-        <label className="flex flex-col gap-2 text-sm font-medium text-slate-700">
-          {t('trips.filterDestination')}
-          <select
-            className="input-premium"
-            value={destination}
-            onChange={(e) => updateParam('destination', e.target.value)}
-          >
-            <option value="all">{t('trips.filterDestinationAll')}</option>
-            {DESTINATIONS.map((d) => (
-              <option key={d} value={d}>
-                {destinationName(locale, d)}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label className="flex flex-col gap-2 text-sm font-medium text-slate-700">
-          {t('trips.sortPrice')}
-          <select
-            className="input-premium"
-            value={sortParam}
-            onChange={(e) => updateParam('sort', e.target.value)}
-          >
-            <option value="newest">{t('trips.sortDefault')}</option>
-            <option value="price_asc">{t('trips.sortPriceAsc')}</option>
-            <option value="price_desc">{t('trips.sortPriceDesc')}</option>
-          </select>
-        </label>
-
-        <label className="flex flex-col gap-2 text-sm font-medium text-slate-700">
-          {t('trips.maxPrice')}
-          <input
-            type="number"
-            min={0}
-            placeholder="e.g. 2000"
-            className="input-premium"
-            value={maxPriceParam ?? ''}
-            onChange={(e) => updateParam('maxPrice', e.target.value || null)}
-          />
-        </label>
+          </div>
+        )}
       </div>
-
-      {loading ? (
-        <div className="flex justify-center py-20">
-          <Spinner />
-        </div>
-      ) : error ? (
-        <p className="mt-10 text-center text-red-600">{error}</p>
-      ) : visibleTrips.length === 0 ? (
-        <div className="mt-10">
-          <EmptyState title={t('trips.empty')} />
-        </div>
-      ) : (
-        <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-          {visibleTrips.map((trip) => (
-            <TripCard key={trip.id} trip={trip} />
-          ))}
-        </div>
-      )}
     </div>
   )
 }

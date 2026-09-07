@@ -80,7 +80,7 @@ export function AdminTripsPage() {
                   <td className="px-4 py-3 text-end">
                     <Link
                       to={`/admin/trips/${trip.id}/edit`}
-                      className="font-semibold text-ocean-800 transition hover:text-ocean-950 hover:underline"
+                      className="font-semibold text-orange-600 transition hover:text-orange-800 hover:underline"
                     >
                       {t('admin.table.edit')}
                     </Link>

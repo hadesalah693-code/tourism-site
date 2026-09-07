@@ -1,13 +1,215 @@
 {
   "brand": "SunSet Tours Egypt",
-  "tagline": "Curated Egypt escapes along the Red Sea",
+  "tagline": "Journey through the land of the Pharaohs",
   "nav": {
     "home": "Home",
     "destinations": "Destinations",
     "trips": "Trips",
     "about": "About",
     "contact": "Contact",
-    "admin": "Admin"
+    "admin": "Admin",
+    "experiences": "Experiences",
+    "book": "Book Now",
+    "explore": "Explore"
+  },
+  "hero": {
+    "eyebrow": "Egypt — Since 5,000 BCE",
+    "title": "Where Time Meets the Eternal Desert",
+    "subtitle": "Follow the path of pharaohs and explorers through sacred tombs, golden dunes, and the timeless Nile.",
+    "ctaPrimary": "Explore Our Experiences",
+    "ctaSecondary": "Book Your Trip",
+    "scroll": "Scroll to discover",
+    "featuredText": "Featured experience",
+    "stats": {
+      "years": "7,000 years of history",
+      "experiences": "40+ curated journeys",
+      "travelers": "300k+ happy travelers"
+    }
+  },
+  "discover": {
+    "eyebrow": "Discover Egypt",
+    "title": "A Civilisation That Shaped the World",
+    "p1": "For over seven millennia, the banks of the Nile have witnessed one of humanity's greatest civilisations — a land where monumental stone pyramids rise from golden dunes and gods were carved into eternity.",
+    "p2": "From the bustling streets of Cairo to the silent majesty of the Valley of the Kings, Egypt is not merely a destination. It is a journey through time itself.",
+    "p3": "Our experts have crafted intimate journeys through this timeless land, balancing grand monuments with hidden corners few have seen.",
+    "cta": "Begin the journey",
+    "legacy": "The Eternal Land",
+    "fact1": "7,000+ years of recorded history",
+    "fact2": "100+ ancient temples standing",
+    "fact3": "1,200 km of living Nile river",
+    "quote": "Egypt is the gift of the Nile.",
+    "quoteAuthor": "— Herodotus, Father of History"
+  },
+  "experiences": {
+    "eyebrow": "Curated Experiences",
+    "title": "Ways to Feel Egypt",
+    "subtitle": "Six immersive categories, each crafted to reveal a different facet of this extraordinary land.",
+    "sea": {
+      "title": "Sea Adventures",
+      "desc": "Sail turquoise waters, explore hidden bays and coral gardens."
+    },
+    "desert": {
+      "title": "Desert Safari",
+      "desc": "Race across golden dunes into a silent, starlit wilderness."
+    },
+    "ancient": {
+      "title": "Ancient Egypt",
+      "desc": "Walk among temples and tombs that outlasted empires."
+    },
+    "diving": {
+      "title": "Diving & Snorkeling",
+      "desc": "Descend into the vibrant world beneath the Red Sea."
+    },
+    "nile": {
+      "title": "Nile Experiences",
+      "desc": "Drift along the lifeblood of a civilisation at golden hour."
+    },
+    "luxury": {
+      "title": "Luxury Tours",
+      "desc": "Private, personalised journeys in complete refinement."
+    }
+  },
+  "tripsHome": {
+    "eyebrow": "Featured Journeys",
+    "title": "Signature Trips",
+    "subtitle": "A hand-selected collection of our most-loved journeys through Egypt's most evocative landscapes.",
+    "viewAll": "View all trips",
+    "from": "From",
+    "explore": "Explore Trip",
+    "duration": "days"
+  },
+  "destinationsHome": {
+    "eyebrow": "Destinations",
+    "title": "Across the Land of the Pharaohs",
+    "subtitle": "From the monuments of the north to the reefs of the south, explore the places that make Egypt eternal.",
+    "cairo": {
+      "name": "Cairo",
+      "tag": "The City of a Thousand Minarets"
+    },
+    "giza": {
+      "name": "Giza",
+      "tag": "Home of the Great Pyramids"
+    },
+    "luxor": {
+      "name": "Luxor",
+      "tag": "The World's Greatest Open-Air Museum"
+    },
+    "hurghada": {
+      "name": "Hurghada",
+      "tag": "Gateway to Red Sea Islands"
+    },
+    "sharm": {
+      "name": "Sharm El Sheikh",
+      "tag": "Reefs of Unimaginable Colour"
+    },
+    "marsa": {
+      "name": "Marsa Alam",
+      "tag": "Pristine Beaches & Turtles"
+    },
+    "aswan": {
+      "name": "Aswan",
+      "tag": "Where the Nile Turns South"
+    },
+    "cta": "Explore trips"
+  },
+  "heritage": {
+    "eyebrow": "Story & Heritage",
+    "title": "Treasures of a Timeless Civilisation",
+    "subtitle": "A museum of living history — every artefact a whisper from an age of gods and kings.",
+    "p1": "The golden mask of Tutankhamun, the Rosetta Stone's silent script, the towering Colossi of Memnon — each object is a chapter in the greatest story ever told.",
+    "p2": "Our journeys bring you face to face with these wonders, guided by Egyptologists who breathe life into ancient stone.",
+    "artefact1": "Golden mask of the young king",
+    "artefact2": "Hieroglyphs of the temple walls",
+    "artefact3": "Guardian of the eternal sands",
+    "cta": "Walk with history"
+  },
+  "why": {
+    "eyebrow": "Why Travel With Us",
+    "title": "Travel With Trusted Hands",
+    "subtitle": "We are not a booking engine. We are your local hosts — curators, guides, and friends in Egypt.",
+    "items": {
+      "trusted": {
+        "title": "Trusted Local Experts",
+        "desc": "Born and raised in this land, we know its secrets, its people and its rhythm."
+      },
+      "selected": {
+        "title": "Carefully Selected Experiences",
+        "desc": "Every journey hand-picked and quality-checked, never generic."
+      },
+      "guides": {
+        "title": "Professional Guides",
+        "desc": "Licensed Egyptologists and multilingual guides at every landmark."
+      },
+      "booking": {
+        "title": "Easy Booking",
+        "desc": "Transparent prices, clear itineraries, and confirmation within hours."
+      },
+      "support": {
+        "title": "24/7 Customer Support",
+        "desc": "Real people on WhatsApp, around the clock, before and during your trip."
+      },
+      "authentic": {
+        "title": "Authentic Experiences",
+        "desc": "Real Egyptian hospitality, never a sanitised tourist bubble."
+      }
+    }
+  },
+  "socialProof": {
+    "eyebrow": "Join Our Journey",
+    "title": "300,000+ Travelers Following Our Story",
+    "subtitle": "Real moments, captured by real travelers across Egypt.",
+    "followCta": "Follow our journey",
+    "reviews": {
+      "one": {
+        "name": "Alexander W.",
+        "country": "United Kingdom",
+        "text": "The Valley of the Kings with our guide was the most moving experience of our lives. Flawless from start to finish.",
+        "trip": "Luxor & Aswan"
+      },
+      "two": {
+        "name": "Mia N.",
+        "country": "Germany",
+        "text": "Private desert camp under a blanket of stars. Our guide made it feel like a dream. The luxury was effortless.",
+        "trip": "White Desert Safari"
+      },
+      "three": {
+        "name": "Sofia R.",
+        "country": "Italy",
+        "text": "From the pyramids at sunrise to a sunset felucca on the Nile — every detail was perfect. Grazie mille!",
+        "trip": "Grand Egypt"
+      }
+    },
+    "gallery": {
+      "one": "Golden dunes at sunrise",
+      "two": "Reefs of the Red Sea",
+      "three": "Temple of Karnak",
+      "four": "Bedouin hospitality",
+      "five": "Felucca on the Nile",
+      "six": "Cairo at dusk"
+    }
+  },
+  "ctaSection": {
+    "eyebrow": "Your Journey Awaits",
+    "title": "Your Egyptian Story Starts Here",
+    "subtitle": "The desert is calling. Let our experts craft a journey as timeless as the land itself.",
+    "cta": "Start Exploring",
+    "secondary": "Talk to an Expert"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "explore": "Explore",
+    "legal": "Crafted with passion for the eternal land of Egypt — where every journey becomes a story.",
+    "destinations": "Destinations",
+    "experiences": "Experiences",
+    "contact": "Contact",
+    "newsletter": "The Egypt Journal",
+    "newsletterSub": "Ancient stories, travel notes, and rare offers. Once a month, in your inbox.",
+    "newsletterPlaceholder": "Your email",
+    "newsletterCta": "Subscribe",
+    "newsletterThanks": "Thank you for subscribing!",
+    "phone": "Phone / WhatsApp",
+    "email": "Email",
+    "follow": "Follow Us"
   },
   "footer": {
     "rights": "All rights reserved.",

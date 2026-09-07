@@ -23,7 +23,7 @@ export function AdminDestinationsPage() {
             </div>
             <Link
               to={`/trips?destination=${d}`}
-              className="text-sm font-semibold text-ocean-800 transition hover:text-ocean-950 hover:underline"
+              className="text-sm font-semibold text-orange-600 transition hover:text-orange-800 hover:underline"
             >
               {t('destinations.cta')}
             </Link>

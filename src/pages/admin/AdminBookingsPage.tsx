@@ -101,7 +101,7 @@ export function AdminBookingsPage() {
                     <p className="font-medium text-slate-900">{booking.trip_title ?? booking.trip_id}</p>
                     <Link
                       to={`/trips/${booking.trip_id}`}
-                      className="text-xs font-semibold text-ocean-800 hover:underline"
+                      className="text-xs font-semibold text-orange-600 hover:underline"
                     >
                       {t('admin.bookings.viewTrip')}
                     </Link>

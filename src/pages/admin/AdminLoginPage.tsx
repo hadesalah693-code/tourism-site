@@ -18,7 +18,7 @@ export function AdminLoginPage() {
   if (loading) {
     return (
       <div className="flex min-h-[40vh] items-center justify-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-ocean-500 border-t-transparent" />
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-orange-500 border-t-transparent" />
       </div>
     )
   }
@@ -48,7 +48,7 @@ export function AdminLoginPage() {
 
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-4 py-16 sm:px-6">
-      <Link to="/" className="mb-8 text-sm text-slate-500 transition hover:text-ocean-800 hover:underline">
+      <Link to="/" className="mb-8 text-sm text-slate-500 transition hover:text-orange-600 hover:underline">
         ← {t('nav.home')}
       </Link>
       <div className="rounded-2xl border border-slate-200/60 bg-white/95 p-8 shadow-elevate-lg">
