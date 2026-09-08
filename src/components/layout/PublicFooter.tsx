@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import { useI18n } from '../../i18n/useI18n'
 
 const DEFAULT_WA = '201000000000'
+const GOOGLE_MAPS_URL =
+  'https://www.google.com/maps/place/SunSet+Tours+Egypt%2F+Zabawne+wycieczki/@27.218325,33.8377839,17z/data=!3m1!4b1!4m6!3m5!1s0x145287829ae0147f:0x9b1cdbb98df2b14b!8m2!3d27.218325!4d33.8377839!16s%2Fg%2F11rx29gwd1!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D'
+const GOOGLE_MAPS_EMBED_URL = 'https://www.google.com/maps?q=27.218325,33.8377839&z=17&output=embed'
 
 export function PublicFooter() {
   const { t } = useI18n()
@@ -198,6 +201,37 @@ export function PublicFooter() {
             </ul>
           </div>
         </div>
+
+        <section className="mt-14 border-t border-navy-900/10 pt-12" aria-labelledby="location-heading">
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-orange-600">
+                <span className="h-1 w-4 rounded-full bg-gradient-to-r from-orange-400 to-gold-400" />
+                Our location
+              </p>
+              <h2 id="location-heading" className="mt-3 font-serif text-3xl text-navy-950">
+                Find us on Google Maps
+              </h2>
+            </div>
+            <a
+              href={GOOGLE_MAPS_URL}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex w-fit rounded-full border border-orange-400/40 px-5 py-2.5 text-sm font-semibold text-orange-700 transition hover:bg-orange-500/10"
+            >
+              Open in Google Maps
+            </a>
+          </div>
+          <div className="mt-6 overflow-hidden rounded-3xl border border-orange-400/25 bg-white shadow-elevate-lg">
+            <iframe
+              title="SunSet Tours Egypt location on Google Maps"
+              src={GOOGLE_MAPS_EMBED_URL}
+              className="h-[320px] w-full sm:h-[380px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </section>
 
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-navy-900/10 pt-6 text-xs text-navy-700/70 sm:flex-row">
