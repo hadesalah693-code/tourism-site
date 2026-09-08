@@ -131,7 +131,7 @@ export function TripFormPage() {
     setSaveNote(null)
 
     const payload = {
-      title_ar: form.title_ar,
+      title_ar: form.title_ar || form.title_en,
       title_en: form.title_en,
       short_description_en: form.short_description_en || null,
       full_description_en: form.full_description_en || null,
@@ -207,15 +207,6 @@ export function TripFormPage() {
               required
               value={form.title_en}
               onChange={(e) => setForm((f) => ({ ...f, title_en: e.target.value }))}
-              className="input-premium mt-1"
-            />
-          </label>
-          <label className="block text-sm font-medium text-slate-700">
-            {t('admin.form.titleAr')}
-            <input
-              required
-              value={form.title_ar}
-              onChange={(e) => setForm((f) => ({ ...f, title_ar: e.target.value }))}
               className="input-premium mt-1"
             />
           </label>
