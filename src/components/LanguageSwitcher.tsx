@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { localeNames, locales, type Locale } from '../i18n/config'
+import { availableLocales, localeNames, type Locale } from '../i18n/config'
 import { useI18n } from '../i18n/useI18n'
 
 export function LanguageSwitcher() {
@@ -30,7 +30,7 @@ export function LanguageSwitcher() {
         backgroundPosition: 'right 0.75rem center',
       }}
     >
-      {locales.map((loc) => (
+      {availableLocales.map((loc) => (
         <option key={loc} value={loc} className="text-slate-900">
           {localeNames[loc]}
         </option>

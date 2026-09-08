@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
-import { detectBrowserLocale, defaultLocale, isRtl, type Locale, locales } from './config'
+import { availableLocales, detectBrowserLocale, defaultLocale, isRtl, type Locale } from './config'
 import { I18nContext, type I18nContextValue } from './i18n-context'
 import { translate } from './translate'
 
@@ -8,7 +8,7 @@ const STORAGE_KEY = 'nh-locale'
 function readStoredLocale(): Locale {
   try {
     const v = localStorage.getItem(STORAGE_KEY)
-    if (v && (locales as readonly string[]).includes(v)) return v as Locale
+    if (v && (availableLocales as readonly string[]).includes(v)) return v as Locale
   } catch {
     /* ignore */
   }
