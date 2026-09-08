@@ -395,4 +395,48 @@ export const demoTrips: Trip[] = [
     duration: 'Daily — dep. ~03:00, ~21:00 return',
     price: 65,
   }),
+  trip({
+    id: 'orange-bay-island',
+    title: 'Orange Bay Island',
+    short:
+      'Enjoy a relaxing full-day boat trip to Orange Bay, featuring crystal-clear water, a sandy beach, snorkeling stops, lunch, and beautiful Red Sea views.',
+    full:
+      'Approximate Tour Time:\n- Start: 8:00 AM\n- Finish: 4:00 PM\n- Pickup time depends on your hotel location.\n\nWhat’s Included:\n- Hotel pickup and return transfer\n- Boat trip\n- Orange Bay entrance\n- Time on the island\n- Two snorkeling stops\n- Snorkeling equipment\n- Buffet lunch\n- Soft drinks and water\n- Professional snorkeling guide\n\nWhat’s Not Included:\n- Personal expenses\n- Photos and videos\n- Optional water activities\n- National Park fees, if applicable\n- Transfer supplements from distant areas',
+    duration: '08:00 to 16:00',
+    price: 0,
+    featured: true,
+  }),
+  trip({
+    id: 'paradise-island-hurghada',
+    title: 'Paradise Island',
+    short:
+      'Spend a wonderful day at Paradise Island, combining a beautiful sandy beach, turquoise water, snorkeling, lunch, and a comfortable boat trip.',
+    full:
+      'Approximate Tour Time:\n- Start: 8:00 AM\n- Finish: 4:00 PM\n\nWhat’s Included:\n- Hotel pickup and return transfer\n- Boat trip\n- Paradise Island entrance\n- Beach time\n- Snorkeling stops\n- Snorkeling equipment\n- Lunch on the boat or island\n- Soft drinks and water\n- Professional guide\n\nWhat’s Not Included:\n- $10 National Park fee per person\n- Personal expenses\n- Photos and videos\n- Optional activities\n- Transfer supplements from El Gouna, Safaga, or distant hotels',
+    duration: '08:00 to 16:00',
+    price: 45,
+    featured: true,
+  }),
+  trip({
+    id: 'dolphin-house-hurghada',
+    title: 'Dolphin House',
+    short:
+      'Sail to one of Hurghada’s best-known dolphin areas and enjoy snorkeling in the open sea, with the possibility of seeing dolphins in their natural environment.',
+    full:
+      'Approximate Tour Time:\n- Start: 7:30–8:00 AM\n- Finish: 3:30–4:00 PM\n\nWhat’s Included:\n- Hotel pickup and return transfer\n- Full-day boat trip\n- Dolphin House visit\n- Two snorkeling stops\n- Snorkeling equipment\n- Buffet lunch\n- Soft drinks and water\n- Professional snorkeling guide\n- Life jackets\n\nWhat’s Not Included:\n- Personal expenses\n- Photos and videos\n- National Park fees, if applicable\n- Transfer supplements from distant areas\n\nImportant Note:\nDolphins are wild animals, so sightings and swimming with them cannot be guaranteed.',
+    duration: '07:30 to 16:00',
+    price: 25,
+    featured: true,
+  }),
+  trip({
+    id: 'private-speedboat-trip',
+    title: 'Private Speedboat Trip',
+    short:
+      'Discover the Red Sea with complete privacy and flexibility, choosing between Abu Monkar, Orange Bay, Paradise Island, Ozera, or Hola Hola.',
+    full:
+      'Approximate Tour Time:\n- Morning or afternoon departure\n- Duration: Approximately 4 hours\n\nWhat’s Included:\n- Private speedboat\n- Hotel pickup and return transfer within Hurghada\n- Professional captain\n- Snorkeling stops\n- Snorkeling equipment\n- Soft drinks and water\n- Fresh fruit\n- Life jackets\n\nWhat’s Not Included:\n- Island entrance fees\n- National Park fees\n- Lunch unless selected\n- Photos and videos\n- Personal expenses\n- Transfer supplements from areas outside Hurghada\n- Additional hours beyond the booked duration\n\nAvailable Destinations:\n- Abu Monkar Island\n- Orange Bay\n- Paradise Island\n- Ozera\n- Hola Hola Beach',
+    duration: 'Approximately 4 hours',
+    price: 0,
+    featured: true,
+  }),
 ]
