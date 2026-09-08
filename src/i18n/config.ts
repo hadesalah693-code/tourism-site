@@ -1,6 +1,9 @@
 export const locales = ['en', 'ar', 'de', 'pl', 'cs', 'ro', 'bg', 'it', 'fr'] as const
 export type Locale = (typeof locales)[number]
 
+export const availableLocales = ['en', 'de', 'pl', 'cs', 'ro', 'bg', 'it', 'fr'] as const
+export type AvailableLocale = (typeof availableLocales)[number]
+
 export const defaultLocale: Locale = 'en'
 
 export const localeNames: Record<Locale, string> = {
@@ -24,7 +27,7 @@ export function detectBrowserLocale(): Locale {
   const preferred = navigator.languages?.length ? navigator.languages : [navigator.language]
   for (const raw of preferred) {
     const base = raw.split('-')[0].toLowerCase()
-    const hit = (locales as readonly string[]).find((l) => l === base) as Locale | undefined
+    const hit = (availableLocales as readonly string[]).find((l) => l === base) as Locale | undefined
     if (hit) return hit
   }
   return defaultLocale

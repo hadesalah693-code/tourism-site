@@ -11,9 +11,7 @@ import { DESTINATIONS, TRIP_CURRENCIES, type Destination, type Trip } from '../.
 const empty: Omit<Trip, 'id' | 'created_at' | 'updated_at'> = {
   title_ar: '',
   title_en: '',
-  short_description_ar: '',
   short_description_en: '',
-  full_description_ar: '',
   full_description_en: '',
   destination: 'sharm',
   duration: '',
@@ -66,9 +64,7 @@ export function TripFormPage() {
       setForm({
         title_ar: row.title_ar,
         title_en: row.title_en,
-        short_description_ar: row.short_description_ar ?? '',
         short_description_en: row.short_description_en ?? '',
-        full_description_ar: row.full_description_ar ?? '',
         full_description_en: row.full_description_en ?? '',
         destination: row.destination,
         duration: row.duration,
@@ -137,9 +133,7 @@ export function TripFormPage() {
     const payload = {
       title_ar: form.title_ar,
       title_en: form.title_en,
-      short_description_ar: form.short_description_ar || null,
       short_description_en: form.short_description_en || null,
-      full_description_ar: form.full_description_ar || null,
       full_description_en: form.full_description_en || null,
       destination: form.destination as Destination,
       duration: form.duration,
@@ -227,47 +221,25 @@ export function TripFormPage() {
           </label>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          <label className="block text-sm font-medium text-slate-700">
-            {t('admin.form.shortEn')}
-            <textarea
-              rows={3}
-              value={form.short_description_en ?? ''}
-              onChange={(e) => setForm((f) => ({ ...f, short_description_en: e.target.value }))}
-              className="input-premium mt-1"
-            />
-          </label>
-          <label className="block text-sm font-medium text-slate-700">
-            {t('admin.form.shortAr')}
-            <textarea
-              rows={3}
-              value={form.short_description_ar ?? ''}
-              onChange={(e) => setForm((f) => ({ ...f, short_description_ar: e.target.value }))}
-              className="input-premium mt-1"
-            />
-          </label>
-        </div>
+        <label className="block text-sm font-medium text-slate-700">
+          {t('admin.form.shortEn')}
+          <textarea
+            rows={3}
+            value={form.short_description_en ?? ''}
+            onChange={(e) => setForm((f) => ({ ...f, short_description_en: e.target.value }))}
+            className="input-premium mt-1"
+          />
+        </label>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          <label className="block text-sm font-medium text-slate-700">
-            {t('admin.form.fullEn')}
-            <textarea
-              rows={6}
-              value={form.full_description_en ?? ''}
-              onChange={(e) => setForm((f) => ({ ...f, full_description_en: e.target.value }))}
-              className="input-premium mt-1"
-            />
-          </label>
-          <label className="block text-sm font-medium text-slate-700">
-            {t('admin.form.fullAr')}
-            <textarea
-              rows={6}
-              value={form.full_description_ar ?? ''}
-              onChange={(e) => setForm((f) => ({ ...f, full_description_ar: e.target.value }))}
-              className="input-premium mt-1"
-            />
-          </label>
-        </div>
+        <label className="block text-sm font-medium text-slate-700">
+          {t('admin.form.fullEn')}
+          <textarea
+            rows={6}
+            value={form.full_description_en ?? ''}
+            onChange={(e) => setForm((f) => ({ ...f, full_description_en: e.target.value }))}
+            className="input-premium mt-1"
+          />
+        </label>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <label className="block text-sm font-medium text-slate-700">

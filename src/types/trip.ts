@@ -15,7 +15,7 @@ export type Trip = {
   title_bg?: string | null
   title_it?: string | null
   title_fr?: string | null
-  short_description_ar: string | null
+  short_description_ar?: string | null
   short_description_en: string | null
   short_description_de?: string | null
   short_description_pl?: string | null
@@ -24,7 +24,7 @@ export type Trip = {
   short_description_bg?: string | null
   short_description_it?: string | null
   short_description_fr?: string | null
-  full_description_ar: string | null
+  full_description_ar?: string | null
   full_description_en: string | null
   full_description_de?: string | null
   full_description_pl?: string | null
